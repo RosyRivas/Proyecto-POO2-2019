@@ -54,3 +54,48 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 1. Usuario: el rol de usuario abarca las funciones básicas del sistema de reseñas de películas como ser visualizar las películas en el orden de preferencias, reseñar, puntuar y compartir películas.
 2. Administrador: el rol de administrador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
 
+---
+
+### Registrar preferencias
+##### Actores: Usuario
+##### Objetivo: registrar las preferencias de cine de un usuario
+###### Flujo Principal:
+1. El caso de uso comienza cuando el actor desea registrar sus preferencias de cine.
+2. El sistema requiere los datos de las preferencias del usuario.
+3. El actor proporciona los datos de sus preferencias.
+4. El actor confirma la operación.
+5. El sistema comprueba los datos ingresados.
+6. El sistema emite un mensaje de operación exitosa.
+
+---
+
+### Clasificar película
+#### Actores: Administrador
+#### Objetivo: Clasificar una película en uno o varios géneros cinematográficos.
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor desea clasificar una película en un género cinematográfico.
+2. El sistema solicita los datos de clasificación.
+3. El actor proporciona los datos de clasificación de la película.
+4. El actor confirma los datos.
+5. El sistema comprueba los datos ingresados.
+6. El sistema emite un mensaje de clasificación exitosa.
+> Este caso de uso es parte del caso de uso Registrar Película.
+
+---
+
+### Publicar película
+#### Actores: Administrador
+#### Objetivo: realizar el alta de una película
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor quiere realizar el alta de una película
+2. El sistema requiere los datos de la película(título, año, director, actores, sinopsis, duración, género)
+3. El actor proporciona los datos solicitados 
+4. El actor confirma la operación 
+5. El sistema comprueba los datos ingresados 
+6. El sistema emite un mensaje de operación exitosa
+
+##### Curso alternativo
+paso 5: el sistema emite un mensaje de datos inválidos y retorna al punto 2. 
+
+
+
