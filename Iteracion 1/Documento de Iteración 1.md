@@ -126,6 +126,17 @@ paso 2: el actor  no ingresa reseña y  sigue el flujo típico de eventos
 ##### Curso alternativo
 paso 2: de no existir una película, y sigue el flujo típico de evento.
 
+---
+
+## Arquitectura:
+
+* Postgresql
+* Netbeans 11.1  con Java
+* Javalin con Json 
+* Html+Css
+* Javascript
+* Bootstrap 4  
+
 
 
 
