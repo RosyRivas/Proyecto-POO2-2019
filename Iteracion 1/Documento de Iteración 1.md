@@ -26,8 +26,19 @@ si no también en el contexto nacional, o regional.
 
 ## Bocetos de Interfaz
 ### Pantalla Principal
-
+La pantalla principal es la vista inicial del usuario/administrador, desde aquí parten las acciones siguientes del sistema.
 
 ![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/pantalla_principal.png "Imagen Pantalla Principal")
 
+### Publicar Película
+La pantalla de publicación de película le permite al administrador subir una película al sistema.
+![alt text]()
+
+### Realizar Reseña
+La pantalla de realizar reseña le permite al usuario reseñar una película, clasificarla por estrellas o ver las últimas reseñas.
+![alt text]()
+
+### Recomendar Película
+La pantalla de recomendar película le permite al usuario enviarle una película y un mensaje opcional a otro usuario.
+![alt text]()
 
