@@ -47,5 +47,10 @@ La pantalla de añadir elenco le permite al administrador añadir un Actor-a/Dir
 
 ### Registrar Preferencias
 La pantalla de registrar preferencias le permite al usuario indicar sus preferencias de cine.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/registrar_preferencias.png "Imagen Registrar Preferencias")
+
+## Casos de Uso.
+### Actores del Sistema.
+1. Usuario: el rol de usuario abarca las funciones básicas del sistema de reseñas de películas como ser visualizar las películas en el orden de preferencias, reseñar, puntuar y compartir películas.
+2. Administrador: el rol de administrador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
 
