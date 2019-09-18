@@ -1,4 +1,4 @@
-# PochocloCritics - Sistema de crítica de Plículas.
+# PochocloCritics - Sistema de crítica de Películas.
 
 ### Grupo: La comunidad del Anillo.
 
@@ -39,5 +39,13 @@ La pantalla de realizar reseña le permite al usuario reseñar una película, cl
 
 ### Recomendar Película
 La pantalla de recomendar película le permite al usuario enviarle una película y un mensaje opcional a otro usuario.
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/recomendar_pelicula.png "Imagen Recomendar Película")
+
+### Añadir Elenco
+La pantalla de añadir elenco le permite al administrador añadir un Actor-a/Director-a al sitio.
+![alt text]()
+
+### Registrar Preferencias
+La pantalla de registrar preferencias le permite al usuario indicar sus preferencias de cine.
 ![alt text]()
 
