@@ -26,7 +26,8 @@ si no también en el contexto nacional, o regional.
 
 ## Bocetos de Interfaz
 ### Pantalla Principal
-Inline-style:
-![alt text](Iteracion 1/pantalla_principal.png "Imagen Pantalla Principal")
+
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/pantalla_principal.png "Imagen Pantalla Principal")
 
 
