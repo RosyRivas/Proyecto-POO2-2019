@@ -21,8 +21,7 @@ una breve reseña o acceder desde la la aplicación de reseñas a sitios donde p
 
 ## Dominio
 La aplicación está dedicada en un contexto de entretenimiento a personas que busquen recomendaciones de películas, puntuar y 
-escribir sus propias reseñas, además de recomendar películas a otros usuarios, no solo de películas reconocidas internacionalmente 
-si no también en el contexto nacional, o regional.
+escribir sus propias reseñas, además de recomendar películas a otros usuarios, no solo de películas reconocidas internacionalmente si no también en el contexto nacional, o regional.
 
 ## Bocetos de Interfaz
 ### Pantalla Principal
@@ -32,7 +31,7 @@ La pantalla principal es la vista inicial del usuario/administrador, desde aquí
 
 ### Publicar Película
 La pantalla de publicación de película le permite al administrador subir una película al sistema.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/publicar_pelicula.png "Imagen Publicar Película")
 
 ### Realizar Reseña
 La pantalla de realizar reseña le permite al usuario reseñar una película, clasificarla por estrellas o ver las últimas reseñas.
