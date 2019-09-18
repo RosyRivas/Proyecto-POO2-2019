@@ -27,6 +27,6 @@ si no también en el contexto nacional, o regional.
 ## Bocetos de Interfaz
 ### Pantalla Principal
 Inline-style:
-![alt text]()
+![alt text](Iteracion 1/pantalla_principal.png "Imagen Pantalla Principal")
 
 
