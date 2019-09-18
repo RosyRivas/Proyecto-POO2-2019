@@ -35,7 +35,7 @@ La pantalla de publicación de película le permite al administrador subir una p
 
 ### Realizar Reseña
 La pantalla de realizar reseña le permite al usuario reseñar una película, clasificarla por estrellas o ver las últimas reseñas.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/realizar_rese%C3%B1a.png "Imagen Realizar Reseña")
 
 ### Recomendar Película
 La pantalla de recomendar película le permite al usuario enviarle una película y un mensaje opcional a otro usuario.
