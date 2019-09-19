@@ -68,11 +68,11 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 
 ---
 
-### Publicar película
+### Administrar película
 #### Actores: Administrador
-#### Objetivo: realizar el alta de una película
+#### Objetivo: realizar el alta, baja o modificación de una película
 ##### Flujo Principal:
-1. El caso de uso comienza cuando el actor quiere realizar el alta de una película.
+1. El caso de uso comienza cuando el actor quiere administrar una película.
 2. El sistema requiere los datos de la película.
 3. El actor proporciona los datos solicitados.
 4. El actor confirma la operación.
@@ -129,6 +129,27 @@ paso 2: de no existir una película, y sigue el flujo típico de evento.
 3. El actor proporciona los datos solicitados.
 4. El actor confirma la operación.
 5. El sistema emite un mensaje de operación exitosa.
+
+---
+
+##### Glosario de Términos
+
+###### Administrar Película: 
+Se refiere a la acción de realizar un alta, baja y modificación de una película.
+###### Reseñar Película: 
+Se refiere a la acción de realizar una reseña de una película, lo que incluye la calificación de la película y un comentario opcional de la misma.
+###### Explorar el Catálogo: 
+Se refiere a la acción de explorar colecciones de películas desde la pantalla principal.
+###### Catálogo:
+se refiere a una colección de películas ordenada por género, recomendación o preferencias.
+###### Recomendar Película:
+Se refiere a la acción de enviar una película como recomendación a otro usuario, junto a un comentario opcional.
+###### Añadir Elenco:
+Se refiere a la acción de añadir un elenco nuevo al sistema, ya sea un actor/a o director/a
+###### Elenco:
+El elenco es un conjunto de actores y directores que participan en una película.
+###### Registrar Preferencias:
+Se refiere a las preferencias del usuario en el campo del cine, lo que incluye el género de sus películas favoritas y sus actores y directores favoritos.
 
 ---
 
