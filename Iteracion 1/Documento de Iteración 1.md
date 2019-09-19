@@ -27,27 +27,27 @@ escribir sus propias reseñas, además de recomendar películas a otros usuarios
 ### Pantalla Principal
 La pantalla principal es la vista inicial del usuario/administrador, desde aquí parten las acciones siguientes del sistema.
 
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/pantalla_principal.png "Pantalla Principal")
 
-### Publicar Película
+### Administrar Película
 La pantalla de publicación de película le permite al administrador subir una película al sistema.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/administrar_pelicula.png "Administrar Pelicula")
 
 ### Realizar Reseña
 La pantalla de realizar reseña le permite al usuario reseñar una película, clasificarla por estrellas o ver las últimas reseñas.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/realizar_resena.png "Reseñar Pelicula")
 
 ### Recomendar Película
 La pantalla de recomendar película le permite al usuario enviarle una película y un mensaje opcional a otro usuario.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/recomendar_pelicula.png "Recomendar Pelicula")
 
 ### Añadir Elenco
 La pantalla de añadir elenco le permite al administrador añadir un Actor-a/Director-a al sitio.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/anadir_elenco.png "Añadir Elenco")
 
 ### Registrar Preferencias
 La pantalla de registrar preferencias le permite al usuario indicar sus preferencias de cine.
-![alt text]()
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/registrar_preferencias.png "Registrar Preferencias")
 
 ## Casos de Uso.
 ### Actores del Sistema.
