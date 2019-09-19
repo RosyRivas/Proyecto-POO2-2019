@@ -43,7 +43,7 @@ La pantalla de recomendar película le permite al usuario enviarle una película
 
 ### Añadir Elenco
 La pantalla de añadir elenco le permite al administrador añadir un Actor-a/Director-a al sitio.
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%201/a%C3%B1adir_elenco.png "Imagen Añadir Elenco")
+![alt text]()
 
 ### Registrar Preferencias
 La pantalla de registrar preferencias le permite al usuario indicar sus preferencias de cine.
