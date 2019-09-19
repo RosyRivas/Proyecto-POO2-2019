@@ -59,27 +59,12 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 ### Registrar preferencias
 ##### Actores: Usuario
 ##### Objetivo: registrar las preferencias de cine de un usuario
-###### Flujo Principal:
+##### Flujo Principal:
 1. El caso de uso comienza cuando el actor desea registrar sus preferencias de cine.
-2. El sistema requiere los datos de las preferencias del usuario.
+2. El sistema requiere los datos de las preferencias del actor.
 3. El actor proporciona los datos de sus preferencias.
 4. El actor confirma la operación.
-5. El sistema comprueba los datos ingresados.
-6. El sistema emite un mensaje de operación exitosa.
-
----
-
-### Clasificar película
-#### Actores: Administrador
-#### Objetivo: Clasificar una película en uno o varios géneros cinematográficos.
-##### Flujo Principal:
-1. El caso de uso comienza cuando el actor desea clasificar una película en un género cinematográfico.
-2. El sistema solicita los datos de clasificación.
-3. El actor proporciona los datos de clasificación de la película.
-4. El actor confirma los datos.
-5. El sistema comprueba los datos ingresados.
-6. El sistema emite un mensaje de clasificación exitosa.
-> Este caso de uso es parte del caso de uso Registrar Película.
+5. El sistema emite un mensaje de operación exitosa.
 
 ---
 
@@ -87,15 +72,11 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 #### Actores: Administrador
 #### Objetivo: realizar el alta de una película
 ##### Flujo Principal:
-1. El caso de uso comienza cuando el actor quiere realizar el alta de una película
-2. El sistema requiere los datos de la película(título, año, director, actores, sinopsis, duración, género)
-3. El actor proporciona los datos solicitados 
-4. El actor confirma la operación 
-5. El sistema comprueba los datos ingresados 
-6. El sistema emite un mensaje de operación exitosa
-
-##### Curso alternativo
-paso 5: el sistema emite un mensaje de datos inválidos y retorna al punto 2. 
+1. El caso de uso comienza cuando el actor quiere realizar el alta de una película.
+2. El sistema requiere los datos de la película.
+3. El actor proporciona los datos solicitados.
+4. El actor confirma la operación.
+5. El sistema emite un mensaje de operación exitosa.
 
 ---
 
@@ -103,28 +84,51 @@ paso 5: el sistema emite un mensaje de datos inválidos y retorna al punto 2.
 #### Actores: Usuario
 #### Objetivo: realizar  reseña de una película determinada  
 ##### Flujo Principal:
-1. El caso de uso comienza cuando el actor quiere realizar una reseña a una película 
-2. El sistema requiere que ingrese una calificación y una reseña (caja de comentario)
-3. El actor ingresa una calificación con su respectiva reseña
-4. El actor confirma la operación
-5. El sistema comprueba los datos ingresados 
-6. El sistema emite   un mensaje de operación exitosa 
+1. El caso de uso comienza cuando el actor quiere realizar una reseña a una película.
+2. El sistema requiere que ingrese una calificación y una reseña.
+3. El actor ingresa una calificación con su respectiva reseña.
+4. El actor confirma la operación.
+5. El sistema emite   un mensaje de operación exitosa.
 ##### Curso alternativo
-paso 2: el actor  no ingresa reseña y  sigue el flujo típico de eventos 
+paso 2: el actor  no ingresa reseña y  sigue el flujo típico de eventos.
 
 ---
 
 ### Añadir elenco
 #### Actores: Administrador
-#### Objetivo: añadir un actor a una película
+#### Objetivo: añadir un actor o director
 ##### Flujo Principal:
-1. El caso de uso comienza cuando el administrador quiere añadir actores  a una película
-2. El sistema requiere que ingrese datos del actor o director y la película en la que participa
-3. El administrador confirma la operación realizada 
-4. El sistema comprueba los datos ingresados
-5. El sistema emite   un mensaje de operación exitosa 
+1. El caso de uso comienza cuando el administrador quiere añadir actores o directores a una película.
+2. El sistema requiere que ingrese datos del actor o director y la película en la que participa.
+3. El administrador confirma la operación realizada.
+4. El sistema emite   un mensaje de operación exitosa.
 ##### Curso alternativo
 paso 2: de no existir una película, y sigue el flujo típico de evento.
+
+---
+
+### Explorar Catálogo
+#### Actores: Usuario, Administrador
+#### Objetivo: Explorar el catálogo para observar estrenos, géneros disponibles, las películas favoritas y reseñas.
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor consulta un catálogo.
+2. El sistema muestra el catalogo seleccionado con sus datos.
+3. El actor vuelve a explorar. 
+
+4. del 1 al 3 puede repetirse.
+5. El actor selecciona una pelicula.
+
+---
+
+### Recomendar Película
+#### Actores: Usuario
+#### Objetivo: Realizar la recomendación de una película
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor quiere realizar una recomendación de una película.
+2. El sistema requiere  que ingrese el destinatario y el mensaje.
+3. El actor proporciona los datos solicitados.
+4. El actor confirma la operación.
+5. El sistema emite un mensaje de operación exitosa.
 
 ---
 
