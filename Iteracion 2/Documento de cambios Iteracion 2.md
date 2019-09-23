@@ -1,5 +1,7 @@
 ## Lista de Cambios
 
+~~INDICA QUE ESTÁ ACTUALIZADO~~
+
 1. Actualizar la Vision del sistema: 
 #### Vision:
 Desarrollaremos un Sistema de reseña de películas que permitirá a un usuario visualizar el top de las películas reseñadas recomendadas
