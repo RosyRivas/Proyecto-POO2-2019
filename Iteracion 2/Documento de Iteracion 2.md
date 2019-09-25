@@ -7,9 +7,11 @@
 3. Zakowicz Osvaldo.
 
 ## Visión
-Desarrollaremos un  sistema de recomendación de películas que  permitirá a un usuario visualizar el top de las películas
-recomendadas dependiendo del puntaje que cada usuario le otorgue, le permitirá puntuar películas desde su perfil, escribir 
-una breve reseña o acceder desde la la aplicación de reseñas a sitios donde poder ver la pelicula online.
+Desarrollaremos un Sistema de Reseña de Películas que permitirá a un usuario visualizar el top de las películas reseñadas recomendadas
+dependiendo del puntaje  de cada película, o visualizar también según sus preferencias, podrá puntuar películas desde su perfil y 
+escribir una breve reseña de la misma, así como repostear la reseña de una película en su perfil **"Apartado de mis reseñas"**. Por otro
+lado le permitirá a un usuario moderador **"Administrador"** las funcionalidades de un usuario estándar y las funcionalidades extra
+de publicación de una película y de añadir su elenco, lo que incluye actores y directores de cine.
 
 ## Características:
 1. Publicación de una película para su reseña 
@@ -21,7 +23,12 @@ una breve reseña o acceder desde la la aplicación de reseñas a sitios donde p
 
 ## Dominio
 La aplicación está dedicada en un contexto de entretenimiento a personas que busquen recomendaciones de películas, puntuar y 
-escribir sus propias reseñas, además de recomendar películas a otros usuarios, no solo de películas reconocidas internacionalmente si no también en el contexto nacional, o regional.
+escribir sus propias reseñas, además de repostear películas a otros usuarios, no solo de películas reconocidas internacionalmente si no también en el contexto nacional, o regional.
+### Dominios Aplicables: 
+* Cine.
+* VideoClub.
+* Club de Cine.
+* Emprendimiento Personal.
 
 ## Bocetos de Interfaz
 ### Pantalla Principal
@@ -52,7 +59,7 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 ## Casos de Uso.
 ### Actores del Sistema.
 1. Usuario: el rol de usuario abarca las funciones básicas del sistema de reseñas de películas como ser visualizar las películas en el orden de preferencias, reseñar, puntuar y compartir películas.
-2. Administrador: el rol de administrador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
+2. Moderador: el rol de Moderador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
 
 ---
 
@@ -70,7 +77,7 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 ---
 
 ### Clasificar película
-#### Actores: Administrador
+#### Actores: Moderador
 #### Objetivo: Clasificar una película en uno o varios géneros cinematográficos.
 ##### Flujo Principal:
 1. El caso de uso comienza cuando el actor desea clasificar una película en un género cinematográfico.
@@ -84,7 +91,7 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 ---
 
 ### Publicar película
-#### Actores: Administrador
+#### Actores: Moderador
 #### Objetivo: realizar el alta de una película
 ##### Flujo Principal:
 1. El caso de uso comienza cuando el actor quiere realizar el alta de una película
