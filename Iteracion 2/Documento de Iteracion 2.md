@@ -7,6 +7,9 @@
 2. Nahirñak Fernando.
 3. Zakowicz Osvaldo.
 
+##### Logo de PochocloCritics
+![alt image](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Logo/popcorn%202.png "Nuestro Logo :)")
+
 ## Visión
 Desarrollaremos un Sistema de Reseña de Películas que permitirá a un usuario visualizar el top de las películas reseñadas recomendadas
 dependiendo del puntaje  de cada película, o visualizar también según sus preferencias, podrá puntuar películas desde su perfil y 
