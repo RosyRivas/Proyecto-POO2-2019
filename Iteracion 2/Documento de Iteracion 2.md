@@ -1,6 +1,7 @@
-# PochocloCritics - Sistema de crítica de Películas.
+# PochocloCritics
+### Sistema de crítica de Películas.
 
-### Grupo: La comunidad del Anillo.
+##### Grupo: La comunidad del Anillo.
 
 1. Rivas Rodriguez Rosa.
 2. Nahirñak Fernando.
@@ -66,4 +67,116 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 2. Moderador: el rol de Moderador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
 
 ---
+
+### Registrar preferencias
+##### Actores: Usuario
+##### Objetivo: registrar las preferencias de cine de un usuario
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor desea registrar sus preferencias de cine.
+2. El sistema requiere los datos de las preferencias del actor.
+3. El actor proporciona los datos de sus preferencias.
+4. El actor confirma la operación.
+5. El sistema emite un mensaje de operación exitosa.
+
+---
+
+### Administrar película
+#### Actores: Administrador
+#### Objetivo: realizar el alta, baja o modificación de una película
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor quiere administrar una película.
+2. El sistema requiere los datos de la película.
+3. El actor proporciona los datos solicitados.
+4. El actor confirma la operación.
+5. El sistema emite un mensaje de operación exitosa.
+
+---
+
+### Realizar Reseña
+#### Actores: Usuario
+#### Objetivo: realizar  reseña de una película determinada  
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor quiere realizar una reseña a una película.
+2. El sistema requiere que ingrese una calificación y una reseña.
+3. El actor ingresa una calificación con su respectiva reseña.
+4. El actor confirma la operación.
+5. El sistema emite   un mensaje de operación exitosa.
+##### Curso alternativo
+paso 2: el actor  no ingresa reseña y  sigue el flujo típico de eventos.
+
+---
+
+### Añadir elenco
+#### Actores: Administrador
+#### Objetivo: añadir un actor o director
+##### Flujo Principal:
+1. El caso de uso comienza cuando el administrador quiere añadir actores o directores a una película.
+2. El sistema requiere que ingrese datos del actor o director y la película en la que participa.
+3. El administrador confirma la operación realizada.
+4. El sistema emite   un mensaje de operación exitosa.
+##### Curso alternativo
+paso 2: de no existir una película, y sigue el flujo típico de evento.
+
+---
+
+### Explorar Catálogo
+#### Actores: Usuario, Administrador
+#### Objetivo: Explorar el catálogo para observar estrenos, géneros disponibles, las películas favoritas y reseñas.
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor consulta un catálogo.
+2. El sistema muestra el catalogo seleccionado con sus datos.
+3. El actor vuelve a explorar. 
+
+4. del 1 al 3 puede repetirse.
+5. El actor selecciona una pelicula.
+
+---
+
+### Recomendar Película
+#### Actores: Usuario
+#### Objetivo: Realizar la recomendación de una película
+##### Flujo Principal:
+1. El caso de uso comienza cuando el actor quiere realizar una recomendación de una película.
+2. El sistema requiere  que ingrese el destinatario y el mensaje.
+3. El actor proporciona los datos solicitados.
+4. El actor confirma la operación.
+5. El sistema emite un mensaje de operación exitosa.
+
+---
+
+##### Glosario de Términos
+
+###### Administrar Película: 
+Se refiere a la acción de realizar un alta, baja y modificación de una película.
+###### Reseñar Película: 
+Se refiere a la acción de realizar una reseña de una película, lo que incluye la calificación de la película y un comentario opcional de la misma.
+###### Explorar el Catálogo: 
+Se refiere a la acción de explorar colecciones de películas desde la pantalla principal.
+###### Catálogo:
+se refiere a una colección de películas ordenada por género, recomendación o preferencias.
+###### Recomendar Película:
+Se refiere a la acción de enviar una película como recomendación a otro usuario, junto a un comentario opcional.
+###### Añadir Elenco:
+Se refiere a la acción de añadir un elenco nuevo al sistema, ya sea un actor/a o director/a
+###### Elenco:
+El elenco es un conjunto de actores y directores que participan en una película.
+###### Registrar Preferencias:
+Se refiere a las preferencias del usuario en el campo del cine, lo que incluye el género de sus películas favoritas y sus actores y directores favoritos.
+
+---
+
+## Arquitectura:
+
+* Postgresql
+* Netbeans 11.1  con Java
+* Javalin con Json 
+* Html+Css
+* Javascript
+* Bootstrap 4  
+
+
+
+
+
+
 
