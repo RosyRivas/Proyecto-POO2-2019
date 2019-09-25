@@ -26,7 +26,8 @@ de publicación de una película y de añadir su elenco, lo que incluye actores 
 
 #### Interfaces
 1. Cambiar icono de enviar por repostear.
-3. Nueva interfaz de repostear película.
+2. Nueva interfaz de repostear película.
+3. Interacción entre interfaces.
 
 #### Actores del Sistema
 ** ~~cambiar de Administrador a Moderardo~~r**
@@ -34,5 +35,8 @@ de publicación de una película y de añadir su elenco, lo que incluye actores 
 ** ~~cambiar de Administrador a Moderador en los Casos de Uso~~. **
 
 #### Casos de Uso
-**Revisarlos junto a las transiciones de la interfaz**
-**Actualizar el documento de iteración 2 respecto al 1.**
+1. ~~**Actualizar el documento de iteración 2 respecto al 1.**~~
+2. **Caso de uso repostear película**
+3. **Revisarlos junto a las transiciones de la interfaz**
+
+
