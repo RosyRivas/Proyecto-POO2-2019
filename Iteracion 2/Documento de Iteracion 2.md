@@ -47,36 +47,54 @@ escribir sus propias reseñas, además de repostear películas a otros usuarios,
 
 ## Bocetos de Interfaz
 
-### Pantalla Principal
+### Pantalla de Inicio de Sesión
 
-La pantalla principal es la vista inicial del usuario/administrador, desde aquí parten las acciones siguientes del sistema.
+La pantalla de inicio de sesión es la primera pantalla del sistema, permite ingresar al mismo o registrarse.
 
-### Publicar Película
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/iniciar_sesion.png "Interfaz de inicio de sesión")
 
-La pantalla de publicación de película le permite al administrador subir una película al sistema.
+### Pantalla Principal (Perfil de Usuario)
+
+La pantalla principal o perfil de usuario es la vista inicial del usuario/administrador, desde aquí parten las acciones siguientes del sistema.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/pantalla_principal.png "Interfaz de Pantalla principal o Perfil")
+
+### Administrar Película
+
+La pantalla de publicación de película le permite al administrador subir una película al sistema, modificarla o eliminarla.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/administrar_pelicula.png "Interfaz de administración de una película")
 
 ### Realizar Reseña
 
 La pantalla de realizar reseña le permite al usuario reseñar una película, clasificarla por estrellas o ver las últimas reseñas.
 
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/realizar_resena.png "Interfaz para realizar reseña")
+
 ### Recomendar Película
 
 La pantalla de recomendar película le permite al usuario enviarle una película y un mensaje opcional a otro usuario.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/recomendar_pelicula.png "Interfaz para recomendar una película")
 
 ### Añadir Elenco
 
 La pantalla de añadir elenco le permite al administrador añadir un Actor-a/Director-a al sitio.
 
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/anadir_elenco.png "Interfaz para añadir elenco")
+
 ### Registrar Preferencias
 
 La pantalla de registrar preferencias le permite al usuario indicar sus preferencias de cine.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/registrar_preferencias.png "Interfaz de preferencias")
 
 ## Casos de Uso
 
 ## Actores del Sistema
 
-1. Usuario: el rol de usuario abarca las funciones básicas del sistema de reseñas de películas como ser visualizar las películas en el orden de preferencias, reseñar, puntuar y compartir películas.
-2. Moderador: el rol de Moderador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
+1. **Usuario**: el rol de usuario abarca las funciones básicas del sistema de reseñas de películas como ser visualizar las películas en el orden de preferencias, reseñar, puntuar y compartir películas.
+2. **Moderador**: el rol de Moderador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
 
 ---
 
@@ -225,5 +243,5 @@ Se refiere a las preferencias del usuario en el campo del cine, lo que incluye e
 * Netbeans 11.1  con Java
 * Javalin con Json
 * Html+Css
-* Javascript
-* Bootstrap 4  
+* Javascript con el framework react.js
+* Framework Bootstrap 4  
