@@ -1,8 +1,8 @@
 # PochocloCritics
 
-## Sistema de crítica de Películas
+## Sistema de Crítica de Películas
 
-### Grupo: La comunidad del Anillo
+### Grupo: La Comunidad del Anillo
 
 1. Rivas Rodriguez Rosa.
 2. Nahirñak Fernando.
@@ -14,23 +14,21 @@
 
 ## Visión
 
-Desarrollaremos un Sistema de Reseña de Películas que permitirá a un usuario visualizar el top de las películas reseñadas recomendadas
-dependiendo del puntaje  de cada película, o visualizar también según sus preferencias, podrá puntuar películas desde su perfil y 
-escribir una breve reseña de la misma, así como repostear la reseña de una película en su perfil **"Apartado de mis reseñas"**. Por otro
-lado le permitirá a un usuario moderador **"Administrador"** las funcionalidades de un usuario estándar y las funcionalidades extra
-de publicación de una película y de añadir su elenco, lo que incluye actores y directores de cine.
+Desarrollaremos un Sistema de Reseña de Películas que le permitirá a un usuario visualizar el top de las películas recomendadas
+dependiendo del puntaje  de cada película o según sus preferencias, podrá puntuar películas desde su perfil y escribir una breve reseña de la misma, así como repostear la película en su perfil **"Apartado de mis reseñas"**. Por otro lado le permitirá a un usuario moderador las funcionalidades de un usuario estándar y los privilegios de publicación de una película y de añadir su elenco, lo que incluye actores y directores de cine.
 
 ## Características
 
 1. Perfil y preferencias de Usuario.
 2. Publicación de una película para su reseña.
+3. Explorar Catálogo.
 
 ### Características Extendidas
 
 1. Clasificación de las películas según un género.
-2. Explorar catálogo.
-3. Reseña y puntuación de la pelicula (usuario).
-4. Repostear película en el perfil de usuario.
+2. Visualización del Catálogo según sus preferencias.
+3. Reseña y puntuación de la pelicula.
+4. Repostear película en el perfil.
 5. Recomendar películas a otros usuarios.
 
 ## Dominio
@@ -38,12 +36,9 @@ de publicación de una película y de añadir su elenco, lo que incluye actores 
 La aplicación está dedicada en un contexto de entretenimiento a personas que busquen recomendaciones de películas, puntuar y 
 escribir sus propias reseñas, además de repostear películas a otros usuarios, no solo de películas reconocidas internacionalmente si no también en el contexto nacional, o regional.
 
-### Dominios Aplicables
+### Modelo de Dominio
 
-* Cine.
-* VideoClub.
-* Club de Cine.
-* Emprendimiento Personal.
+### Diagrama de Clases
 
 ## Bocetos de Interfaz
 
@@ -94,91 +89,98 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 ## Actores del Sistema
 
 1. **Usuario**: el rol de usuario abarca las funciones básicas del sistema de reseñas de películas como ser visualizar las películas en el orden de preferencias, reseñar, puntuar y compartir películas.
-2. **Moderador**: el rol de Moderador se encarga de la parametrización del sistema (ABM de películas, actores, directores y género).
+2. **Moderador**: el rol de Moderador se encarga de la parametrización del sistema (ABM de películas, actores, directores).
 
 ---
 
 ### Registrar preferencias
 
-#### Actores: Usuario
+#### Actor: Usuario
 
-#### Objetivo: registrar las preferencias de cine de un usuario
+#### Objetivo: registrar las preferencias de cine de el usuario
 
 ##### Flujo Principal
 
 1. El caso de uso comienza cuando el actor desea registrar sus preferencias de cine.
 2. El sistema requiere los datos de las preferencias del actor.
-3. El actor proporciona los datos de sus preferencias.
-4. El actor confirma la operación.
-5. El sistema emite un mensaje de operación exitosa.
+3. El actor proporciona los datos de sus preferencias y confirma la operación.
+4. El sistema registra la operación y emite un mensaje de acción exitosa.
 
 ---
 
 ### Administrar película
 
-#### Actores: Administrador
+#### Actor: Moderador
 
 #### Objetivo: realizar el alta, baja o modificación de una película
 
-##### Flujo Principal
+##### Flujo Principal de alta
 
-1. El caso de uso comienza cuando el actor quiere administrar una película.
+1. El caso de uso comienza cuando el actor quiere realizar el alta de una película.
 2. El sistema requiere los datos de la película.
-3. El actor proporciona los datos solicitados.
-4. El actor confirma la operación.
-5. El sistema emite un mensaje de operación exitosa.
+3. El actor proporciona los datos solicitados y confirma la operación.
+4. El sistema registra la operación y emite un mensaje de acción exitosa.
+
+###### Flujo alternativo de modificación
+
+1. El caso de uso comienza cuando el actor quiere realizar la modificación de una película.
+2. El sistema requiere los datos de la película.
+3. El actor proporciona los datos solicitados y confirma la operación.
+4. El sistema registra la operación y emite un mensaje de acción exitosa.
+
+###### Flujo alternativo de baja
+
+1. El caso de uso comienza cuando el actor quiere realizar la baja de una película.
+2. El sistema requiere clave de confirmación para la operación.
+3. El actor proporciona la clave y confirma la operación.
+4. El sistema registra la operación y emite un mensaje de acción exitosa.
 
 ---
 
 ### Realizar Reseña
 
-#### Actores: Usuario
+#### Actor: Usuario
 
-#### Objetivo: realizar  reseña de una película determinada
+#### Objetivo: realizar la reseña de una película
 
 ##### Flujo Principal
 
 1. El caso de uso comienza cuando el actor quiere realizar una reseña a una película.
-2. El sistema requiere que ingrese una calificación y una reseña.
-3. El actor ingresa una calificación con su respectiva reseña.
-4. El actor confirma la operación.
-5. El sistema emite   un mensaje de operación exitosa.
+2. El sistema requiere que ingrese una calificación y/o una reseña.
+3. El actor ingresa una calificación con su respectiva reseña y confirma la operación.
+4. El sistema registra la operación y emite un mensaje de acción exitosa.
 
 ##### Curso alternativo
 
-1. paso 2: el actor  no ingresa reseña y  sigue el flujo típico de eventos.
+1. paso 2: el actor no ingresa reseña y sigue el flujo típico de eventos.
 
 ---
 
 ### Añadir elenco
 
-#### Actores: Administrador
+#### Actor: Moderador
 
-#### Objetivo: añadir un actor o director
+#### Objetivo: añadir un elenco (actor y/o director)
 
 ##### Flujo Principal
 
-1. El caso de uso comienza cuando el administrador quiere añadir actores o directores a una película.
-2. El sistema requiere que ingrese datos del actor o director y la película en la que participa.
-3. El administrador confirma la operación realizada.
-4. El sistema emite   un mensaje de operación exitosa.
-
-##### Curso alternativo
-
-1. paso 2: de no existir una película, y sigue el flujo típico de evento.
+1. El caso de uso comienza cuando el actor quiere añadir un elenco.
+2. El sistema requiere que ingrese datos del elenco.
+3. El actor proporciona los datos solicitados y confirma la operación realizada.
+4. El sistema registra la operación y emite un mensaje de acción exitosa.
 
 ---
 
 ### Explorar Catálogo
 
-#### Actores: Usuario, Administrador
+#### Actor: Usuario, Moderador
 
-#### Objetivo: Explorar el catálogo para observar estrenos, géneros disponibles, las películas favoritas y reseñas
+#### Objetivo: explorar el catálogo para observar estrenos, géneros disponibles, las películas favoritas y reseñas
 
 ##### Flujo Principal
 
 1. El caso de uso comienza cuando el actor consulta un catálogo.
-2. El sistema muestra el catalogo seleccionado con sus datos.
+2. El sistema visualiza el catalogo seleccionado.
 3. El actor vuelve a explorar.
 4. del 1 al 3 puede repetirse.
 5. El actor selecciona una pelicula.
@@ -187,17 +189,16 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 
 ### Recomendar Película
 
-#### Actores: Usuario
+#### Actor: Usuario
 
-#### Objetivo: Realizar la recomendación de una película
+#### Objetivo: realizar la recomendación de una película
 
 ##### Flujo Principal
 
-1. El caso de uso comienza cuando el actor quiere realizar una recomendación de una película.
-2. El sistema requiere  que ingrese el destinatario y el mensaje.
-3. El actor proporciona los datos solicitados.
-4. El actor confirma la operación.
-5. El sistema emite un mensaje de operación exitosa.
+1. El caso de uso comienza cuando el actor quiere realizar la recomendación de una película.
+2. El sistema requiere que ingrese el destinatario.
+3. El actor proporciona los datos solicitados y confirma la operación.
+4. El sistema registra la operación y emite un mensaje de acción exitosa.
 
 ---
 
@@ -241,7 +242,9 @@ Se refiere a las preferencias del usuario en el campo del cine, lo que incluye e
 
 * Postgresql
 * Netbeans 11.1  con Java
-* Javalin con Json
+* Entorno de desarrollo de APIs Insomnia.
+* Javalin 
 * Html+Css
 * Javascript con el framework react.js
-* Framework Bootstrap 4  
+* Framework Bootstrap 4
+* Javadocs y MkDocs para las documentaciones.
