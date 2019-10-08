@@ -243,7 +243,7 @@ Se refiere a las preferencias del usuario en el campo del cine, lo que incluye e
 ---
 
 ## Diagrama de Clases
-
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/diagramaDeClase.png)
 ---
 
 ## Javadoc
