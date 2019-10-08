@@ -238,6 +238,18 @@ Se refiere a las preferencias del usuario en el campo del cine, lo que incluye e
 
 ---
 
+## Documentación Interfaz (API)
+
+---
+
+## Diagrama de Clases
+
+---
+
+## Javadoc
+
+---
+
 ## Arquitectura
 
 * Postgresql
