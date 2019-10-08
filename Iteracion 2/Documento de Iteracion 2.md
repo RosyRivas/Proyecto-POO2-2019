@@ -38,7 +38,7 @@ escribir sus propias reseñas, además de repostear películas a otros usuarios,
 
 ### Modelo de Dominio
 
-### Diagrama de Clases
+
 
 ## Bocetos de Interfaz
 
