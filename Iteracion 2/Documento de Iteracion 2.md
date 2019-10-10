@@ -48,42 +48,6 @@ La pantalla de inicio de sesión es la primera pantalla del sistema, permite ing
 
 ![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/iniciar_sesion.png "Interfaz de inicio de sesión")
 
-### Pantalla Principal (Perfil de Usuario)
-
-La pantalla principal o perfil de usuario es la vista inicial del usuario/administrador, desde aquí parten las acciones siguientes del sistema.
-
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/pantalla_principal.png "Interfaz de Pantalla principal o Perfil")
-
-### Administrar Película
-
-La pantalla de publicación de película le permite al administrador subir una película al sistema, modificarla o eliminarla.
-
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/administrar_pelicula.png "Interfaz de administración de una película")
-
-### Realizar Reseña
-
-La pantalla de realizar reseña le permite al usuario reseñar una película, clasificarla por estrellas o ver las últimas reseñas.
-
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/realizar_resena.png "Interfaz para realizar reseña")
-
-### Recomendar Película
-
-La pantalla de recomendar película le permite al usuario enviarle una película y un mensaje opcional a otro usuario.
-
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/recomendar_pelicula.png "Interfaz para recomendar una película")
-
-### Añadir Elenco
-
-La pantalla de añadir elenco le permite al administrador añadir un Actor-a/Director-a al sitio.
-
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/anadir_elenco.png "Interfaz para añadir elenco")
-
-### Registrar Preferencias
-
-La pantalla de registrar preferencias le permite al usuario indicar sus preferencias de cine.
-
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/registrar_preferencias.png "Interfaz de preferencias")
-
 ## Casos de Uso
 
 ## Actores del Sistema
@@ -105,6 +69,12 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 2. El sistema requiere los datos de las preferencias del actor.
 3. El actor proporciona los datos de sus preferencias y confirma la operación.
 4. El sistema registra la operación y emite un mensaje de acción exitosa.
+
+### Pantalla Registrar Preferencias
+
+La pantalla de registrar preferencias le permite al usuario indicar sus preferencias de cine.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/registrar_preferencias.png "Interfaz de preferencias")
 
 ---
 
@@ -135,6 +105,12 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 3. El actor proporciona la clave y confirma la operación.
 4. El sistema registra la operación y emite un mensaje de acción exitosa.
 
+### Pantalla Administrar Película
+
+La pantalla de publicación de película le permite al administrador subir una película al sistema, modificarla o eliminarla.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/administrar_pelicula.png "Interfaz de administración de una película")
+
 ---
 
 ### Realizar Reseña
@@ -154,6 +130,12 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 
 1. paso 2: el actor no ingresa reseña y sigue el flujo típico de eventos.
 
+### Pantalla Realizar Reseña
+
+La pantalla de realizar reseña le permite al usuario reseñar una película, clasificarla por estrellas o ver las últimas reseñas.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/realizar_resena.png "Interfaz para realizar reseña")
+
 ---
 
 ### Añadir elenco
@@ -168,6 +150,12 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 2. El sistema requiere que ingrese datos del elenco.
 3. El actor proporciona los datos solicitados y confirma la operación realizada.
 4. El sistema registra la operación y emite un mensaje de acción exitosa.
+
+### Pantalla Añadir Elenco
+
+La pantalla de añadir elenco le permite al administrador añadir un Actor-a/Director-a al sitio.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/anadir_elenco.png "Interfaz para añadir elenco")
 
 ---
 
@@ -185,6 +173,12 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 4. del 1 al 3 puede repetirse.
 5. El actor selecciona una pelicula.
 
+### Pantalla Principal (Perfil de Usuario)
+
+La pantalla principal o perfil de usuario es la vista inicial del usuario/administrador, desde aquí parten las acciones siguientes del sistema.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/pantalla_principal.png "Interfaz de Pantalla principal o Perfil")
+
 ---
 
 ### Recomendar Película
@@ -199,6 +193,37 @@ La pantalla de registrar preferencias le permite al usuario indicar sus preferen
 2. El sistema requiere que ingrese el destinatario.
 3. El actor proporciona los datos solicitados y confirma la operación.
 4. El sistema registra la operación y emite un mensaje de acción exitosa.
+
+### Pantalla Recomendar Película
+
+La pantalla de recomendar película le permite al usuario enviarle una película y un mensaje opcional a otro usuario.
+
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Interfaces%20v2/recomendar_pelicula.png "Interfaz para recomendar una película")
+
+---
+
+## Documentación Interfaz (API)
+
+---
+
+## Diagrama de Clases
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/diagramaDeClase.png)
+---
+
+## Javadoc
+
+---
+
+## Arquitectura
+
+* Postgresql
+* Netbeans 11.1  con Java
+* Entorno de desarrollo de APIs Insomnia.
+* Javalin 
+* Html+Css
+* Javascript con el framework react.js
+* Framework Bootstrap 4
+* Javadocs y MkDocs para las documentaciones.
 
 ---
 
@@ -235,28 +260,3 @@ El elenco es un conjunto de actores y directores que participan en una película
 ###### Registrar Preferencias
 
 Se refiere a las preferencias del usuario en el campo del cine, lo que incluye el género de sus películas favoritas y sus actores y directores favoritos.
-
----
-
-## Documentación Interfaz (API)
-
----
-
-## Diagrama de Clases
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/diagramaDeClase.png)
----
-
-## Javadoc
-
----
-
-## Arquitectura
-
-* Postgresql
-* Netbeans 11.1  con Java
-* Entorno de desarrollo de APIs Insomnia.
-* Javalin 
-* Html+Css
-* Javascript con el framework react.js
-* Framework Bootstrap 4
-* Javadocs y MkDocs para las documentaciones.
