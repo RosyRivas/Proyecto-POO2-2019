@@ -38,7 +38,7 @@ escribir sus propias reseñas, además de repostear películas a otros usuarios,
 
 ### Modelo de Dominio
 
-### Diagrama de Clases
+
 
 ## Bocetos de Interfaz
 
@@ -235,6 +235,18 @@ El elenco es un conjunto de actores y directores que participan en una película
 ###### Registrar Preferencias
 
 Se refiere a las preferencias del usuario en el campo del cine, lo que incluye el género de sus películas favoritas y sus actores y directores favoritos.
+
+---
+
+## Documentación Interfaz (API)
+
+---
+
+## Diagrama de Clases
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/diagramaDeClase.png)
+---
+
+## Javadoc
 
 ---
 
