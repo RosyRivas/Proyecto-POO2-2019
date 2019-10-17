@@ -51,4 +51,24 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+    
+    public void realizarReseña(){
+    }
+    
+    public void repostearPelicula(){
+    
+    }
+    
+    public void registrarPreferencias(){
+    
+    }
+    
+    public void explorarCatalogo(){
+    
+    }
+    public void recomendarPelicula(){
+    
+    }
+    
+    
 }

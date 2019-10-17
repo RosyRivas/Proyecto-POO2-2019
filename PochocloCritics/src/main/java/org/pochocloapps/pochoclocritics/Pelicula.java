@@ -5,7 +5,9 @@
  */
 package org.pochocloapps.pochoclocritics;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -16,17 +18,18 @@ public class Pelicula {
     private String titulo ;
     private Date duracion;
     private String sinopsis;
-
+     private List<String> genero;
 //private Imagen portada;
-   // private Genero genero;
+   
     // private Actor actor;
     //private Director director;
 
-    public Pelicula(Long idPelicula, String titulo, Date duracion, String sinopsis) {
+    public Pelicula(Long idPelicula, String titulo, Date duracion, String sinopsis, List<String> genero) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.duracion = duracion;
         this.sinopsis = sinopsis;
+        this.genero = genero;
     }
 
     public Long getIdPelicula() {
@@ -57,6 +60,14 @@ public class Pelicula {
 
     public void setSinopsis(String sinopsis) {
         this.sinopsis = sinopsis;
+    }
+
+    public void setGenero(List<String> genero) {
+        this.genero = genero;
+    }
+
+    public List<String> getGenero() {
+        return genero;
     }
     
 }
