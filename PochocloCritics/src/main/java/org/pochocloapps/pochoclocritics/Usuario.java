@@ -19,11 +19,11 @@ public class Usuario {
     //private List<Reseña> reseñas;
 
     /**
-    *Crea un nuevo usuario 
-        *@param idUsuario  identificador del usuario
-        *@param correo correo del usuario 
-        *@param  alias Alias que el usuario utilizara publicamente 
-        *@param  contraseña  contraseña que el usuario asigne para su cuenta 
+    *Crea un nuevo Usuario en el sistema
+        *@param idUsuario,  identificador del usuario
+        *@param correo, correo electrónico del usuario 
+        *@param  alias, alias que el usuario utilizara publicamente 
+        *@param  contraseña,  contraseña que el usuario asigne para su cuenta 
     */
     public Usuario(Long idUsuario, String correo, String alias, String contraseña) {
         this.idUsuario = idUsuario;
@@ -33,58 +33,57 @@ public class Usuario {
     }
 
     /**
-     * Metodo que devuelve el id del usuario
-     * @return id del usuario
+     * Metodo que devuelve el identificador del usuario
+     * @return idUsuario, identificador del usuario
      */
     public Long getIdUsuario() {
         return idUsuario;
     }
     /**
-     *Metodo que devuelve el correo del usuario 
-     * @return correo del usuario
+     *Metodo que devuelve el correo electrónico del usuario 
+     * @return correo, correo electrónico del usuario
      */
     public String getCorreo() {
         return correo;
     }
 /**
  *Metodo que devuelve el alias del usuario
- * @return alias del usuario
+ * @return alias, alias del usuario
  */
     public String getAlias() {
         return alias;
     }
-/**
- *
- */
-    public String getContraseña() {
+    /**
+     * Método que permite obtener  la contraseña del usuario
+     * @return contraseña, devuelve la contraseña del usuario
+    */
+    public String getContraseña() { //refinar en la siguiente iteración, o mantener como privado de la clase
         return contraseña;
     }
   
     /**
-     * Metodo que asigna un nuevo valor al correo
-     * @param correo asignacion del nuevo correo
+     * Metodo que permite crear un nuevo correo electrónico al usuario
+     * @param correo, correo electrónico del usuario
      */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
     /**
-     *Metodo que asigna un nuevo alias al usuario 
-     * @param  alias El alias que se modificara 
+     *Metodo que permite crear un nuevo alias al usuario 
+     * @param  alias, alias del usuario 
      */
     public void setAlias(String alias) {
         this.alias = alias;
     }
-/**
- *Metodo que asigna una nueva contraseña 
- *@param contraseña que se va a modificar
- */
+    /**
+     *Metodo que permite crear una nueva contraseña al usuario 
+     *@param contraseña, contraseña del usuario 
+     */
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    /**
-    *Metodo que permite al usuario realizar una reseña a una pelicula determinada 
-    */
+    /*
     public void realizarReseña(){
     
     }
@@ -92,29 +91,18 @@ public class Usuario {
     public void repostearPelicula(){
     
     }
-    /**
-    * Metodo que permite al usuario registrar los generos, actores y directores  
-        *@Return Lista de Generos, Actores y Directores 
-    */
+    
     public void registrarPreferencias(){
     
     }
     
-    /**
-    * Metodo que devuelve una lista de peliculas  agrupadas por Genero 
-    *@Return Lista de Peliculas
-    */
     public void explorarCatalogo(){
     
     }
     
-    /**
-    *
-    */
-    
     public void recomendarPelicula(){
     
     }
-    
+    */
     
 }
