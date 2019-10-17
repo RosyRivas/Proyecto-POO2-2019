@@ -16,7 +16,7 @@ public class Actor {
 
     /**
     * Crea un nuevo actor
-    * @param id del actor
+    * @param idActor del actor
     * @param biografia del actor
     */
     public Actor(Long idActor, String biografia) {
@@ -43,6 +43,14 @@ public class Actor {
     */
     public void setBiografia(String biografia) {
         this.biografia = biografia;
+    }
+    /**
+     * Metodo que devuelve información del actor
+     * @return idActor, biografia
+    */
+    @Override
+    public String toString() {
+        return "Actor{" + "idActor=" + idActor + ", biografia=" + biografia + '}';
     }
     
 }
