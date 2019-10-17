@@ -70,12 +70,15 @@ public class Usuario {
 
     /**
      *Metodo que asigna un nuevo alias al usuario 
-     * @param  alias 
+     * @param  alias El alias que se modificara 
      */
     public void setAlias(String alias) {
         this.alias = alias;
     }
-
+/**
+ *Metodo que asigna una nueva contraseña 
+ *@param contraseña que se va a modificar
+ */
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }

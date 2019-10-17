@@ -14,19 +14,34 @@ public class Reseña {
     private String descripcion;
   //  private Pelicula pelicula;
 
+    /**
+    *crea una nueva Reseña 
+    * @param idReseña identificador de la reseña 
+    * @param descripcion  de la Reseña 
+    */
     public Reseña(Long idReseña, String descripcion) {
         this.idReseña = idReseña;
         this.descripcion = descripcion;
     }
 
+    /**
+    *Metodo que devuelve la identificacion de la reseña
+    * @return idReseña  de la reseña
+    */
     public Long getIdReseña() {
         return idReseña;
     }
-
+/**
+    *Metodo que obtiene la descripcion de reseña 
+    * @return descripcion de la reseña 
+    */
     public String getDescripcion() {
         return descripcion;
     }
-
+/**
+    *Metodo que permite modificar la descripcion de la reseña 
+    * @param descripcion de la reseña 
+    */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
