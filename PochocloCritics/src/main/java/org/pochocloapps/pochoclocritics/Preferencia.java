@@ -18,8 +18,8 @@ public class Preferencia {
     //private List<Director> director;
 
     /**
-     * Crea una lista de  preferencias del usuario
-     * @param idPreferencia, identificador del listado de preferencias del usuario
+     * Crea una nueva Preferencia del usuario.
+     * @param idPreferencia, identificador de la preferencia del usuario.
     */
     public Preferencia(Long idPreferencia) {
         this.idPreferencia = idPreferencia;
@@ -27,27 +27,32 @@ public class Preferencia {
         
     }
     /**
-     * Método que permite obtener el identificador de las preferencias del usuario
-     * @return idPreferencia
+     * Método que permite obtener el identificador de la preferencia del usuario.
+     * @return idPreferencia, identificador de la preferencia del usuario.
     */
     public Long getIdPreferencia() {
         return idPreferencia;
     }
     /**
      * Método que permite obtener una lista de géneros preferidos por el usuario
-     * @return genero
+     * @return genero, retorna un listado de géneros preferidos por el usuario.
     */
     public List<String> getGenero() {
         return genero;
     }
     /**
      * Método que permite cargar un nuevo genero en la lista de generos preferidos por el usuario
-     * @param genero
+     * @param genero, indica un genero para el usuario.
     */
     public void setGenero(List<String> genero) {
         this.genero = genero;
+    }  
+    /**
+     * Método que devuelve información de la preferencia
+     * @return idPreferencia, genero - Identifcador de la preferencia de usuario y lista de generos preferidos.
+    */
+    @Override
+    public String toString() {
+        return "Preferencia{" + "idPreferencia=" + idPreferencia + ", genero=" + genero + '}';
     }
-
-    
-    
 }
