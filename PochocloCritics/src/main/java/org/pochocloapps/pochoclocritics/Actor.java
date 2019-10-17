@@ -15,38 +15,38 @@ public class Actor {
    // private List<Peliculas> peliculasActuadas;
 
     /**
-    * Crea un nuevo actor
-    * @param idActor del actor
-    * @param biografia del actor
+    * Crea un nuevo Actor en el sistema
+    * @param idActor, identificador del actor.
+    * @param biografia, biografía del actor.
     */
     public Actor(Long idActor, String biografia) {
         this.idActor = idActor;
         this.biografia = biografia;
     }
     /** 
-    * Método que develve el identificador (id) de un actor
-    * @return id del actor
+    * Método que develve el identificador de un actor
+    * @return idActor, identificador del actor.
     */
     public Long getIdActor() {
         return idActor;
     }
     /**
     * Método que devuelve la biografía de un actor
-    * @return biografía del actor
+    * @return biografía, breve descripción del actor.
     */
     public String getBiografia() {
         return biografia;
     }
     /**
     * Método que crea la biografía de un actor
-    * @param biografia del actor, que incluye una descripción breve de el actor.
+    * @param biografia, que indica una breve descripción del actor.
     */
     public void setBiografia(String biografia) {
         this.biografia = biografia;
     }
     /**
      * Metodo que devuelve información del actor
-     * @return idActor, biografia
+     * @return idActor, biografia - Identificador del actor y su biografía.
     */
     @Override
     public String toString() {
