@@ -8,6 +8,7 @@ package org.pochocloapps.pochoclocritics;
 /**
  *
  * @author Rosi-PC
+ * @author DELL-PC
  */
 public class Usuario {
     private Long idUsuario;
