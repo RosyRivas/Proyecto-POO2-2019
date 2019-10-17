@@ -16,8 +16,8 @@ public class Moderador {
 
     /**
      * Crea un nuevo moderador del sistema
-     * @param idModerador identificador del moderador
-     * @param contraseñaModerador contraseña 
+     * @param idModerador, identificador del moderador
+     * @param contraseñaModerador, contraseña del moderador
     */
     public Moderador(Long idModerador, Long contraseñaModerador) {
         this.idModerador = idModerador;
@@ -25,35 +25,36 @@ public class Moderador {
     }
     /**
      * Método que permite obtener los privilegios de un moderador
-     * @return privilegios
+     * @return privilegios, permisos del moderador en el sistema
     */
     public String getPrivilegios() {
         return privilegios;
     }
     /**
      * Método que permite obtener la contraseña del moderador
-     * @return contraseñaModerador;
+     * @return contraseñaModerador, devuelve la contraseña del moderador.
     */
-    public Long getContraseñaModerador() {
+    public Long getContraseñaModerador() { //refinar en la siguiente iteración, o mantener como privado de la clase
         return contraseñaModerador;
     }
     /**
-     * Método que permite crear una contraseña del moderador
-     * @param contraseñaModerador
+     * Método que permite crear una contraseña al moderador
+     * @param contraseñaModerador, contraseña nueva para el moderador
     */
     public void setContraseñaModerador(Long contraseñaModerador) {
         this.contraseñaModerador = contraseñaModerador;
     }
     
-    public void administrarPelicula(){
+    /*public void administrarPelicula(){
     
     }
     public void añadirElenco(){
     
-    }
+    }*/
+    
     /**
      * Método que devuelve información del moderador
-     * @return idModerador, privilegios
+     * @return idModerador, privilegios - Identificador del moderador y sus privilegios.
     */
     @Override
     public String toString() {
