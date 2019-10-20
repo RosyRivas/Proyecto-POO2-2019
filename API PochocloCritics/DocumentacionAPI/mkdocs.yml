@@ -1,0 +1,12 @@
+site_name: API PochocloCritics v1.0
+nav:
+  - Home: index.md
+  - Usuarios: usuarios.md
+  - Moderadores: moderadores.md
+  - Actores: acctores.md
+  - Directores: directores.md
+  - Peliculas: peliculas.md
+  - Preferencias: preferencias.md
+  - Reseñas: reseñas.md
+
+theme: readthedocs
