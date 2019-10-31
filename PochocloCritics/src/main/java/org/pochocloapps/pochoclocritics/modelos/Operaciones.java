@@ -14,12 +14,12 @@ public interface Operaciones {
     /**
      * Método abstracto que permitirá realizar una reseña
     */
-    public abstract void realizarReseña();
+    public abstract void realizarResena();
     
     /**
      * Método abstracto que permitirá realizar el repost de una película
     */
-    public abstract void repostearPelícula();
+    public abstract void repostearPelicula();
     
     /**
      * Método abstracto que permitirá registrar preferencias
@@ -34,5 +34,5 @@ public interface Operaciones {
     /**
      * Método abstracto que permitirá recomendar una película
     */
-    public abstract void recomendarPelícula();
+    public abstract void recomendarPelicula();
 }
