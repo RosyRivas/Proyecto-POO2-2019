@@ -31,7 +31,7 @@ public abstract class Persona { //debe ser abstracta
     }
     
      /** Método que permite obtener el nombre de una persona
-     * @return nombre
+     * @return nombre  
     */
     public String getNombre() {
         return nombre;
