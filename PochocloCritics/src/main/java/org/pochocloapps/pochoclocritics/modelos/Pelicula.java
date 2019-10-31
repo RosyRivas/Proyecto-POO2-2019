@@ -5,9 +5,7 @@
  */
 package org.pochocloapps.pochoclocritics;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -18,10 +16,11 @@ public class Pelicula {
     private String titulo ;
     private Date duracion;
     private String sinopsis;
-     private List<String> genero;
     //private Imagen portada;
-    // private Actor actor;
-    //private Director director;
+    // private List <Actor> actor;
+    //private List <Director> director;
+    //private List <Generos> genero;
+    //private List <Reseña> reseña;
      
     /**
      * Crea una nueva Película en el sistema
@@ -29,14 +28,12 @@ public class Pelicula {
      * @param titulo, titulo de la película
      * @param duracion, tiempo de reproducción de la pelicula
      * @param sinopsis, descripción breve de la pelicula
-     * @param genero, listado de géneros de la pelicula
     */
-    public Pelicula(Long idPelicula, String titulo, Date duracion, String sinopsis, List<String> genero) {
+    public Pelicula(Long idPelicula, String titulo, Date duracion, String sinopsis) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.duracion = duracion;
         this.sinopsis = sinopsis;
-        this.genero = genero;
     }
     /**
      * Método que permite obtener el identificador de la película
@@ -67,7 +64,7 @@ public class Pelicula {
         return duracion;
     }
     /**
-     * Modo que prmite establecer la duración de una película
+     * Modo que permite establecer la duración de una película
      * @param duracion, tiempo de reproducción de la película
     */
     public void setDuracion(Date duracion) {
@@ -87,27 +84,14 @@ public class Pelicula {
     public void setSinopsis(String sinopsis) {
         this.sinopsis = sinopsis;
     }
-    /**
-     * Método que permite cargar un nuevo genero en una película
-     * @param genero, genero de la película
-    */
-    public void setGenero(List<String> genero) {
-        this.genero = genero;
-    }
-    /**
-     * Método que permite obtener los géneros de una película
-     * @return genero, genero de la película
-    */
-    public List<String> getGenero() {
-        return genero;
-    }
+
     /**
      * Método que devuelve la información de una película
-     * @return idPelicula, titulo, duracion, sinopsis, genero - Identificador de la película, su titulo, duración, sinopsis y sus generos.
+     * @return idPelicula, titulo, duracion, sinopsis, genero - Identificador de la película, su titulo, duración, sinopsis.
     */
     @Override
     public String toString() {
-        return "Pelicula{" + "idPelicula=" + idPelicula + ", titulo=" + titulo + ", duracion=" + duracion + ", sinopsis=" + sinopsis + ", genero=" + genero + '}';
+        return "Pelicula{" + "idPelicula=" + idPelicula + ", titulo=" + titulo + ", duracion=" + duracion + ", sinopsis=" + sinopsis + '}';
     }
     
 }
