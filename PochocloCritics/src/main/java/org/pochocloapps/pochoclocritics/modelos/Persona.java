@@ -23,14 +23,12 @@ public abstract class Persona { //debe ser abstracta
      * @param fechaNac, fecha de nacimiento de la persona
     */
      protected Persona (String nombre,String apellido, Date fechaNac){
-      
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;
-    
     }
     
-     /** Método que permite obtener el nombre de una persona
+    /** Método que permite obtener el nombre de una persona
      * @return nombre
     */
     public String getNombre() {

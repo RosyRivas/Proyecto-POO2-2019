@@ -5,11 +5,13 @@
  */
 package org.pochocloapps.pochoclocritics.modelos;
 
+import java.util.Date;
+
 /**
  *
  * @author Rosi-PC
  */
-public class Director {
+public class Director extends Persona{
     
     private Long idDirector;
     private String biografia;
@@ -17,11 +19,14 @@ public class Director {
    //@param peliculaDirigida lista de las peliculas que dirigidas 
     /**
      *Crea un nuevo Director en el sistema
-     * @param idDirector, identificador del director 
+     * @param idDirector, identificador del director
+     * @param nombre, nombre del director
+     * @param apellido, apellido del director
+     * @param fechaNac, fecha de nacimiento del director
      * @param biografia, biografia del director
-     * 
      */
-    public Director(Long idDirector, String biografia) {
+    public Director(Long idDirector, String nombre, String apellido, Date fechaNac, String biografia){
+        super(nombre, apellido, fechaNac);
         this.idDirector = idDirector;
         this.biografia = biografia;
     }
@@ -29,16 +34,14 @@ public class Director {
     /**
      * Metodo que devuelve el identificador del director
      * @return idDirector, identificador del director 
-     * 
      */
     public Long getIdDirector() {
         return idDirector;
     }
 
     /**
-    *Metodo que permite la modificacion de la biografia del Director 
+    *Metodo que devuelve la biografia del Director 
     * @return biografia, breve descripción del director
-    * 
     */
     public String getBiografia() {
         return biografia;
