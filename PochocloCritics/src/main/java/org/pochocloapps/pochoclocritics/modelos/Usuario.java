@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.pochocloapps.pochoclocritics;
+package org.pochocloapps.pochoclocritics.modelos;
+
+import java.util.Date;
 
 /**
  *
  * @author Rosi-PC
  * @author DELL-PC
  */
-public class Usuario {
+public class Usuario extends Persona {
     private Long idUsuario;
     private String correo;
     private String alias;
@@ -21,11 +23,16 @@ public class Usuario {
     /**
     *Crea un nuevo Usuario en el sistema
         *@param idUsuario,  identificador del usuario
+     * @param nombre, nombre del usuario 
+     * @param apellido, apellido del usuario
+     * @param fechaNac, fecha de nacimiento del usuario
         *@param correo, correo electrónico del usuario 
         *@param  alias, alias que el usuario utilizara publicamente 
         *@param  contraseña,  contraseña que el usuario asigne para su cuenta 
     */
-    public Usuario(Long idUsuario, String correo, String alias, String contraseña) {
+    
+    public Usuario(Long idUsuario,String nombre, String apellido, Date fechaNac, String correo, String alias, String contraseña) {
+        super(nombre,apellido,fechaNac);
         this.idUsuario = idUsuario;
         this.correo = correo;
         this.alias = alias;

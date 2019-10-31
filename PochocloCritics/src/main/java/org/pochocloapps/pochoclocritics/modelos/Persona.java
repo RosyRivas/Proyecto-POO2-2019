@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.pochocloapps.pochoclocritics;
+package org.pochocloapps.pochoclocritics.modelos;
 
 import java.util.Date;
 
@@ -11,35 +11,26 @@ import java.util.Date;
  *
  * @author Rosi-PC
  */
-public class Persona { //debe ser abstracta
-    private Long idPersona;
+public abstract class Persona { //debe ser abstracta
     private String nombre;
     private String apellido;
     private Date fechaNac;
     
     /**
      * Crea una nueva persona, pudiendo ser usuario, moderador, actor, director
-     * @param idPersona, identificador de la persona
      * @param nombre, nombre de la persona
      * @param apellido, apellido de la persona
      * @param fechaNac, fecha de nacimiento de la persona
     */
-    public Persona (Long idPersona,String nombre,String apellido, Date fechaNac){
-        this.idPersona = idPersona;
+     protected Persona (String nombre,String apellido, Date fechaNac){
+      
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;
     
     }
-    /**
-     * Método que permite obtener el id de  una persona
-     * @return idPersona
-    */
-    public Long getIdPersona() {
-        return idPersona;
-    }
-    /**
-     * Método que permite obtener el nombre de una persona
+    
+     /** Método que permite obtener el nombre de una persona
      * @return nombre
     */
     public String getNombre() {
@@ -82,10 +73,10 @@ public class Persona { //debe ser abstracta
     }
     /**
      * Método que obtiene la información de una persona
-     * @return idPersona, nombre, apellido, fechaNac
+     * @return nombre, apellido, fechaNac
     */
     @Override
     public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNac=" + fechaNac + '}';
+        return "Persona{nombre=" + nombre + ", apellido=" + apellido + ", fechaNac=" + fechaNac + '}';
     }
 }
