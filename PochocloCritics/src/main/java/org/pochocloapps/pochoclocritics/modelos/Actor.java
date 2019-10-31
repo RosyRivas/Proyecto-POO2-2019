@@ -5,11 +5,13 @@
  */
 package org.pochocloapps.pochoclocritics.modelos;
 
+import java.util.Date;
+
 /**
  *
  * @author Rosi-PC
  */
-public class Actor {
+public class Actor extends Persona {
     private Long idActor;
     private String biografia;
    // private List<Peliculas> peliculasActuadas;
@@ -17,9 +19,13 @@ public class Actor {
     /**
     * Crea un nuevo Actor en el sistema
     * @param idActor, identificador del actor.
+    * @param nombre, nombre del actor.
+    * @param apellido, apellido del actor.
+    * @param fechaNac, fecha de nacimiento del actor.
     * @param biografia, biografía del actor.
     */
-    public Actor(Long idActor, String biografia) {
+    public Actor(Long idActor, String nombre, String apellido, Date fechaNac,String biografia) {
+        super(nombre, apellido, fechaNac);
         this.idActor = idActor;
         this.biografia = biografia;
     }
