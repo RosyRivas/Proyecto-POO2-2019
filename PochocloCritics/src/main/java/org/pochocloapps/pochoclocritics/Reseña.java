@@ -12,7 +12,6 @@ package org.pochocloapps.pochoclocritics;
 public class Reseña {
     private Long idReseña;
     private String descripcion;
-  //  private Pelicula pelicula;
 
     /**
     *crea una nueva Reseña en el sistema
