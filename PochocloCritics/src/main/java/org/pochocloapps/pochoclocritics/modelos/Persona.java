@@ -28,13 +28,10 @@ public abstract class Persona { //debe ser abstracta
         this.fechaNac = fechaNac;
     }
     
-<<<<<<< HEAD
-     /** Método que permite obtener el nombre de una persona
-     * @return nombre  
-=======
+
+    
     /** Método que permite obtener el nombre de una persona
      * @return nombre
->>>>>>> e15583b2ec6b10ebdfb784ea2cd1a1a23e013a2a
     */
     public String getNombre() {
         return nombre;
