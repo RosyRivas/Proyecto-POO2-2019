@@ -16,17 +16,18 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 [
-  { "idPreferencia": "1234", "genero": []},
-  { "idPreferencia": "1734", "genero": []},
+  { "idPreferencia": 1234, "genero": []},
+  { "idPreferencia": 1734, "genero": []},
   ...
-  { "idPreferencia": "1294", "genero": []}  
+  { "idPreferencia": 1294, "genero": []}  
 ]
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
@@ -50,15 +51,16 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
  {
-   "idPreferencia": "1234",
+   "idPreferencia": 1234,
    "genero": []
  }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
@@ -92,15 +94,16 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {  
-   "idPreferencia": "1234",
+   "idPreferencia": 1234,
    "genero": []
  }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
@@ -135,15 +138,16 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
   {  
-   "idPreferencia": "1234",
+   "idPreferencia": 1234,
    "genero": []
  }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
@@ -166,5 +170,6 @@ Elimina una preferencia del sistema
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor

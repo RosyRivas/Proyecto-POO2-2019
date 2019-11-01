@@ -12,25 +12,21 @@ Obtiene una lista con todos los directores registrados en el sistema.
 
 Formato JSON => Content-Type: application/json; charset=utf-8
 
->Si la solicitud se realizó con éxito: mensaje 200 OK retornando:
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
 
 ```json
 [
-  { "idDirector": "1234", "biografia": "suminibiografia"},
-  { "idDirector": "4567", "biografia": "suminibiografia"},
-  ...
-  { "idDirector": "8910", "biografia": "suminibiografia"}
+  { "idDirector": 1234, "nombre": "Leonel", "apellido": "russo", "fecha_nacimiento": "15/12/1985", "biografia": "suminibiografia"},
+  { "idDirector": 5674, "nombre": "Mariana", "apellido": "denver", "fecha_nacimiento": "15/12/1985", "biografia": "suminibiografia"},
+  { "idDirector": 2321, "nombre": "Paola", "apellido": "cassi", "fecha_nacimiento": "15/12/1985", "biografia": "suminibiografia"}
 ]
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
->400 Bad Request => mensaje de error del lado del cliente
->500 Internal Server Error => mensaje de error del lado del servidor
+>**400 Bad Request** => mensaje de error del lado del cliente
 
-#### Consideraciones
-
->Es necesario que devuelva los atributos heredados de la clase Persona
+>**500 Internal Server Error** => mensaje de error del lado del servidor
 
 ---
 
@@ -46,23 +42,23 @@ Obtiene un Director segun su identificador(idDirector)
 
 Formato JSON => Content-Type: application/json; charset=utf-8
 
->Si la solicitud se realizó con éxito: mensaje 200 OK retornando:
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
 
 ```json
 {
-    "idDirector": "1234",
-    "biografia": "subiografia"
+  "idDirector": 1234,
+  "nombre": "Leonel",
+  "apellido": "russo",
+  "fecha_nacimiento": "15/12/1985",
+  "biografia": "suminibiografia"
 }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
->400 Bad Request => mensaje de error del lado del cliente
->500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
 
-#### Consideraciones
-
-> Es necesario que devuelva los atributos heredados de la clase Persona
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 ---
 
@@ -80,7 +76,10 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {
-  "biografia": "subiografia"
+  "nombre": "Leonel",
+  "apellido": "russo",
+  "fecha_nacimiento": "15/12/1985",
+  "biografia": "suminibiografia"
 }
 ```
 
@@ -92,26 +91,29 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {
-    "idDirector": "1234",
-    "biografia": "subiografia"
+  "idDirector": "1234",
+  "nombre": "Leonel",
+  "apellido": "russo",
+  "fecha_nacimiento": "15/12/1985",
+  "biografia": "suminibiografia"
 }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
->400 Bad Request => mensaje de error del lado del cliente.
->500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
 >Se indica el idDirector reciente creado.
->Es necesario que devuelva los atributos heredados de la clase Persona
 
 ---
 
 ## Actualizar un director
 
-Actualizacion de un director
+Actualizacion de un director en el sistema
 
 ### URL de Solicitud
 
@@ -123,32 +125,38 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {  
- "biografia": "subiografianueva",
- }
+  "nombre": "Leonel",
+  "apellido": "russo",
+  "fecha_nacimiento": "15/12/1985",
+  "biografia": "suminibiografia"
+}
 ```
 
 ### Respuesta
 
 Formato JSON => Content-Type: application/json; charset=utf-8
 
->Si la solicitud se realizó con éxito: mensaje 200 OK retornando el usuario creado:
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando el usuario creado:
 
 ```json
 {  
   "idDirector": "12345",
-  "biografia": "subiografianueva",
+  "nombre": "Leonel",
+  "apellido": "russo",
+  "fecha_nacimiento": "15/12/1985",
+  "biografia": "suminibiografia"
  }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
->400 Bad Request => mensaje de error del lado del cliente.
->500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
 >Se indica el idDirector reciente actualizado.
->Es necesario que devuelva los atributos heredados de la clase Persona
 
 ---
 
@@ -161,9 +169,11 @@ Elimina  un director del sistema
 >Solicitud => DELETE <https://pochocloapps.pochoclocritics.com/api/v1.0/directores/1234>
 
 ### Respuesta
->Si la solicitud se realizó con éxito: mensaje 200 OK retornando exito en la eliminación.
+
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando exito en la eliminación.
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
->500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor

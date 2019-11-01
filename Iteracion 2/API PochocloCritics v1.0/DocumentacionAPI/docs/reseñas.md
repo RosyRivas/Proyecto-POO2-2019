@@ -16,17 +16,18 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 [
-  { "idReseña": "1234", "descripcion": "Buenisima la peli"},
-  { "idReseña": "1734", "descripcion": "Pesima"},
+  { "idReseña": 1234, "descripcion": "Buenisima la peli"},
+  { "idReseña": 1734, "descripcion": "Pesima"},
   ...
-  { "idReseña": "1294", "descripcion": "Me encantó"}  
+  { "idReseña": 1294, "descripcion": "Me encantó"}  
 ]
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
@@ -50,15 +51,16 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
  {
-   "idReseña": "1234",
+   "idReseña": 1234,
    "descripcion": "Buenisima"
  }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
@@ -92,15 +94,16 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {  
-   "idReseña": "1234",
+   "idReseña": 1234,
    "descripcion": "Buenisima"
  }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
@@ -134,15 +137,16 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
   {  
-   "idReseña": "1234",
+   "idReseña": 1234,
    "descripcion": "The best movie in the world"
  }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
@@ -164,5 +168,6 @@ Elimina una reseña en el sistema
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor

@@ -15,25 +15,22 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 >Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
 
 ```json
-{
-    [
-        { "idUsuario": "1234", "correo": "uncorreo@algo.com", "alias": "carl" },
-        { "idUsuario": "5412", "correo": "uncorreo@algo.com", "alias": "jhon" },
-        { "idUsuario": "4312", "correo": "uncorreo@algo.com", "alias": "Rick" },
-        ...
-        { "idUsuario": "4312", "correo": "uncorreo@algo.com", "alias": "Rick" }
-    ]
-}
+[
+    { "idUsuario": 1234, "correo": "uncorreo@algo.com", "nombre": "carlos", "apellido": "sanz", "fecha_nacimiento": "23/05/92", "alias": "carl" },
+    { "idUsuario": 2334, "correo": "uncorreo@algo.com", "nombre": "marta", "apellido": "dias", "fecha_nacimiento": "03/09/94", "alias": "martad" },
+    ...
+]
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
-> No devuelve la contraseña del usuario, Es necesario que devuelva los atributos heredados de la clase Persona
+> No devuelve la contraseña del usuario
 
 ---
 
@@ -53,20 +50,24 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
   {
-    "idUsuario": "1234",
+    "idUsuario": 1234,
     "correo": "uncorreo@algo.com",
-    "alias": "carl"
+    "nombre": "carlos",
+    "apellido": "sanz",
+    "fecha_nacimiento": "23/05/92",
+    "alias": "carl" 
   }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
-> No devuelve la contraseña del usuario, Es necesario que devuelva los atributos heredados de la clase Persona
+> No devuelve la contraseña del usuario
 
 ---
 
@@ -84,9 +85,12 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {
-    "contraseña": "kghhdt3125",
     "correo": "uncorreo@algo.com",
-    "alias": "mike"
+    "nombre": "carlos",
+    "apellido": "sanz",
+    "fecha_nacimiento": "23/05/92",
+    "alias": "carl",
+    "contraseña": "lopr56t"
 }
 ```
 
@@ -100,19 +104,24 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 {
     "idUsuario": "3412",
     "correo": "uncorreo@algo.com",
-    "alias": "mike"
+    "nombre": "carlos",
+    "apellido": "sanz",
+    "fecha_nacimiento": "23/05/92",
+    "alias": "carl",
 }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
 > Se indica el idUsuario reciente creado.
-> No devuelve la contraseña del usuario, Es necesario que devuelva los atributos heredados de la clase Persona.
+
+> No devuelve la contraseña del usuario.
 
 ---
 
@@ -130,9 +139,12 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {
-    "contraseña": "kghhdt3125",
     "correo": "uncorreo@algo.com",
-    "alias": "maria"
+    "nombre": "carlos",
+    "apellido": "sanz",
+    "fecha_nacimiento": "23/05/92",
+    "alias": "carl",
+    "contraseña": "lopr56t"
 }
 ```
 
@@ -146,18 +158,21 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 {
     "idUsuario": "3412",
     "correo": "uncorreo@algo.com",
-    "alias": "maria"
-}
+    "nombre": "carlos",
+    "apellido": "sanz",
+    "fecha_nacimiento": "23/05/92",
+    "alias": "carl",
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
-> No devuelve la contraseña del usuario, Es necesario que devuelva los atributos heredados de la clase Persona
+> No devuelve la contraseña del usuario
 
 ---
 
@@ -175,5 +190,6 @@ Elimina un usuario del sistema
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
