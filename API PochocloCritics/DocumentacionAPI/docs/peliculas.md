@@ -16,21 +16,23 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 [
-  { "idPelicula": "1234", "titulo": "Mad Max", "duración": "2:48 hrs", "sinopsis": "descripcionbreve", "genero[]"},
-  { "idPelicula": "1734", "titulo": "Harry Potter", "duración": "2:48 hrs", "sinopsis": "descripcionbreve", "genero[]"},
+  { "idPelicula": 1234, "titulo": "Mad Max", "duración": "2:48 hrs", "sinopsis": "descripcionbreve", "genero[]"},
+  { "idPelicula": 1734, "titulo": "Harry Potter", "duración": "2:48 hrs", "sinopsis": "descripcionbreve", "genero[]"},
   ...
-  { "idPelicula": "1294", "titulo": "El señor de los Anillos", "duración": "2:48 hrs", "sinopsis": "descripcionbreve", "genero[]"}  
+  { "idPelicula": 1294, "titulo": "El señor de los Anillos", "duración": "2:48 hrs", "sinopsis": "descripcionbreve", "genero[]"}  
 ]
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
 > La duración se indica en formato string
+
 > El genero es un array
 
 ---
@@ -51,7 +53,7 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
  {
-   "idPelicula": "1234",
+   "idPelicula": 1234,
    "titulo": "Mad Max",
    "duración": "2:48 hrs",
    "sinopsis": "descripcionbreve",
@@ -61,12 +63,14 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
 > La duración se indica en formato string
+
 > El genero es un array
 
 ---
@@ -96,11 +100,11 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 Formato JSON => Content-Type: application/json; charset=utf-8
 
->Si la solicitud se realizó con éxito: mensaje **200 OK** retornando la película creada:
+> Si la solicitud se realizó con éxito: mensaje **200 OK** retornando la película creada:
 
 ```json
 {  
-   "idPelicula": "1234",
+   "idPelicula": 1234,
    "titulo": "Mad Max",
    "duración": "2:48 hrs",
    "sinopsis": "descripcionbreve",
@@ -110,8 +114,9 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
@@ -148,7 +153,7 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
   {  
-   "idPelicula": "1234",
+   "idPelicula": 1234,
    "titulo": "Mad Max",
    "duración": "3:08 hrs",
    "sinopsis": "descripcionbreve",
@@ -158,8 +163,9 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
@@ -181,5 +187,6 @@ Elimina una pelicula del sistema
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor

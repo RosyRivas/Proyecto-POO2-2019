@@ -16,21 +16,17 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 [
-  { "idActor": "1234", "biografia": "subiografia"},
-  { "idActor": "1574", "biografia": "subiografia"},
-  ...
-  { "idActor": "1114", "biografia": "subiografia"}
+  { "idActor": 1234, "nombre": "Leonardo", "apellido": "Di Caprio", "fecha_nacimiento": "03/04/72", "biografia": "subiografia"},
+  { "idActor": 3334, "nombre": "Julia", "apellido": "Roberts", "fecha_nacimiento": "03/04/78", "biografia": "subiografia"},
+  { "idActor": 7834, "nombre": "Jhonni", "apellido": "Deep", "fecha_nacimiento": "03/04/72", "biografia": "subiografia"},
 ]
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
 
-#### Consideraciones
-
-> Es necesario que devuelva los atributos heredados de la clase Persona
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 ---
 
@@ -49,20 +45,20 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 >Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
 
 ```json
-  {
-    "idActor": "1234", 
-    "biografia": "subiografia"
-  }
+{
+  "idActor": 1234,
+  "nombre": "Leonardo",
+  "apellido": "Di Caprio",
+  "fecha_nacimiento": "03/04/72",
+  "biografia": "subiografia"
+}
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
 
-#### Consideraciones
-
-> Es necesario que devuelva los atributos heredados de la clase Persona
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 ---
 
@@ -80,7 +76,10 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {
-  "biograia": "subiografia"
+  "nombre": "Leonardo",
+  "apellido": "Di Caprio",
+  "fecha_nacimiento": "03/04/72",
+  "biografia": "subiografia"
 }
 ```
 
@@ -92,20 +91,23 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {
-    "idActor": "1234",
-    "biografia": "subiografia"
+  "idActor": "1234",
+  "nombre": "Leonardo",
+  "apellido": "Di Caprio",
+  "fecha_nacimiento": "03/04/72",
+  "biografia": "subiografia"
 }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
 > Se indica el idActor reciente creado.
-> Es necesario que devuelva los atributos heredados de la clase Persona.
 
 ---
 
@@ -122,9 +124,12 @@ Actualización de un actor en en sistema
 Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
-  {
-    "biograia": "subiografianueva"
-  }
+{
+  "nombre": "Leonardo",
+  "apellido": "Di Caprio",
+  "fecha_nacimiento": "03/04/72",
+  "biografia": "subiografia"
+}
 ```
 
 ### Respuesta
@@ -135,20 +140,23 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {
-    "idActor": "1234",
-    "biografia": "subiografianueva"
+  "idActor": "1234",
+  "nombre": "Leonardo",
+  "apellido": "Di Caprio",
+  "fecha_nacimiento": "03/04/72",
+  "biografia": "subiografia"
 }
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
 > Se indica el idActor reciente actualizado.
-> Es necesario que devuelva los atributos heredados de la clase Persona
 
 ---
 
@@ -166,5 +174,6 @@ Elimina un actor del sistema
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor

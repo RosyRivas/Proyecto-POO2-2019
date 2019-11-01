@@ -12,25 +12,25 @@ Obtiene una lista con todos los moderadores registrados en el sistema.
 
 Formato JSON => Content-Type: application/json; charset=utf-8
 
->Si la solicitud se realizó con éxito: mensaje 200 OK retornando:
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
 
 ```json
 [
-  {  "privilegio": "SAL2555XD" },
-  {  "privilegio": "MAR55XXD"},
-  {  "privilegio": "FRIAR882"},
-  
+  { "idModerador":1234, "privilegio": "moderador", "correo": "correo@correo", "nombre": "mark", "apellido": "jones", "fecha_nacimiento": "22/01/95", "alias": "mark"},
+  { "idModerador":3348, "privilegio": "moderador", "correo": "correo@correo", "nombre": "julia", "apellido": "carpenter", "fecha_nacimiento": "27/03/92","alias": "julia"},
+  { "idModerador":2378, "privilegio": "moderador", "correo": "correo@correo", "nombre": "Pablo", "apellido": "morales", "fecha_nacimiento": "01/01/97","alias": "bob"},
 ]
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
->400 Bad Request => mensaje de error del lado del cliente
->500 Internal Server Error => mensaje de error del lado del servidor
+>**400 Bad Request** => mensaje de error del lado del cliente
+
+>**500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
->Es necesario que devuelva los atributos heredados de la clase Usuario
+>No retorna la contraseña del Moderador
 
 ---
 
@@ -46,22 +46,21 @@ Obtiene un moderador gistrador en el sistema segun su identificador.
 
 Formato JSON => Content-Type: application/json; charset=utf-8
 
->Si la solicitud se realizó con éxito: mensaje 200 OK retornando:
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
 
 ```json
-  {
-  "privilegio": "FRIAR882"
-  }
+  { "idModerador":1234, "privilegio": "moderador", "correo": "correo@correo", "nombre": "mark", "apellido": "jones", "fecha_nacimiento": "22/01/95", "alias": "mark"}
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
->400 Bad Request => mensaje de error del lado del cliente
->500 Internal Server Error => mensaje de error del lado del servidor
+>**400 Bad Request** => mensaje de error del lado del cliente
+
+>**500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
->Es necesario que devuelva los atributos heredados de la clase Usuario
+>No devuelve la contraseña del Moderador
 
 ---
 
@@ -78,9 +77,15 @@ Alta de un moderador en en sistema
 Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
-  {
-    "privilegios": "privi234"
-  }
+{
+  "privilegio": "moderador",
+  "correo": "correo@correo",
+  "nombre": "mark",
+  "apellido": "jones",
+  "fecha_nacimiento": "22/01/95",
+  "alias": "mark",
+  "contraseña": "adb234ht"
+}
 ```
 
 ### Respuesta
@@ -90,19 +95,28 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 >Si la solicitud se realizó con éxito: mensaje **200 OK** retornando el moderador creado:
 
 ```json
-  {
-    "privilegios": "privi234"
-  }
+{
+  "idModerador":1234,
+  "privilegio": "moderador",
+  "correo": "correo@correo",
+  "nombre": "mark",
+  "apellido": "jones",
+  "fecha_nacimiento": "22/01/95",
+  "alias": "mark"
+}
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente.
-> 500 Internal Server Error => mensaje de error del lado del servidor.
+> **400 Bad Request** => mensaje de error del lado del cliente.
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor.
 
 #### Consideraciones
 
-> Es necesario que devuelva los atributos heredados de la clase persona.
+> No devuelve la contraseña del Moderador
+
+> El identificador "idModerador" es generado de forma automática
 
 ---
 
@@ -112,16 +126,21 @@ Actualización de los atributos de un moderador en en sistema.
 
 ### URL solicitud
 
->Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v1.0/moderador/3412>
+>Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v1.0/moderador/1234>
 
 ### Datos de la solicitud
 
 Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
-  {
-    "privilegios": "nuevoprivilegio"
-  }
+{
+  "correo": "correo@correo",
+  "nombre": "mark",
+  "apellido": "jones",
+  "fecha_nacimiento": "22/01/95",
+  "alias": "mark",
+  "contraseña": "adb234ht"
+}
 ```
 
 ### Respuesta
@@ -131,19 +150,28 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 >Si la solicitud se realizó con éxito: mensaje **200 OK** retornando el moderador actualizado:
 
 ```json
-  {
-    "privilegios": "nuevoprivilegio"
-  }
+{
+  "idModerador":1234,
+  "privilegio": "moderador",
+  "correo": "correo@correo",
+  "nombre": "mark",
+  "apellido": "jones",
+  "fecha_nacimiento": "22/01/95",
+  "alias": "mark",
+}
 ```
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
 
 #### Consideraciones
 
-> Es necesario que devuelva los atributos heredados de la clase Persona
+> El identificador del moderador y su privilegio no puede ser cambiado
+
+> no devuelve la contraseña del Moderador
 
 ---
 
@@ -161,5 +189,6 @@ Elimina un moderador del sistema
 
 De lo contrario se indicará los siguientes posibles errores:
 
-> 400 Bad Request => mensaje de error del lado del cliente
-> 500 Internal Server Error => mensaje de error del lado del servidor
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
