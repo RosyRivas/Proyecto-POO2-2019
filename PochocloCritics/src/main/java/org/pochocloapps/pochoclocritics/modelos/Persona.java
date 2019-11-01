@@ -38,7 +38,7 @@ public abstract class Persona { //debe ser abstracta
     }
     /**
      * Método que permite crear el nombre de una persona
-     * @param nombre
+     * @param nombre, nombre de la persona
     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -52,7 +52,7 @@ public abstract class Persona { //debe ser abstracta
     }
     /**
      * Método que permite crear el apellido de una persona
-     * @param apellido
+     * @param apellido, apellido de la persona
     */
     public void setApellido(String apellido) {
         this.apellido = apellido;
@@ -66,7 +66,7 @@ public abstract class Persona { //debe ser abstracta
     }
     /**
      * Método que permite crear la fecha de nacimiento de una persona
-     * @param fechaNac
+     * @param fechaNac, fecha de nacimiento de la persona
     */
     public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
