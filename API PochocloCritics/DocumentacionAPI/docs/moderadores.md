@@ -6,7 +6,7 @@ Obtiene una lista con todos los moderadores registrados en el sistema.
 
 ### URL solicitud
 
->Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/moderadores>
+>Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/moderadores>
 
 ### Respuesta
 
@@ -40,7 +40,7 @@ Obtiene un moderador gistrador en el sistema segun su identificador.
 
 ### URL solicitud
 
->Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/moderadores/1234>
+>Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/moderadores/1234>
 
 ### Respuesta
 
@@ -64,13 +64,118 @@ De lo contrario se indicará los siguientes posibles errores:
 
 ---
 
+## Listar una reseña solicitada por un moderador (idModerador) en el Sistema 
+
+Obtiene una reseña según el moderador (idModerador) registrada en el sistema.
+
+### URL solicitud
+
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/moderadores/1234/reseñas/1234>
+
+### Respuesta
+
+Formato JSON => Content-Type: application/json; charset=utf-8
+
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
+
+```json
+ {
+   "idReseña": 1234,
+   "descripcion": "Buenisima",
+   "idPelicula": 2344,
+   "pelicula": "El señor de los Anillos"
+ }
+```
+
+De lo contrario se indicará los siguientes posibles errores:
+
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
+
+#### Consideraciones
+
+> Tener en cuenta que la reseña se solicitó segun el moderador
+
+---
+
+## Listar todas las reseñas solicitadas por un moderador (idModerador) en el Sistema
+
+Obtiene todas las reseñas según el Moderador (idModerador) registradas en el sistema.
+
+### URL solicitud
+
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/moderadores/1234/reseñas>
+
+### Respuesta
+
+Formato JSON => Content-Type: application/json; charset=utf-8
+
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
+
+```json
+[
+  { "idReseña": 5412, "descripcion": "Buenisima la peli", "idPelicula": 5009, "pelicula": "El señor de los Anillos"},
+  { "idReseña": 3332, "descripcion": "Pesima", "idPelicula": 3412, "pelicula": "Mad Max"},
+  ...
+  { "idReseña": 4465, "descripcion": "Me encantó", "idPelicula": 5622, "pelicula": "Harry Potter"}  
+]
+```
+
+De lo contrario se indicará los siguientes posibles errores:
+
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
+
+#### Consideraciones
+
+> Tener en cuenta que las reseñas se solicitadas son de un moderador en específico
+
+---
+
+## Listar Preferencias del Moderador
+
+Obtiene una preferencia solicitada por un moderador (idModerador) registrada en el sistema.
+
+### URL solicitud
+
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/moderador/1234/preferencias/1234>
+
+### Respuesta
+
+Formato JSON => Content-Type: application/json; charset=utf-8
+
+>Si la solicitud se realizó con éxito: mensaje **200 OK** retornando:
+
+```json
+ {
+   "idPreferencia": 1234,
+   "genero": [],
+   "actor": [],
+   "director": []
+ }
+```
+
+De lo contrario se indicará los siguientes posibles errores:
+
+> **400 Bad Request** => mensaje de error del lado del cliente
+
+> **500 Internal Server Error** => mensaje de error del lado del servidor
+
+#### Consideraciones
+
+> Tener en cuenta que se lista una preferencia solicitada por un moderador específico. 
+
+---
+
 ## Crear un moderador
 
 Alta de un moderador en en sistema
 
 ### URL solicitud
 
->Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v1.0/moderadores>
+>Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v2.0/moderadores>
 
 ### Datos de la solicitud
 
@@ -126,7 +231,7 @@ Actualización de los atributos de un moderador en en sistema.
 
 ### URL solicitud
 
->Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v1.0/moderador/1234>
+>Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v2.0/moderador/1234>
 
 ### Datos de la solicitud
 
@@ -181,7 +286,7 @@ Elimina un moderador del sistema
 
 ### URL solicitud
 
-> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v1.0/moderadores/1234>
+> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v2.0/moderadores/1234>
 
 ### Respuesta
 

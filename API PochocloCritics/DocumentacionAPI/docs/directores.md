@@ -6,7 +6,7 @@ Obtiene una lista con todos los directores registrados en el sistema.
 
 ### URL de Solicitud
 
->Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/directores>
+>Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/directores>
 
 ### Respuesta
 
@@ -36,7 +36,7 @@ Obtiene un Director segun su identificador(idDirector)
 
 ### URL de Solicitud
 
->Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/directores/1234>
+>Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/directores/1234>
 
 ### Respuesta
 
@@ -68,7 +68,7 @@ Alta de un director en el sistema
 
 ### URL de Solicitud
 
-> Solicitud => POST <https://pochocloapps.pochoclocritics.com/api/v1.0/directores>
+> Solicitud => POST <https://pochocloapps.pochoclocritics.com/api/v2.0/directores>
 
 ### Datos de solicitud
 
@@ -117,7 +117,7 @@ Actualizacion de un director en el sistema
 
 ### URL de Solicitud
 
->Solicitud => PUT <https://pochocloapps.pochoclocritics.com/api/v1.0/directores/1234>
+>Solicitud => PUT <https://pochocloapps.pochoclocritics.com/api/v2.0/directores/1234>
 
 ### Datos de solicitud
 
@@ -166,7 +166,7 @@ Elimina  un director del sistema
 
 ### URL Solicitud
 
->Solicitud => DELETE <https://pochocloapps.pochoclocritics.com/api/v1.0/directores/1234>
+>Solicitud => DELETE <https://pochocloapps.pochoclocritics.com/api/v2.0/directores/1234>
 
 ### Respuesta
 

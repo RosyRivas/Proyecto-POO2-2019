@@ -1,4 +1,4 @@
-site_name: API PochocloCritics v1.0
+site_name: API PochocloCritics v2.0
 nav:
   - Home: index.md
   - Usuarios: usuarios.md

@@ -6,7 +6,7 @@ Obtiene una lista con todas las preferencias registradas en el sistema.
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/preferencias>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/preferencias>
 
 ### Respuesta
 
@@ -16,10 +16,10 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 [
-  { "idPreferencia": 1234, "genero": []},
-  { "idPreferencia": 1734, "genero": []},
+  { "idPreferencia": 1234, "genero": [], "actores":[], "directores":[]},
+  { "idPreferencia": 1734, "genero": [], "actores":[], "directores":[]},
   ...
-  { "idPreferencia": 1294, "genero": []}  
+  { "idPreferencia": 1294, "genero": [], "actores":[], "directores":[]}
 ]
 ```
 
@@ -41,7 +41,7 @@ Obtiene una preferencia según su identificador (idPreferencia)  registrada en e
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/preferencias/1234>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/preferencias/1234>
 
 ### Respuesta
 
@@ -51,8 +51,10 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
  {
-   "idPreferencia": 1234,
-   "genero": []
+  "idPreferencia": 1234,
+   "generos": [],
+   "actores": [],
+   "directores": []
  }
 ```
 
@@ -64,7 +66,7 @@ De lo contrario se indicará los siguientes posibles errores:
 
 #### Consideraciones
 
-> Tener en cuenta que se lista una preferencia y no una preferencia referenciando anteriormente al usuario.
+> Tener en cuenta que se lista una preferencia sin referencia al usuario.
 
 ---
 
@@ -74,7 +76,7 @@ Alta de una preferencia en el sistema
 
 ### URL solicitud
 
->Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v1.0/preferencias>
+>Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v2.0/preferencias>
 
 ### Datos de la solicitud
 
@@ -82,7 +84,9 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {  
-   "genero": []
+   "genero": [],
+   "actores": [],
+   "directores": []
  }
 ```
 
@@ -95,7 +99,9 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 ```json
 {  
    "idPreferencia": 1234,
-   "genero": []
+   "genero": [],
+   "actores": [],
+   "directores": []
  }
 ```
 
@@ -118,7 +124,7 @@ Actualización de una preferencia en el sistema
 
 ### URL solicitud
 
->Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v1.0/preferencias/1234>
+>Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v2.0/preferencias/1234>
 
 ### Datos de la solicitud
 
@@ -126,7 +132,9 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {  
-   "genero": [ ]
+   "genero": [],
+   "actores": [],
+   "directores": []
  }
 ```
 
@@ -139,7 +147,9 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 ```json
   {  
    "idPreferencia": 1234,
-   "genero": []
+   "genero": [],
+   "actores": [],
+   "directores": []
  }
 ```
 
@@ -162,7 +172,7 @@ Elimina una preferencia del sistema
 
 ### URL solicitud
 
-> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v1.0/preferencias/1234>
+> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v2.0/preferencias/1234>
 
 ### Respuesta
 

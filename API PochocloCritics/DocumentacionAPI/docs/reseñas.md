@@ -6,7 +6,7 @@ Obtiene una lista con todas las reseñas registradas en el sistema.
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/reseñas>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/reseñas>
 
 ### Respuesta
 
@@ -16,10 +16,10 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 [
-  { "idReseña": 1234, "descripcion": "Buenisima la peli"},
-  { "idReseña": 1734, "descripcion": "Pesima"},
+  { "idReseña": 1234, "pelicula": 1234, "descripcion": "Buenisima la peli"},
+  { "idReseña": 1734, "pelicula": 3421, "descripcion": "Pesima"},
   ...
-  { "idReseña": 1294, "descripcion": "Me encantó"}  
+  { "idReseña": 1294, "pelicula": 5634, "descripcion": "Me encantó"}
 ]
 ```
 
@@ -41,7 +41,7 @@ Obtiene una reseña según su identificador (idReseña) registrada en el sistema
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/reseñas/1234>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/reseñas/1234>
 
 ### Respuesta
 
@@ -52,6 +52,7 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 ```json
  {
    "idReseña": 1234,
+   "pelicula":1234,
    "descripcion": "Buenisima"
  }
 ```
@@ -64,7 +65,7 @@ De lo contrario se indicará los siguientes posibles errores:
 
 #### Consideraciones
 
-> Tener en cuenta que la reseña no se solicito teniendo en cuenta una pelicula de referencia
+> Retorna la reseña en cuestion y el identificador de la película reseñada
 
 ---
 
@@ -74,7 +75,7 @@ Alta de una reseña el en sistema
 
 ### URL solicitud
 
->Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v1.0/reseñas>
+>Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v2.0/reseñas>
 
 ### Datos de la solicitud
 
@@ -82,6 +83,7 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 
 ```json
 {  
+   "pelicula": 1234,
    "descripcion": "Buenisima"
  }
 ```
@@ -95,6 +97,7 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 ```json
 {  
    "idReseña": 1234,
+   "pelicula": 1234,
    "descripcion": "Buenisima"
  }
 ```
@@ -117,7 +120,7 @@ Actualización de una reseña en el sistema
 
 ### URL solicitud
 
->Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v1.0/reseñas/1234>
+>Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v2.0/reseñas/1234>
 
 ### Datos de la solicitud
 
@@ -138,6 +141,7 @@ Formato JSON => Content-Type: application/json; charset=utf-8
 ```json
   {  
    "idReseña": 1234,
+   "pelicula": 1234,
    "descripcion": "The best movie in the world"
  }
 ```
@@ -160,7 +164,7 @@ Elimina una reseña en el sistema
 
 ### URL solicitud
 
-> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v1.0/reseñas/1234>
+> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v2.0/reseñas/1234>
 
 ### Respuesta
 

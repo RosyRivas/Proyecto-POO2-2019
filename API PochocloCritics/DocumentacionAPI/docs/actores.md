@@ -6,7 +6,7 @@ Obtiene una lista con todos los actores registrados en el sistema.
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/actores>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/actores>
 
 ### Respuesta
 
@@ -36,7 +36,7 @@ Obtiene un actor según su identificador (idActor)
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/actores/1234>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/actores/1234>
 
 ### Respuesta
 
@@ -68,7 +68,7 @@ Alta de un actor en en sistema
 
 ### URL solicitud
 
->Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v1.0/actores>
+>Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v2.0/actores>
 
 ### Datos de la solicitud
 
@@ -117,7 +117,7 @@ Actualización de un actor en en sistema
 
 ### URL solicitud
 
->Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v1.0/actores/1234>
+>Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v2.0/actores/1234>
 
 ### Datos de la solicitud
 
@@ -166,7 +166,7 @@ Elimina un actor del sistema
 
 ### URL solicitud
 
-> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v1.0/actores/1234>
+> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v2.0/actores/1234>
 
 ### Respuesta
 

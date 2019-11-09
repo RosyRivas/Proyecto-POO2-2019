@@ -6,7 +6,7 @@ Obtiene una lista con todas las películas registradas en el sistema.
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/peliculas>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/peliculas>
 
 ### Respuesta
 
@@ -43,7 +43,7 @@ Obtiene una película  registrada en el sistema.
 
 ### URL solicitud
 
-> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v1.0/peliculas/1234>
+> Solicitud => GET <https://pochocloapps.pochoclocritics.com/api/v2.0/peliculas/1234>
 
 ### Respuesta
 
@@ -81,7 +81,7 @@ Alta de una pelicula en en sistema
 
 ### URL solicitud
 
->Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v1.0/peliculas>
+>Solicitud => POST  <https://pochocloapps.pochoclocritics.com/api/v2.0/peliculas>
 
 ### Datos de la solicitud
 
@@ -130,7 +130,7 @@ Actualización de una pelicula en el sistema
 
 ### URL solicitud
 
->Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v1.0/peliculas/1234>
+>Solicitud => PUT  <https://pochocloapps.pochoclocritics.com/api/v2.0/peliculas/1234>
 
 ### Datos de la solicitud
 
@@ -179,7 +179,7 @@ Elimina una pelicula del sistema
 
 ### URL solicitud
 
-> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v1.0/peliculas/1234>
+> Solicitud => DELETE  <https://pochocloapps.pochoclocritics.com/api/v2.0/peliculas/1234>
 
 ### Respuesta
 
