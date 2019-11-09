@@ -207,7 +207,7 @@ La pantalla de recomendar película le permite al usuario enviarle una película
 ---
 
 ## Diagrama de Clases
-![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/diagramaDeClase.png)
+![alt text](https://github.com/RosyRivas/Proyecto-POO2-2019/blob/master/Iteracion%202/Diagrama%20de%20Clases.png)
 ---
 
 ## Javadoc
