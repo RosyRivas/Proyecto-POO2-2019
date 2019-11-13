@@ -24,7 +24,7 @@ public class Actor extends Persona {
     * @param fechaNac, fecha de nacimiento del actor.
     * @param biografia, biografía del actor.
     */
-    public Actor(Long idActor, String nombre, String apellido, Date fechaNac,String biografia) {
+    public Actor(Long idActor, String nombre, String apellido, String fechaNac,String biografia) {
         super(nombre, apellido, fechaNac);
         this.idActor = idActor;
         this.biografia = biografia;

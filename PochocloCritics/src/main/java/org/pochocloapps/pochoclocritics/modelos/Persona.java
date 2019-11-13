@@ -14,7 +14,7 @@ import java.util.Date;
 public abstract class Persona { //debe ser abstracta
     private String nombre;
     private String apellido;
-    private Date fechaNac;
+    private String fechaNac;
     
     /**
      * Crea una nueva persona, pudiendo ser usuario, moderador, actor, director
@@ -22,7 +22,7 @@ public abstract class Persona { //debe ser abstracta
      * @param apellido, apellido de la persona
      * @param fechaNac, fecha de nacimiento de la persona
     */
-     protected Persona (String nombre,String apellido, Date fechaNac){
+     protected Persona (String nombre,String apellido, String fechaNac){
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;
@@ -61,14 +61,14 @@ public abstract class Persona { //debe ser abstracta
      * Método que permite obtener la fecha de nacimiento de una persona
      * @return fechaNac
     */
-    public Date getFechaNac() {
+    public String getFechaNac() {
         return fechaNac;
     }
     /**
      * Método que permite crear la fecha de nacimiento de una persona
      * @param fechaNac, fecha de nacimiento de la persona
     */
-    public void setFechaNac(Date fechaNac) {
+    public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;
     }
     /**

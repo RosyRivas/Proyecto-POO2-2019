@@ -13,7 +13,7 @@ import java.util.Date;
  * @author DELL-PC
  */
 public class Usuario extends Persona {
-    private Long idUsuario;
+    private int idUsuario;
     private String correo;
     private String alias;
     private String contraseña;
@@ -31,19 +31,23 @@ public class Usuario extends Persona {
         *@param  contraseña,  contraseña que el usuario asigne para su cuenta 
     */
     
-    public Usuario(Long idUsuario,String nombre, String apellido, Date fechaNac, String correo, String alias, String contraseña) {
+    public Usuario(int idUsuario,String nombre, String apellido, String fechaNac, String correo, String alias, String contraseña) {
         super(nombre,apellido,fechaNac);
         this.idUsuario = idUsuario;
         this.correo = correo;
         this.alias = alias;
         this.contraseña = contraseña;
     }
+    
+    
+    
+    
 
     /**
      * Metodo que devuelve el identificador del usuario
      * @return idUsuario, identificador del usuario
      */
-    public Long getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
     /**

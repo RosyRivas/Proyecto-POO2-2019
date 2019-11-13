@@ -25,7 +25,7 @@ public class Director extends Persona{
      * @param fechaNac, fecha de nacimiento del director
      * @param biografia, biografia del director
      */
-    public Director(Long idDirector, String nombre, String apellido, Date fechaNac, String biografia){
+    public Director(Long idDirector, String nombre, String apellido, String fechaNac, String biografia){
         super(nombre, apellido, fechaNac);
         this.idDirector = idDirector;
         this.biografia = biografia;

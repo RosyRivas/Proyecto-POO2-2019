@@ -29,7 +29,7 @@ public class Moderador extends Persona{
      * @param alias, alias del moderador
      * @param contraseña, contraseña del moderador
     */
-    public Moderador(Long idModerador,String nombre, String apellido,Date fechaNac , String privilegios, String correo, String alias, Long contraseña) {
+    public Moderador(Long idModerador,String nombre, String apellido,String fechaNac , String privilegios, String correo, String alias, Long contraseña) {
         super(nombre,apellido,fechaNac);
         this.idModerador = idModerador;
         this.privilegios = privilegios;
