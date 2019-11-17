@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package org.pochocloapps.pochoclocritics.modelos;
+
 /**
  *
  * @author Rosi-PC
  */
 public class Preferencia {
-    private Long idPreferencia;
+    private int idPreferencia;
     //private List<Actor> actor;
     //private List<Director> director;
     //private List<Genero> genero;
@@ -17,15 +18,17 @@ public class Preferencia {
      * Crea una nueva Preferencia del usuario.
      * @param idPreferencia, identificador de la preferencia del usuario.
     */
-    public Preferencia(Long idPreferencia) {
+    public Preferencia() {
+    }
+
+    public Preferencia(int idPreferencia) {
         this.idPreferencia = idPreferencia;
-        
     }
     /**
      * Método que permite obtener el identificador de la preferencia del usuario.
      * @return idPreferencia, identificador de la preferencia del usuario.
     */
-    public Long getIdPreferencia() {
+    public int getIdPreferencia() {
         return idPreferencia;
     }
  

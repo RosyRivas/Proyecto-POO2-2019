@@ -15,7 +15,9 @@ import io.javalin.core.event.EventListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.pochocloapps.pochoclocritics.controladores.PreferenciasControlador;
 import org.pochocloapps.pochoclocritics.controladores.UsuariosControlador;
+import org.pochocloapps.pochoclocritics.repositorios.PreferenciasRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.UsuariosRepositorio;
 
 /**
@@ -29,45 +31,54 @@ public class Servidor {
      */
     public static void main(String[] args) throws ClassNotFoundException {
         // TODO code application logic here
-     String driver = "org.postgresql.Driver"; 
-     String connectString = "jdbc:postgresql://localhost:5432/ejemplo";
-     String user = "postgres";
-     String password = "postgres";
+        String driver = "org.postgresql.Driver";
+        String connectString = "jdbc:postgresql://localhost:5432/ejemplo";
+        String user = "postgres";
+        String password = "postgres";
 
-    try {
-    Class.forName(driver);
-    //Hacemos la coneccion.
-    Connection conn = DriverManager.getConnection(connectString, user, password);
-    UsuariosRepositorio usuariosRepositorio = new UsuariosRepositorio(conn);
-    UsuariosControlador usuariosControlador = new UsuariosControlador (usuariosRepositorio);
-    Javalin.create()
-                .events((EventListener event) -> {
-                    event.serverStopped(() -> {
-                        conn.close();
-                    });
-                })
-                .routes(() -> { 
-                    path("usuarios", () -> {
-                        get(usuariosControlador::listar);
-                        post(usuariosControlador::crear);
-                        path(":idUsuario", () -> {
-                             delete(usuariosControlador::borrar);
-                             put(usuariosControlador::modificar);
+        try {
+            Class.forName(driver);
+            //Hacemos la coneccion.
+            Connection conn = DriverManager.getConnection(connectString, user, password);
+            UsuariosRepositorio usuariosRepositorio = new UsuariosRepositorio(conn);
+            UsuariosControlador usuariosControlador = new UsuariosControlador(usuariosRepositorio);
+            var preferenciasRepositorio = new PreferenciasRepositorio(conn);
+            var preferenciasControlador = new PreferenciasControlador(preferenciasRepositorio);
+            Javalin.create()
+                    .events((EventListener event) -> {
+                        event.serverStopped(() -> {
+                            conn.close();
                         });
-                    });
-                })
-                .exception(UsuarioNoEncontradoExcepcion.class, (e, ctx) -> {
-                    ctx.status(404);
-                })
-                .start(7000);
-    //Si la conexion fue realizada con exito, muestra el sgte mensaje.
-    System.out.println("Conexion exitosa!");
-    }
-    //Si se produce una Excepcion y no nos podemos conectar, muestra el sgte. mensaje.
-    catch(SQLException e) {
-    System.out.println("Problema con la conexion");
-    }
+                    })
+                    .routes(() -> {
+                        path("usuarios", () -> {
+                            get(usuariosControlador::listar);
+                            post(usuariosControlador::crear);
+                            path(":idUsuario", () -> {
+                                delete(usuariosControlador::borrar);
+                                put(usuariosControlador::modificar);
+                            });
+                        });
+                        path("preferencias", () -> {
+                            get(preferenciasControlador::listar);
+                            post(preferenciasControlador::crear);
+                            path(":idPreferecia", () -> {
+                                delete(preferenciasControlador::borrar);
+                                // put(preferenciasControlador::modificar); 
+                            });
+                        }); 
 
+                    })
+                    .exception(UsuarioNoEncontradoExcepcion.class, (e, ctx) -> {
+                        ctx.status(404);
+                    })
+                    .start(7000);
+            //Si la conexion fue realizada con exito, muestra el sgte mensaje.
+            System.out.println("Conexion exitosa!");
+        } //Si se produce una Excepcion y no nos podemos conectar, muestra el sgte. mensaje.
+        catch (SQLException e) {
+            System.out.println("Problema con la conexion");
+        }
 
-}
+    }
 }
