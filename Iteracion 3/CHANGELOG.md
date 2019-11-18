@@ -2,23 +2,6 @@
 
 ## [No lanzado] 
 
-## [0.0.1] - 2019-11-18
-### Añadido
-- Se añadió al proyecto una clase PeliculaControlador.
-- Se añadió al proyecto una clase PeliculaRepositorio.
-- Se añadió al proyecto una clase PeliculaNoEncontradaException.
-- Se añadió al proyecto una clase DirecitoresControlador.
-- Se añadió al proyecto una clase DirectoresRepositorio.
-- Se añadió al proyecto una clase DirectorNoEncontradoException.
-- Se añadió al proyecto una clase ModeradoresControlador.
-- Se añadió al proyecto una clase ModeradorRepositorio.
-- Se añadió al proyecto una clase ModeradorNoEncontradoException.
-
-### Modificado
-- Se modificó la clase servidor, añadiendo rutas (get, post, put, delete) a las operaciones de PelículaControlador.
-- Se modificó la clase servidor, añadiendo rutas (get, post, put, delete) a las operaciones de DirectoresControlador.
-- Se modificó la clase servidor, añadiendo rutas (get, post, put, delete) a las operaciones de ModeradoresControlador.
-
 ## [0.0.1] - 2019-11-17
 ### Añadido
 - Se añadió al proyecto una clase PreferenciasControlador.
@@ -38,3 +21,20 @@
 - Se añadio al proyecto una clase ActoresRepositorio	
 ### Modificado
 - Se modificó la clase Servidor agregando rutas para las operaciones HTTP dirigidas al controlador ActoresControlador
+
+## [0.0.3] - 2019-11-18
+### Añadido
+- Se añadió al proyecto una clase PeliculaControlador.
+- Se añadió al proyecto una clase PeliculaRepositorio.
+- Se añadió al proyecto una clase PeliculaNoEncontradaException.
+- Se añadió al proyecto una clase DirecitoresControlador.
+- Se añadió al proyecto una clase DirectoresRepositorio.
+- Se añadió al proyecto una clase DirectorNoEncontradoException.
+- Se añadió al proyecto una clase ModeradoresControlador.
+- Se añadió al proyecto una clase ModeradorRepositorio.
+- Se añadió al proyecto una clase ModeradorNoEncontradoException.
+
+### Modificado
+- Se modificó la clase servidor, añadiendo rutas (get, post, put, delete) a las operaciones de PelículaControlador.
+- Se modificó la clase servidor, añadiendo rutas (get, post, put, delete) a las operaciones de DirectoresControlador.
+- Se modificó la clase servidor, añadiendo rutas (get, post, put, delete) a las operaciones de ModeradoresControlador.
