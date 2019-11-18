@@ -34,7 +34,7 @@ public class PreferenciasControlador {
 
     public void crear(Context ctx) throws SQLException {    
         // Usando JSON  
-        var p = ctx.bodyAsClass(Preferencia.class);
+        Preferencia p = ctx.bodyAsClass(Preferencia.class);
         preferenciasRepositorio.crear(p.getIdPreferencia()); 
         ctx.status(201);
     }
@@ -46,7 +46,7 @@ public class PreferenciasControlador {
 
         public void modificar(Context ctx) throws SQLException, PreferenciaNoEncontradaExcepcion {
         // Usando JSON
-        var p = ctx.bodyAsClass(Preferencia.class);
+        Preferencia p = ctx.bodyAsClass(Preferencia.class);
         ctx.status(204);
     }
 }

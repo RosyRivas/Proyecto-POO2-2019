@@ -14,7 +14,8 @@ import java.util.Date;
 public class Pelicula {
     private Long idPelicula;
     private String titulo ;
-    private Date duracion;
+    //private Date duracion;
+    private String duracion;
     private String sinopsis;
     //private Imagen portada;
     // private List <Actor> actor;
@@ -29,7 +30,7 @@ public class Pelicula {
      * @param duracion, tiempo de reproducción de la pelicula
      * @param sinopsis, descripción breve de la pelicula
     */
-    public Pelicula(Long idPelicula, String titulo, Date duracion, String sinopsis) {
+    public Pelicula(Long idPelicula, String titulo, String duracion, String sinopsis) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.duracion = duracion;
@@ -60,14 +61,14 @@ public class Pelicula {
      * Método que permite obtener la duración de la película
      * @return duracion, tiempo de reproducción de la película
     */
-    public Date getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
     /**
      * Modo que permite establecer la duración de una película
      * @param duracion, tiempo de reproducción de la película
     */
-    public void setDuracion(Date duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
     /**

@@ -31,9 +31,9 @@ public class UsuariosControlador {
         
         // Usando JSON        
         
-       var p = ctx.bodyAsClass(Usuario.class);            
-       // usuariosRepositorio.crear(p.getNombre(), p.getApellido(), p.getFechaNac(), p.getCorreo(), p.getAlias(), p.getContraseña());       
-        ctx.status(201);
+       Usuario p = ctx.bodyAsClass(Usuario.class);            
+       usuariosRepositorio.crear(p.getNombre(), p.getApellido(), p.getFechaNac(), p.getCorreo(), p.getAlias(), p.getContraseña());       
+       ctx.status(201);
     }
         public void borrar(Context ctx) throws SQLException, UsuarioNoEncontradoExcepcion {
         usuariosRepositorio.borrar(usuariosRepositorio.obtener(ctx.pathParam("idUsuario", Integer.class).get()));

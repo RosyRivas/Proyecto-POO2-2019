@@ -15,8 +15,10 @@ import io.javalin.core.event.EventListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.pochocloapps.pochoclocritics.controladores.PeliculaControlador;
 import org.pochocloapps.pochoclocritics.controladores.PreferenciasControlador;
 import org.pochocloapps.pochoclocritics.controladores.UsuariosControlador;
+import org.pochocloapps.pochoclocritics.repositorios.PeliculasRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.PreferenciasRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.UsuariosRepositorio;
 
@@ -34,7 +36,7 @@ public class Servidor {
         String driver = "org.postgresql.Driver";
         String connectString = "jdbc:postgresql://localhost:5432/ejemplo";
         String user = "postgres";
-        String password = "postgres";
+        String password = "admin";
 
         try {
             Class.forName(driver);
@@ -42,8 +44,10 @@ public class Servidor {
             Connection conn = DriverManager.getConnection(connectString, user, password);
             UsuariosRepositorio usuariosRepositorio = new UsuariosRepositorio(conn);
             UsuariosControlador usuariosControlador = new UsuariosControlador(usuariosRepositorio);
-            var preferenciasRepositorio = new PreferenciasRepositorio(conn);
-            var preferenciasControlador = new PreferenciasControlador(preferenciasRepositorio);
+            PreferenciasRepositorio preferenciasRepositorio = new PreferenciasRepositorio(conn);
+            PreferenciasControlador preferenciasControlador = new PreferenciasControlador(preferenciasRepositorio);
+            PeliculasRepositorio peliculasRepositorio = new PeliculasRepositorio(conn);
+            PeliculaControlador peliculaControlador = new PeliculaControlador(peliculasRepositorio);
             Javalin.create()
                     .events((EventListener event) -> {
                         event.serverStopped(() -> {
@@ -66,7 +70,15 @@ public class Servidor {
                                 delete(preferenciasControlador::borrar);
                                 // put(preferenciasControlador::modificar); 
                             });
-                        }); 
+                        });
+                        path("peliculas", () -> {
+                            get(peliculaControlador::listar);
+                            post(peliculaControlador::crear);
+                            path(":idPelicula", () ->{
+                                delete(peliculaControlador::borrar);
+                                put(peliculaControlador::modificar);
+                            });
+                        });
 
                     })
                     .exception(UsuarioNoEncontradoExcepcion.class, (e, ctx) -> {
