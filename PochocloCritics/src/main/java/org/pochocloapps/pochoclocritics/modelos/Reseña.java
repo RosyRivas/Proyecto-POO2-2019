@@ -10,7 +10,7 @@ package org.pochocloapps.pochoclocritics.modelos;
  * @author Rosi-PC
  */
 public class Reseña {
-    private Long idReseña;
+    private int idReseña;// cambie a in por que el controlador no permitia long 
     private String descripcion;
 
     /**
@@ -18,7 +18,7 @@ public class Reseña {
     * @param idReseña, identificador de la reseña 
     * @param descripcion, descripción de la Reseña 
     */
-    public Reseña(Long idReseña, String descripcion) {
+    public Reseña(int idReseña, String descripcion) {
         this.idReseña = idReseña;
         this.descripcion = descripcion;
     }
@@ -27,7 +27,7 @@ public class Reseña {
     *Metodo que devuelve la identificacion de la reseña
     * @return idReseña, identificador de la reseña
     */
-    public Long getIdReseña() {
+    public int getIdReseña() {
         return idReseña;
     }
 /**
