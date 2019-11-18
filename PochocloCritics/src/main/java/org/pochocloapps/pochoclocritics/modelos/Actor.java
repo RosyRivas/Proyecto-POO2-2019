@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Rosi-PC
  */
 public class Actor extends Persona {
-    private Long idActor;
+    private int idActor;
     private String biografia;
    // private List<Peliculas> peliculasActuadas;
 
@@ -24,7 +24,7 @@ public class Actor extends Persona {
     * @param fechaNac, fecha de nacimiento del actor.
     * @param biografia, biografía del actor.
     */
-    public Actor(Long idActor, String nombre, String apellido, String fechaNac,String biografia) {
+    public Actor(int idActor, String nombre, String apellido, String fechaNac,String biografia) {
         super(nombre, apellido, fechaNac);
         this.idActor = idActor;
         this.biografia = biografia;
@@ -33,7 +33,7 @@ public class Actor extends Persona {
     * Método que develve el identificador de un actor
     * @return idActor, identificador del actor.
     */
-    public Long getIdActor() {
+    public int  getIdActor() {
         return idActor;
     }
     /**

@@ -18,9 +18,12 @@ import io.javalin.core.event.EventListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.pochocloapps.pochoclocritics.controladores.ActoresControlador;
 import org.pochocloapps.pochoclocritics.controladores.PreferenciasControlador;
 import org.pochocloapps.pochoclocritics.controladores.ReseñasControlador;
 import org.pochocloapps.pochoclocritics.controladores.UsuariosControlador;
+import org.pochocloapps.pochoclocritics.repositorios.ActorNoEncontradoExcepcion;
+import org.pochocloapps.pochoclocritics.repositorios.ActoresRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.PreferenciasRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.ReseñasRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.UsuariosRepositorio;
@@ -44,14 +47,16 @@ public class Servidor {
         try {
             Class.forName(driver);
             //Hacemos la coneccion.
+            
             Connection conn = DriverManager.getConnection(connectString, user, password);
             UsuariosRepositorio usuariosRepositorio = new UsuariosRepositorio(conn);
             UsuariosControlador usuariosControlador = new UsuariosControlador(usuariosRepositorio);
-            var preferenciasRepositorio = new PreferenciasRepositorio(conn);
-            var preferenciasControlador = new PreferenciasControlador(preferenciasRepositorio);
+            PreferenciasRepositorio preferenciasRepositorio = new PreferenciasRepositorio(conn);
+            PreferenciasControlador preferenciasControlador = new PreferenciasControlador(preferenciasRepositorio);
             ReseñasRepositorio reseñaRepositorio =new ReseñasRepositorio(conn);
              ReseñasControlador reseñaControlador = new ReseñasControlador (reseñaRepositorio);
-            
+               ActoresRepositorio actoresRepositorio= new ActoresRepositorio(conn);
+    ActoresControlador actorControlador = new ActoresControlador(actoresRepositorio);
             Javalin.create()
                     .events((EventListener event) -> {
                         event.serverStopped(() -> {
@@ -94,12 +99,30 @@ public class Servidor {
                .exception(PreferenciaNoEncontradaExcepcion.class, (e, ctx) -> {
                         ctx.status(404);
                     })
+                         .routes(() -> { 
+                    path("actor", () -> {
+                        get(actorControlador::listar);
+                        post(actorControlador::crear);
+                        path(":idActor", () -> {
+                             delete(actorControlador::borrar);
+                             put(actorControlador::modificar);
+                        });
+                    });
+         
+                })
+            
+                .exception(ActorNoEncontradoExcepcion.class, (e, ctx) -> {
+                    ctx.status(404);
+                      
+                })
+                    
+                    
                     .start(7000);
             //Si la conexion fue realizada con exito, muestra el sgte mensaje.
             System.out.println("Conexion exitosa!");
         } //Si se produce una Excepcion y no nos podemos conectar, muestra el sgte. mensaje.
         catch (SQLException e) {
-            System.out.println("Problema con la conexion");
+            System.out.println("Problema con la conexion: "+e);
         }
 
     }}

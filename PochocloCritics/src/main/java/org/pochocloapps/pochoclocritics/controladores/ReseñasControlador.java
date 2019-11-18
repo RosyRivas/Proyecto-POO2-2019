@@ -34,8 +34,8 @@ public class ReseñasControlador {
     }
        public void crear(Context ctx) throws SQLException {
         // Usando un JSON
-         var r = ctx.bodyAsClass(Reseña.class);
-        reseñasRepositorio.crear(r.getIdReseña()); 
+         Reseña r = ctx.bodyAsClass(Reseña.class);
+        reseñasRepositorio.crear(r.getDescripcion()); 
         ctx.status(201);
       
     }

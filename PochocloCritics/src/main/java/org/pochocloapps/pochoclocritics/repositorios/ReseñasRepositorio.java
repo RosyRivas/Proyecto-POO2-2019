@@ -18,9 +18,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-;
+
 import org.pochocloapps.pochoclocritics.modelos.Reseña;
-import org.pochocloapps.pochoclocritics.modelos.Reseña;import org.pochocloapps.pochoclocritics.modelos.Reseña;
 /**
  *
  * @author Rosi-PC
@@ -35,7 +34,15 @@ public class ReseñasRepositorio {
         consulta.execute("CREATE TABLE IF NOT EXISTS Reseña (idReseña SERIAL PRIMARY KEY,descripcion TEXT)");
         consulta.close();
     
-    } 
+    }
+       
+        public void crear(String descripcion) throws SQLException {
+        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO Reseña (descripcion) VALUES (?)");
+        consulta.setString(1, descripcion);
+        consulta.executeUpdate();  //Metodo de prepareStatement (a la vez de Statement "interface padre") que realiza una consulta. Utilizado para create, drop, insert, update, delete etc.
+        consulta.close();
+    }
+   
     public void borrar(Reseña reseña )throws SQLException, ReseñaNoEncontradoException{
         PreparedStatement consulta = conexion.prepareStatement("");
         consulta.setInt(1, reseña.getIdReseña());
@@ -64,9 +71,10 @@ public class ReseñasRepositorio {
         consulta.close();
         return reseña;
     }
-    public void crear(int idReseña) throws SQLException {
-        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO Reseña (idReseña)  VALUES (?)");
+    public void crear(int idReseña ,String descripcion) throws SQLException {
+        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO Reseña (idReseña,descripcion ) VALUES (?,?)");
         consulta.setInt(1, idReseña);
+        consulta.setString(2, descripcion);
        // consulta.setInt(2, idPelicula);
         consulta.executeUpdate();  //Metodo de prepareStatement (a la vez de Statement "interface padre") que realiza una consulta. Utilizado para create, drop, insert, update, delete etc.
         consulta.close();
@@ -105,4 +113,3 @@ public Reseña  obtener(int idReseña) throws SQLException, ReseñaNoEncontradoE
         }
     }
 }  
-
