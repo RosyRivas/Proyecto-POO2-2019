@@ -51,7 +51,7 @@ public class ReseñasControlador {
        public void modificar(Context ctx) throws SQLException,ReseñaNoEncontradoExcepcion, ReseñaNoEncontradoException {
           
         // Usando JSON
-        var r = ctx.bodyAsClass(Reseña.class);
+        Reseña r = ctx.bodyAsClass(Reseña.class);
         ctx.status(204);
     }
 }

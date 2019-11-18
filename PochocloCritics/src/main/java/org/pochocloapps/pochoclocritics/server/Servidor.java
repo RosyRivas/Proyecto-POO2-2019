@@ -18,20 +18,20 @@ import io.javalin.core.event.EventListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-<<<<<<< HEAD
 import org.pochocloapps.pochoclocritics.controladores.PeliculaControlador;
-=======
 import org.pochocloapps.pochoclocritics.controladores.ActoresControlador;
->>>>>>> 2d0f1b2723a669e59fb23d0974b5fb0691041522
+import org.pochocloapps.pochoclocritics.controladores.DirectoresControlador;
+import org.pochocloapps.pochoclocritics.controladores.ModeradoresControlador;
 import org.pochocloapps.pochoclocritics.controladores.PreferenciasControlador;
 import org.pochocloapps.pochoclocritics.controladores.ReseñasControlador;
 import org.pochocloapps.pochoclocritics.controladores.UsuariosControlador;
-<<<<<<< HEAD
 import org.pochocloapps.pochoclocritics.repositorios.PeliculasRepositorio;
-=======
 import org.pochocloapps.pochoclocritics.repositorios.ActorNoEncontradoExcepcion;
 import org.pochocloapps.pochoclocritics.repositorios.ActoresRepositorio;
->>>>>>> 2d0f1b2723a669e59fb23d0974b5fb0691041522
+import org.pochocloapps.pochoclocritics.repositorios.DirectorNoEncontradoException;
+import org.pochocloapps.pochoclocritics.repositorios.DirectoresRepositorio;
+import org.pochocloapps.pochoclocritics.repositorios.ModeradorNoEncontradoException;
+import org.pochocloapps.pochoclocritics.repositorios.ModeradorRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.PreferenciasRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.ReseñasRepositorio;
 import org.pochocloapps.pochoclocritics.repositorios.UsuariosRepositorio;
@@ -48,14 +48,9 @@ public class Servidor {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
         String driver = "org.postgresql.Driver";
-        String connectString = "jdbc:postgresql://localhost:5433/ejemplo";
+        String connectString = "jdbc:postgresql://localhost:5432/ejemplo";
         String user = "postgres";
-<<<<<<< HEAD
         String password = "admin";
-=======
-        String password = "1234";
->>>>>>> 2d0f1b2723a669e59fb23d0974b5fb0691041522
-
         try {
             Class.forName(driver);
             //Hacemos la coneccion.
@@ -65,21 +60,24 @@ public class Servidor {
             UsuariosControlador usuariosControlador = new UsuariosControlador(usuariosRepositorio);
             PreferenciasRepositorio preferenciasRepositorio = new PreferenciasRepositorio(conn);
             PreferenciasControlador preferenciasControlador = new PreferenciasControlador(preferenciasRepositorio);
-<<<<<<< HEAD
             PeliculasRepositorio peliculasRepositorio = new PeliculasRepositorio(conn);
             PeliculaControlador peliculaControlador = new PeliculaControlador(peliculasRepositorio);
-=======
             ReseñasRepositorio reseñaRepositorio =new ReseñasRepositorio(conn);
-             ReseñasControlador reseñaControlador = new ReseñasControlador (reseñaRepositorio);
-               ActoresRepositorio actoresRepositorio= new ActoresRepositorio(conn);
-    ActoresControlador actorControlador = new ActoresControlador(actoresRepositorio);
->>>>>>> 2d0f1b2723a669e59fb23d0974b5fb0691041522
+            ReseñasControlador reseñaControlador = new ReseñasControlador (reseñaRepositorio);
+            ActoresRepositorio actoresRepositorio= new ActoresRepositorio(conn);
+            ActoresControlador actorControlador = new ActoresControlador(actoresRepositorio);
+            DirectoresRepositorio directoresRepositorio = new DirectoresRepositorio(conn);
+            DirectoresControlador directoresControlador = new DirectoresControlador(directoresRepositorio);
+            ModeradorRepositorio moderadorRepositorio = new ModeradorRepositorio(conn);
+            ModeradoresControlador moderadoresControlador = new ModeradoresControlador(moderadorRepositorio);
+            
             Javalin.create()
                     .events((EventListener event) -> {
                         event.serverStopped(() -> {
                             conn.close();
                         });
                     })
+                  
                     .routes(() -> {
                         path("usuarios", () -> {
                             get(usuariosControlador::listar);
@@ -89,20 +87,25 @@ public class Servidor {
                                 put(usuariosControlador::modificar);
                             });
                         });
-                       })
-                         .routes(() -> { 
+                    })
+                    .exception(UsuarioNoEncontradoExcepcion.class,(e, ctx) -> {
+                        ctx.status(404);
+                    })
+                    
+                    .routes(() -> { 
                         path("reseña", () -> {
-                        get(reseñaControlador::listar);
-                        post(reseñaControlador::crear);
-                        path(":idReseña", () -> {
-                             delete(reseñaControlador::borrar);
-                             put(reseñaControlador::modificar);
+                            get(reseñaControlador::listar);
+                            post(reseñaControlador::crear);
+                            path(":idReseña", () -> {
+                                 delete(reseñaControlador::borrar);
+                                 put(reseñaControlador::modificar);
+                            });
                         });
-                    });
-                })
-                .exception(ReseñaNoEncontradoExcepcion.class, (e, ctx) -> {
-                    ctx.status(404);  
-                })
+                    })
+                    .exception(ReseñaNoEncontradoExcepcion.class, (e, ctx) -> {
+                        ctx.status(404);  
+                    })
+                    
                     .routes(() -> { 
                         path("preferencias", () -> {
                             get(preferenciasControlador::listar);
@@ -112,7 +115,9 @@ public class Servidor {
                                 // put(preferenciasControlador::modificar); 
                             });
                         });
-<<<<<<< HEAD
+                    })
+                    
+                    .routes(() -> {
                         path("peliculas", () -> {
                             get(peliculaControlador::listar);
                             post(peliculaControlador::crear);
@@ -121,32 +126,58 @@ public class Servidor {
                                 put(peliculaControlador::modificar);
                             });
                         });
-
-=======
->>>>>>> 2d0f1b2723a669e59fb23d0974b5fb0691041522
                     })
-               .exception(PreferenciaNoEncontradaExcepcion.class, (e, ctx) -> {
+                    .exception(PreferenciaNoEncontradaExcepcion.class, (e, ctx) -> {
                         ctx.status(404);
                     })
-                         .routes(() -> { 
-                    path("actor", () -> {
-                        get(actorControlador::listar);
-                        post(actorControlador::crear);
-                        path(":idActor", () -> {
-                             delete(actorControlador::borrar);
-                             put(actorControlador::modificar);
-                        });
-                    });
-         
-                })
-            
-                .exception(ActorNoEncontradoExcepcion.class, (e, ctx) -> {
-                    ctx.status(404);
-                      
-                })
                     
+                    .routes(() -> { 
+                        path("actor", () -> {
+                            get(actorControlador::listar);
+                            post(actorControlador::crear);
+                            path(":idActor", () -> {
+                                 delete(actorControlador::borrar);
+                                 put(actorControlador::modificar);
+                            });
+                        });
+                    })
+            
+                    .exception(ActorNoEncontradoExcepcion.class, (e, ctx) -> {
+                        ctx.status(404);
+                    })
+                    
+                    .routes(() -> {
+                        path("director", ()->{
+                           get(directoresControlador::listar);
+                           post(directoresControlador::crear);
+                           path(":idDirector", () ->{
+                               delete(directoresControlador::borrar);
+                               put(directoresControlador::modificar);
+                           });
+                        });
+                    })
+                    
+                    .exception(DirectorNoEncontradoException.class, (e, ctx)->{
+                        ctx.status(404);
+                    })
+                    
+                    .routes(() ->{
+                        path("moderador", () ->{
+                            get(moderadoresControlador::listar);
+                            post(moderadoresControlador::crear);
+                            path(":idModerador", () ->{
+                                delete(moderadoresControlador::borrar);
+                                put(moderadoresControlador::modificar);
+                            });
+                        });
+                    })
+                    
+                    .exception(ModeradorNoEncontradoException.class, (e, ctx)->{
+                        ctx.status(404);
+                    })
                     
                     .start(7000);
+            
             //Si la conexion fue realizada con exito, muestra el sgte mensaje.
             System.out.println("Conexion exitosa!");
         } //Si se produce una Excepcion y no nos podemos conectar, muestra el sgte. mensaje.
@@ -155,4 +186,3 @@ public class Servidor {
         }
 
     }}
-//>>>>>>> b6982fff1395316a51c4bce0e1f1be031ab2717e:PochocloCritics/src/main/java/org/pochocloapps/pochoclocritics/server/Servidor.java
