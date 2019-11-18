@@ -100,7 +100,7 @@ public class UsuariosRepositorio {
    
    public void modificar(Usuario usuario) throws SQLException, UsuarioNoEncontradoExcepcion {
         PreparedStatement consulta = conexion.prepareStatement("UPDATE usuarios SET nombre = ?, apellido = ?, fechanac = ?, correo = ?, alias = ?, contraseña = ? WHERE idUsuario = ?");
-        consulta.setString(1, usuario.getNombre());
+        consulta.setString(1, usuario.getNombre());                  
         consulta.setString(2, usuario.getApellido());
         consulta.setString(3, usuario.getFechaNac());
         consulta.setString(4, usuario.getCorreo());

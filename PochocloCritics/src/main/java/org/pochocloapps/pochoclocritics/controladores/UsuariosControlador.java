@@ -23,16 +23,16 @@ public class UsuariosControlador {
         this.usuariosRepositorio = usuariosRepositorio;
     }
      public void listar(Context ctx) throws SQLException {
-        ctx.json(usuariosRepositorio.listar());
+         ctx.json(usuariosRepositorio.listar());
     }
      public void crear(Context ctx) throws SQLException {
         // Usando un formulario
-        usuariosRepositorio.crear(ctx.formParam("nombre", String.class).get(),ctx.formParam("apellido", String.class).get(),ctx.formParam("fechanac", String.class).get(), ctx.formParam("correo", String.class).get(), ctx.formParam("alias", String.class).get(), ctx.formParam("contraseña", String.class).get());        
+        //  usuariosRepositorio.crear(ctx.formParam("nombre", String.class).get(),ctx.formParam("apellido", String.class).get(),ctx.formParam("fechanac", String.class).get(), ctx.formParam("correo", String.class).get(), ctx.formParam("alias", String.class).get(), ctx.formParam("contraseña", String.class).get());        
+        
         // Usando JSON        
-        /*
-        var p = ctx.bodyAsClass(Persona.class);            
-        personasRepositorio.crear(p.getNombres(), p.getApellidos());
-        */
+        
+       var p = ctx.bodyAsClass(Usuario.class);            
+       // usuariosRepositorio.crear(p.getNombre(), p.getApellido(), p.getFechaNac(), p.getCorreo(), p.getAlias(), p.getContraseña());       
         ctx.status(201);
     }
         public void borrar(Context ctx) throws SQLException, UsuarioNoEncontradoExcepcion {

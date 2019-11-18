@@ -38,10 +38,6 @@ public class Usuario extends Persona {
         this.alias = alias;
         this.contraseña = contraseña;
     }
-    
-    
-    
-    
 
     /**
      * Metodo que devuelve el identificador del usuario

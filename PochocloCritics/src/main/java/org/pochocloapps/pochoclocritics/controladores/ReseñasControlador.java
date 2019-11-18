@@ -9,6 +9,7 @@ import io.javalin.http.Context;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import org.pochocloapps.pochoclocritics.modelos.Preferencia;
 import org.pochocloapps.pochoclocritics.modelos.Reseña;
 import org.pochocloapps.pochoclocritics.repositorios.ReseñaNoEncontradoException;
 import org.pochocloapps.pochoclocritics.repositorios.ReseñasRepositorio;
@@ -32,12 +33,11 @@ public class ReseñasControlador {
         ctx.json(reseñasRepositorio.listar());
     }
        public void crear(Context ctx) throws SQLException {
-        // Usando un formulario
-        reseñasRepositorio.crear(ctx.formParam("descripcion", String.class).get() ); 
-        Reseña r  = ctx.bodyAsClass(Reseña.class);            
-        reseñasRepositorio.crear(r.getDescripcion());
-        
+        // Usando un JSON
+         var r = ctx.bodyAsClass(Reseña.class);
+        reseñasRepositorio.crear(r.getIdReseña()); 
         ctx.status(201);
+      
     }
        
        
@@ -49,12 +49,9 @@ public class ReseñasControlador {
         
         
        public void modificar(Context ctx) throws SQLException,ReseñaNoEncontradoExcepcion, ReseñaNoEncontradoException {
-        Reseña reseña = reseñasRepositorio.obtener(ctx.pathParam("idUsuario", Integer.class).get());
-        // usando un formulario
-        reseña.setDescripcion(ctx.formParam("descripcion", String.class).get());
-        Reseña r  = ctx.bodyAsClass(Reseña.class);            
-        reseñasRepositorio.crear(r.getDescripcion());
-        reseñasRepositorio.modificar(reseña);
+          
+        // Usando JSON
+        var r = ctx.bodyAsClass(Reseña.class);
         ctx.status(204);
     }
 }

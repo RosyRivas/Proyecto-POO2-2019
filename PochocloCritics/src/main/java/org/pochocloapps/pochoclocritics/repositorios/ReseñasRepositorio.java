@@ -32,18 +32,10 @@ public class ReseñasRepositorio {
         
         this.conexion= conn;
         Statement consulta= conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS Reseña (idReseña SERIAL PRIMARY KEY,descripcion TEXT, idPelicula TEXT)");
+        consulta.execute("CREATE TABLE IF NOT EXISTS Reseña (idReseña SERIAL PRIMARY KEY,descripcion TEXT)");
         consulta.close();
     
-    }
-       
-        public void crear(String descripcion) throws SQLException {
-        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO Reseña (descripcion) VALUES (?)");
-        consulta.setString(1, descripcion);
-        consulta.executeUpdate();  //Metodo de prepareStatement (a la vez de Statement "interface padre") que realiza una consulta. Utilizado para create, drop, insert, update, delete etc.
-        consulta.close();
-    }
-   
+    } 
     public void borrar(Reseña reseña )throws SQLException, ReseñaNoEncontradoException{
         PreparedStatement consulta = conexion.prepareStatement("");
         consulta.setInt(1, reseña.getIdReseña());
@@ -58,7 +50,7 @@ public class ReseñasRepositorio {
     public List<Reseña> listar()  throws SQLException{
         List<Reseña> reseña = new ArrayList< >() ;
           Statement consulta = conexion.createStatement(); //createStatement utilizado para crear declaraciones (Statement). Statement se utiliza para crear consultas en la BD.
-        ResultSet resultado = consulta.executeQuery("SELECT idReseña,descripcion, isPelicula FROM Reseña"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
+        ResultSet resultado = consulta.executeQuery("SELECT idReseña,descripcion FROM Reseña"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
         while (resultado.next()) {
             reseña.add(
                 new Reseña(
@@ -72,9 +64,9 @@ public class ReseñasRepositorio {
         consulta.close();
         return reseña;
     }
-    public void crear(String descripcion, int idPelicula) throws SQLException {
-        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO Reseña (descripcion , idPelicula) VALUES (?, ?, ?, ?, ?, ?)");
-        consulta.setString(1, descripcion);
+    public void crear(int idReseña) throws SQLException {
+        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO Reseña (idReseña)  VALUES (?)");
+        consulta.setInt(1, idReseña);
        // consulta.setInt(2, idPelicula);
         consulta.executeUpdate();  //Metodo de prepareStatement (a la vez de Statement "interface padre") que realiza una consulta. Utilizado para create, drop, insert, update, delete etc.
         consulta.close();
