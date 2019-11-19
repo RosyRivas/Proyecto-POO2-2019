@@ -25,7 +25,7 @@ public class DirectoresRepositorio {
     public DirectoresRepositorio(Connection conn) throws SQLException{
         this.conexion = conn;
         Statement consulta = conexion.createStatement();
-        consulta.execute("CREATE TEBLE IF NOT EXISTS director (idDirector SERIAL PRIMARY KEY, biografia TEXT, nombre TEXT, apellido TEXT, fechaNac TEXT)");
+        consulta.execute("CREATE TABLE IF NOT EXISTS director (idDirector SERIAL PRIMARY KEY, biografia TEXT, nombre TEXT, apellido TEXT, fechaNac TEXT)");
         consulta.close();
     }
     

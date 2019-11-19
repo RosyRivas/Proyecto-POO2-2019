@@ -31,7 +31,7 @@ public class ReseñasRepositorio {
         
         this.conexion= conn;
         Statement consulta= conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS Reseña (idReseña SERIAL PRIMARY KEY,descripcion TEXT)");
+        consulta.execute("CREATE TABLE IF NOT EXISTS reseña (idReseña SERIAL PRIMARY KEY,descripcion TEXT)");
         consulta.close();
     
     }

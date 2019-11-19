@@ -25,7 +25,7 @@ public class ActoresRepositorio {
     public ActoresRepositorio(Connection conn) throws SQLException {
         this.conexion = conn;
         Statement consulta = conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS Actor(idActor SERIAL PRIMARY KEY,biografia TEXT, nombre TEXT,apellido TEXT,fechanac TEXT");
+        consulta.execute("CREATE TABLE IF NOT EXISTS actor (idActor SERIAL PRIMARY KEY,biografia TEXT, nombre TEXT,apellido TEXT,fechanac TEXT)");
         consulta.close();
     }
    public List<Actor> listar() throws SQLException {

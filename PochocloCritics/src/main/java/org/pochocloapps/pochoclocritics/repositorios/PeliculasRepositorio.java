@@ -27,7 +27,7 @@ public class PeliculasRepositorio {
     public PeliculasRepositorio(Connection conn) throws SQLException{
         this.conexion = conn;
         Statement consulta =  conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS peliculas(idPelicula SERIAL PRIMARY KEY, titulo TEXT, duracion TEXT, sinopsis TEXT)");
+        consulta.execute("CREATE TABLE IF NOT EXISTS peliculas (idPelicula SERIAL PRIMARY KEY, titulo TEXT, duracion TEXT, sinopsis TEXT)");
         consulta.close();
     }
     
