@@ -50,9 +50,9 @@ public class Servidor {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
         String driver = "org.postgresql.Driver";
-        String connectString = "jdbc:postgresql://localhost:5432/ejemplo";
+        String connectString = "jdbc:postgresql://localhost:5433/ejemplo";
         String user = "postgres";
-        String password = "postgres";
+        String password = "1234";
         try {
             Class.forName(driver);
             //Hacemos la coneccion.
