@@ -24,9 +24,6 @@ public class ModeradorRepositorio {
     
     public ModeradorRepositorio(Connection conexion) throws SQLException{
         this.conexion = conexion;
-        Statement consulta = conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS moderador(idModerador SERIAL PRIMARY KEY, privilegio TEXT, nombre TEXT, apellido TEXT, fechaNac TEXT,  correo TEXT, alias TEXT, contraseña TEXT)");
-        consulta.close();
     }
     
     public List<Moderador> listar() throws SQLException{

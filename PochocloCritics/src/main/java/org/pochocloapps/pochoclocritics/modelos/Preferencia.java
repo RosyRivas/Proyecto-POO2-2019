@@ -5,20 +5,26 @@
  */
 package org.pochocloapps.pochoclocritics.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Rosi-PC
  */
 public class Preferencia {
     private int idPreferencia;
-    //private List<Actor> actor;
-    //private List<Director> director;
-    //private List<Genero> genero;
+    private List<Actor> actor;
+    private List<Director> director;
+    private List<Genero> genero;
     /**
      * Crea una nueva Preferencia del usuario.
      * @param idPreferencia, identificador de la preferencia del usuario.
     */
     public Preferencia() {
+        this.actor = new ArrayList();
+        this.director = new ArrayList();
+        this.genero = new ArrayList();
     }
 
     public Preferencia(int idPreferencia) {
@@ -30,6 +36,30 @@ public class Preferencia {
     */
     public int getIdPreferencia() {
         return idPreferencia;
+    }
+
+    public List<Actor> getActor() {
+        return actor;
+    }
+
+    public void setActor(List<Actor> actor) {
+        this.actor = actor;
+    }
+
+    public List<Director> getDirector() {
+        return director;
+    }
+
+    public void setDirector(List<Director> director) {
+        this.director = director;
+    }
+
+    public List<Genero> getGenero() {
+        return genero;
+    }
+
+    public void setGenero(List<Genero> genero) {
+        this.genero = genero;
     }
  
     /**

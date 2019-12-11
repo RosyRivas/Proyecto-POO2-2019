@@ -24,9 +24,6 @@ public class DirectoresRepositorio {
     
     public DirectoresRepositorio(Connection conn) throws SQLException{
         this.conexion = conn;
-        Statement consulta = conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS director (idDirector SERIAL PRIMARY KEY, biografia TEXT, nombre TEXT, apellido TEXT, fechaNac TEXT)");
-        consulta.close();
     }
     
     public List<Director> listar() throws SQLException{
@@ -36,7 +33,7 @@ public class DirectoresRepositorio {
         while(resultado.next()){
             director.add(
                     new Director(
-                       resultado.getLong("idDirector"),
+                       resultado.getInt("idDirector"),
                        resultado.getString("biografia"),
                        resultado.getString("nombre"),
                        resultado.getString("apellido"),
@@ -59,14 +56,14 @@ public class DirectoresRepositorio {
         consulta.close();
     }
     
-    public Director obtener(Long idDirector) throws SQLException, DirectorNoEncontradoException{
+    public Director obtener(int idDirector) throws SQLException, DirectorNoEncontradoException{
         PreparedStatement consulta = conexion.prepareStatement("SELECT idDirector, biografia, nombre, apellido, fechaNac FROM Director WHERE idDirector=?");
-        consulta.setLong(1, idDirector);
+        consulta.setInt(1, idDirector);
         ResultSet resultado = consulta.executeQuery();
         try{
             if(resultado.next()){
                 return new Director(
-                        resultado.getLong("idDirector"),
+                        resultado.getInt("idDirector"),
                         resultado.getString("biografia"),
                         resultado.getString("nombre"),
                         resultado.getString("apellido"),

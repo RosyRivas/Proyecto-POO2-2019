@@ -50,9 +50,9 @@ public class Servidor {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
         String driver = "org.postgresql.Driver";
-        String connectString = "jdbc:postgresql://localhost:5433/ejemplo";
+        String connectString = "jdbc:postgresql://localhost:5432/PochocloBD";
         String user = "postgres";
-        String password = "1234";
+        String password = "postgres";
         try {
             Class.forName(driver);
             //Hacemos la coneccion.
@@ -111,9 +111,10 @@ public class Servidor {
                         path("preferencias", () -> {
                             get(preferenciasControlador::listar);
                             post(preferenciasControlador::crear);
-                            path(":idPreferecia", () -> {
+                            path(":idUsuario", () -> {
                                 delete(preferenciasControlador::borrar);
                                 // put(preferenciasControlador::modificar); 
+                                get(preferenciasControlador::obtener);
                             });
                         });
                     })

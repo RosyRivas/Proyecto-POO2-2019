@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.pochocloapps.pochoclocritics.modelos.Actor;
+import org.pochocloapps.pochoclocritics.modelos.Director;
+import org.pochocloapps.pochoclocritics.modelos.Genero;
 import org.pochocloapps.pochoclocritics.modelos.Preferencia;
 import org.pochocloapps.pochoclocritics.modelos.Usuario;
 
@@ -25,14 +28,12 @@ public class PreferenciasRepositorio {
 
     public PreferenciasRepositorio(Connection conn) throws SQLException {
         this.conexion = conn;
-        Statement consulta = conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS preferencias (idPreferencia SERIAL PRIMARY KEY)"); 
     }
 
     public List<Preferencia> listar() throws SQLException { 
         List<Preferencia> preferencias = new ArrayList<>();
         Statement consulta = conexion.createStatement(); //createStatement utilizado para crear declaraciones (Statement). Statement se utiliza para crear consultas en la BD.
-        ResultSet resultado = consulta.executeQuery("SELECT * FROM preferencias"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
+        ResultSet resultado = consulta.executeQuery("SELECT * FROM preferencia"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
         while (resultado.next()) {
             preferencias.add(
                     new Preferencia(
@@ -43,6 +44,68 @@ public class PreferenciasRepositorio {
         resultado.close(); //Método de Conection para cerrar la coneccion del objeto y del Resultset.
         consulta.close();
         return preferencias;
+    }
+    public Preferencia obtenerPreferenciaUsuario(int idUsuario) throws SQLException, PreferenciaNoEncontradaExcepcion {
+          List<Actor> actores = new ArrayList<>();
+          List<Director> directores = new ArrayList<>();
+          List<Genero> generos = new ArrayList<>();
+          Preferencia preferencia = new Preferencia();
+          /*PreparedStatement consultita = conexion.prepareStatement("SELECT idpreferencia FROM preferencias where idusuario = ?");
+          consultita.setInt(1, idUsuario);*/  //En caso de ser necesario, lo utilizamos y modificamos la clase Preferencia habilitando un setId para el id obtenido si existe.
+          
+          PreparedStatement consulta = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_actor (?)");
+          consulta.setInt(1, idUsuario);
+          PreparedStatement consulta2 = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_director (?)");
+          consulta2.setInt(1, idUsuario);
+          PreparedStatement consulta3 = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_genero (?)");
+          consulta3.setInt(1, idUsuario);
+          
+          ResultSet resultado = consulta.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
+             while (resultado.next()) {
+                actores.add(
+                    new Actor(
+                            resultado.getInt("idactor"),
+                            resultado.getString("biografia"),
+                            resultado.getString("nombre"),
+                            resultado.getString("apellido"),
+                            resultado.getString("fechanac")
+                    )
+            );
+        }
+             resultado.close();
+             consulta.close();
+             preferencia.setActor(actores);
+             
+          ResultSet resultado2 = consulta2.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
+            while (resultado2.next()) {
+                directores.add(
+                    new Director(
+                            resultado2.getInt("iddirector"),
+                            resultado2.getString("biografia"),
+                            resultado2.getString("nombre"),
+                            resultado2.getString("apellido"),
+                            resultado2.getString("fechanac")
+                    )
+            );
+        }
+            resultado2.close();
+            consulta2.close();
+            preferencia.setDirector(directores);
+             
+            ResultSet resultado3 = consulta3.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
+            while (resultado3.next()) {
+                generos.add(
+                    new Genero(
+                            resultado3.getInt("idgenero"),
+                            resultado3.getString("descripcion")
+                    )
+            );
+        }
+            resultado3.close();
+             consulta3.close();
+             preferencia.setGenero(generos);
+     
+        return preferencia;
     }
 
     public void crear(int idPreferencia) throws SQLException {

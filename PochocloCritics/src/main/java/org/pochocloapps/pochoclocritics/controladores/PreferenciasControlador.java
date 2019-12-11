@@ -35,7 +35,7 @@ public class PreferenciasControlador {
     public void crear(Context ctx) throws SQLException {    
         // Usando JSON  
         Preferencia p = ctx.bodyAsClass(Preferencia.class);
-        preferenciasRepositorio.crear(p.getIdPreferencia()); 
+        preferenciasRepositorio.crear(p.getIdPreferencia()); //Recibir el idusuario, la preferencia (actor, director, genero) y un descriptor.
         ctx.status(201);
     }
 
@@ -48,5 +48,8 @@ public class PreferenciasControlador {
         // Usando JSON
         Preferencia p = ctx.bodyAsClass(Preferencia.class);
         ctx.status(204);
+    }
+      public void obtener(Context ctx) throws SQLException, PreferenciaNoEncontradaExcepcion {       
+        ctx.json(preferenciasRepositorio.obtenerPreferenciaUsuario(ctx.pathParam("idUsuario", Integer.class).get()));
     }
 }

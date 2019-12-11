@@ -30,10 +30,6 @@ public class ReseñasRepositorio {
        public ReseñasRepositorio(Connection conn) throws SQLException{
         
         this.conexion= conn;
-        Statement consulta= conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS reseña (idReseña SERIAL PRIMARY KEY,descripcion TEXT)");
-        consulta.close();
-    
     }
        
         public void crear(String descripcion) throws SQLException {

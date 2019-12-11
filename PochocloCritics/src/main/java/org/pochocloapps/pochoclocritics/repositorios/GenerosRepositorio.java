@@ -24,15 +24,12 @@ public class GenerosRepositorio {
     
     public GenerosRepositorio(Connection conn) throws SQLException{
         this.conexion = conn;
-        Statement consulta =  conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS generos(idGenero SERIAL PRIMARY KEY, descripcion TEXT)");
-        consulta.close();
     }
     
     public List<Genero> listar() throws SQLException{
        List<Genero> generos = new ArrayList<>();
        Statement consulta = conexion.createStatement();
-       ResultSet resultado = consulta.executeQuery("SELECT idGenero, descripcion FROM generos");
+       ResultSet resultado = consulta.executeQuery("SELECT idGenero, descripcion FROM genero");
        while(resultado.next()){
            generos.add(
                    new Genero(

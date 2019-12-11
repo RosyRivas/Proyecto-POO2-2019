@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Director extends Persona{
     
-    private Long idDirector;
+    private int idDirector;
     private String biografia;
    // private List<Peliculas> peliculasDirigidas;
    //@param peliculaDirigida lista de las peliculas que dirigidas 
@@ -25,7 +25,7 @@ public class Director extends Persona{
      * @param fechaNac, fecha de nacimiento del director
      * @param biografia, biografia del director
      */
-    public Director(Long idDirector, String nombre, String apellido, String fechaNac, String biografia){
+    public Director(int idDirector, String nombre, String apellido, String fechaNac, String biografia){
         super(nombre, apellido, fechaNac);
         this.idDirector = idDirector;
         this.biografia = biografia;
@@ -35,7 +35,7 @@ public class Director extends Persona{
      * Metodo que devuelve el identificador del director
      * @return idDirector, identificador del director 
      */
-    public Long getIdDirector() {
+    public int getIdDirector() {
         return idDirector;
     }
 

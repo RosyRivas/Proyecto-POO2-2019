@@ -24,14 +24,11 @@ public class UsuariosRepositorio {
     private final Connection conexion;
     public UsuariosRepositorio(Connection conn) throws SQLException {
         this.conexion = conn;
-        Statement consulta = conexion.createStatement();
-        consulta.execute("CREATE TABLE IF NOT EXISTS usuarios (idUsuario SERIAL PRIMARY KEY,nombre TEXT, apellido TEXT, fechanac TEXT,  correo TEXT, alias TEXT, contraseña TEXT)");
-        consulta.close();
     }
    public List<Usuario> listar() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
         Statement consulta = conexion.createStatement(); //createStatement utilizado para crear declaraciones (Statement). Statement se utiliza para crear consultas en la BD.
-        ResultSet resultado = consulta.executeQuery("SELECT idUsuario,nombre, apellido, fechanac, correo, alias, contraseña FROM usuarios"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
+        ResultSet resultado = consulta.executeQuery("SELECT idUsuario,nombre, apellido, fechanac, correo, alias, contrasena FROM usuario"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
         while (resultado.next()) {
             usuarios.add(
                 new Usuario(
@@ -41,7 +38,7 @@ public class UsuariosRepositorio {
                     resultado.getString("fechanac"),
                     resultado.getString("correo"),
                     resultado.getString("alias"),
-                    resultado.getString("contraseña")
+                    resultado.getString("contrasena")
                     
                 )
             );
@@ -63,7 +60,7 @@ public class UsuariosRepositorio {
     }
    
    public Usuario obtener(int idUsuario) throws SQLException, UsuarioNoEncontradoExcepcion {
-        PreparedStatement consulta = conexion.prepareStatement("SELECT idUsuario, nombre, apellido, fechanac, correo, alias, contraseña FROM usuarios WHERE idUsuario = ?"); //PreparedStatement utilizado para realizar consultas parametrizadas. Subinterface de Statement.                                                                                                                                       //Se utiliza prepareStatement (Metodo de Conection) para obtener el objeto PreparedStatement.
+        PreparedStatement consulta = conexion.prepareStatement("SELECT idUsuario, nombre, apellido, fechanac, correo, alias, contrasena FROM usuario WHERE idUsuario = ?"); //PreparedStatement utilizado para realizar consultas parametrizadas. Subinterface de Statement.                                                                                                                                       //Se utiliza prepareStatement (Metodo de Conection) para obtener el objeto PreparedStatement.
         consulta.setInt(1, idUsuario);            //Ajusta el valor entero al parametro dado. Este caso el 1 (identificador).                                                                                                  
         ResultSet resultado = consulta.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
         try {
@@ -75,7 +72,7 @@ public class UsuariosRepositorio {
                         resultado.getString("fechanac"),
                         resultado.getString("correo"),
                         resultado.getString("alias"),
-                        resultado.getString("contraseña")
+                        resultado.getString("contrasena")
                 );
             } else {
                 throw new UsuarioNoEncontradoExcepcion();

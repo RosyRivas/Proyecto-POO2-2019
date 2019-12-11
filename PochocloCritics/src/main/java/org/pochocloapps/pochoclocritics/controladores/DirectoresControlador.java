@@ -34,7 +34,7 @@ public class DirectoresControlador {
     }
     
     public void borrar(Context ctx) throws SQLException, DirectorNoEncontradoException{
-        directoresRepositorio.borrar(directoresRepositorio.obtener(ctx.pathParam("idDirector", Long.class).get()));
+        directoresRepositorio.borrar(directoresRepositorio.obtener(ctx.pathParam("idDirector", Integer.class).get()));
         ctx.status(204);
         
     }
