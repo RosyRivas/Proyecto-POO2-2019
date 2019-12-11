@@ -75,7 +75,12 @@ public class Servidor {
             GenerosRepositorio generosRepositorio = new GenerosRepositorio(conn);
             GenerosControlador generosControlador = new GenerosControlador(generosRepositorio);
 
-            Javalin.create()
+            Javalin.create(config -> {
+            //config.defaultContentType = "application/json";
+            config.addStaticFiles("/publico");
+            //config.enableCorsForAllOrigins();
+            //config.addSinglePageRoot("/", "/public/index.html");
+             })    
                     .events((EventListener event) -> {
                         event.serverStopped(() -> {
                             conn.close();

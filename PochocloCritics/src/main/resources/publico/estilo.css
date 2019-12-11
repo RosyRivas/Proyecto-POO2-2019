@@ -1,0 +1,30 @@
+/* 
+    Created on : 9 oct. 2019, 09:00:30
+    Author     : Claudio
+*/
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
+
+
+h1 { 
+    color: green;
+    font-size: 24px;
+}
+
+.texto-resaltado {
+    font-weight: bold;
+}
+
+
+div {
+  padding: 5px 5px;
+}
+
+/*span {
+     cursor:pointer;
+     color:blue;
+     text-decoration:underline;
+     }*/
