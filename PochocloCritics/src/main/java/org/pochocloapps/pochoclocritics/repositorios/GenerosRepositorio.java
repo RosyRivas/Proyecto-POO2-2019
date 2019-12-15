@@ -51,7 +51,7 @@ public class GenerosRepositorio {
     }
     
     public Genero obtener(int idGenero) throws SQLException, GeneroNoEncontradoException {
-        PreparedStatement consulta = conexion.prepareStatement("SELECT idGenero, descripcion FROM generos WHERE idGenero = ?");
+        PreparedStatement consulta = conexion.prepareStatement("SELECT idGenero, descripcion FROM genero WHERE idGenero = ?");
         consulta.setInt(1, idGenero);
         ResultSet resultado = consulta.executeQuery();
         try{

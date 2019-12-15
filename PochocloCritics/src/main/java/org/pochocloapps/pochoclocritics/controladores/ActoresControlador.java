@@ -49,6 +49,10 @@ public class ActoresControlador {
         actor.setFechaNac(ctx.formParam("fechanac", String.class).get());
       
         actoresRepositorio.modificar(actor);
-        ctx.status(204);
+        ctx.status(204); 
+    } 
+        public void obtener(Context ctx) throws SQLException, ActorNoEncontradoExcepcion {       
+        ctx.json(actoresRepositorio.obtener(ctx.pathParam("idActor", Integer.class).get()));
     }
+        
 }

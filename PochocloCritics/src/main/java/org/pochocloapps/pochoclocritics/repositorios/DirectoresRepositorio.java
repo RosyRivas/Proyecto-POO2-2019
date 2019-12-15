@@ -29,15 +29,15 @@ public class DirectoresRepositorio {
     public List<Director> listar() throws SQLException{
         List<Director> director = new ArrayList<>();
         Statement consulta = conexion.createStatement();
-        ResultSet resultado = consulta.executeQuery("SELECT idDirector, biografia, nombre, apellido, fechaNac FROM director");
+        ResultSet resultado = consulta.executeQuery("SELECT idDirector, nombre, apellido, fechaNac, biografia FROM director");
         while(resultado.next()){
             director.add(
                     new Director(
                        resultado.getInt("idDirector"),
-                       resultado.getString("biografia"),
                        resultado.getString("nombre"),
                        resultado.getString("apellido"),
-                       resultado.getString("fechaNac")
+                       resultado.getString("fechaNac"),
+                       resultado.getString("biografia")
                     )
             );
         }
@@ -57,17 +57,17 @@ public class DirectoresRepositorio {
     }
     
     public Director obtener(int idDirector) throws SQLException, DirectorNoEncontradoException{
-        PreparedStatement consulta = conexion.prepareStatement("SELECT idDirector, biografia, nombre, apellido, fechaNac FROM Director WHERE idDirector=?");
+        PreparedStatement consulta = conexion.prepareStatement("SELECT idDirector, nombre, apellido, fechaNac, biografia FROM director WHERE idDirector=?");
         consulta.setInt(1, idDirector);
         ResultSet resultado = consulta.executeQuery();
         try{
             if(resultado.next()){
                 return new Director(
                         resultado.getInt("idDirector"),
-                        resultado.getString("biografia"),
                         resultado.getString("nombre"),
                         resultado.getString("apellido"),
-                        resultado.getString("fechaNac")
+                        resultado.getString("fechaNac"),
+                        resultado.getString("biografia")
                 );
             }else{
                 throw new DirectorNoEncontradoException();

@@ -15,10 +15,10 @@
 CREATE OR REPLACE FUNCTION listar_preferencia_usuario_actor(
     IN _idusuario integer,
     OUT idactor integer,
-    OUT biografia character varying,
     OUT nombre character varying,
     OUT apellido character varying,
-    OUT fechanac character varying)
+    OUT fechanac character varying,
+    OUT biografia character varying)
   RETURNS SETOF record AS
 $BODY$
 BEGIN
@@ -28,7 +28,7 @@ BEGIN
 	select p.idpreferencia from preferencia p inner join actores_preferencia ap on p.idpreferencia = ap.idpreferencia where p.idusuario = $1))THEN
 
 	RETURN QUERY
-	select a.idactor, a.biografia, a.nombre, a.apellido, a.fechanac from actor a inner join actores_preferencia ap on a.idactor = ap.idactor
+	select a.idactor, a.nombre, a.apellido, a.fechanac, a.biografia from actor a inner join actores_preferencia ap on a.idactor = ap.idactor
 	where ap.idpreferencia IN (
 	select p.idpreferencia from preferencia p inner join actores_preferencia ap on p.idpreferencia = ap.idpreferencia where p.idusuario = $1) 
 	ORDER BY a.idactor;
@@ -388,3 +388,114 @@ $BODY$
 --SELECT FROM crear_preferencia_moderador_genero (3,1);
 
 */
+
+--Funcion para eliminar un actor de las preferencias del usuario.
+
+CREATE OR REPLACE FUNCTION eliminar_preferencia_usuario_actor(
+    idusuario integer,
+    idactor integer)
+  RETURNS void AS
+$BODY$
+BEGIN
+IF  EXISTS(SELECT u.idusuario FROM usuario u WHERE (u.idusuario = $1)) THEN
+	IF EXISTS(SELECT a.idactor FROM actor a WHERE (a.idactor = $2))THEN
+		IF EXISTS (SELECT p.idusuario FROM preferencia p WHERE p.idusuario = $1) THEN
+			IF EXISTS(SELECT ap.idpreferencia FROM actores_preferencia ap where ap.idpreferencia = (
+			SELECT p.idpreferencia FROM preferencia p WHERE p.idusuario = $1) and (ap.idactor = $2))  THEN
+
+			delete from actores_preferencia ap where ap.idpreferencia = (select p.idpreferencia from preferencia p where p.idUsuario = $1) and ap.idactor = $2;  
+			RAISE NOTICE 'El actor especificado  se elimino de preferencias de actores';
+
+			ELSE
+
+			RAISE NOTICE 'No existe la relacion entre el usuario y el actor especificado';
+
+			END IF;
+		ELSE
+		RAISE NOTICE 'El usuario especificado no tiene una preferencia asignada';
+	
+		END IF;
+		
+	ELSE
+		RAISE NOTICE 'El actor especificado no existe para eliminar la preferencia';
+	END IF;
+ELSE
+RAISE NOTICE 'El usuario especificado no existe para eliminar la preferencia';
+END IF;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+
+--Funcion para eliminar un director de las preferencias del usuario.
+
+CREATE OR REPLACE FUNCTION eliminar_preferencia_usuario_director(
+    idusuario integer,
+    iddirector integer)
+  RETURNS void AS
+$BODY$
+BEGIN
+IF  EXISTS(SELECT u.idusuario FROM usuario u WHERE (u.idusuario = $1)) THEN
+	IF EXISTS(SELECT d.iddirector FROM director d WHERE (d.iddirector = $2))THEN
+		IF EXISTS (SELECT p.idusuario FROM preferencia p WHERE p.idusuario = $1) THEN
+			IF EXISTS(SELECT dp.idpreferencia FROM directores_preferencia dp where dp.idpreferencia = (
+			SELECT p.idpreferencia FROM preferencia p WHERE p.idusuario = $1) and (dp.iddirector = $2))  THEN
+
+			delete from directores_preferencia dp where dp.idpreferencia = (select p.idpreferencia from preferencia p where p.idUsuario = $1) and dp.iddirector = $2;  
+			RAISE NOTICE 'El director especificado  se elimino de preferencias de actores';
+
+			ELSE
+
+			RAISE NOTICE 'No existe la relacion entre el usuario y el director especificado';
+
+			END IF;
+		ELSE
+		RAISE NOTICE 'El usuario especificado no tiene una preferencia asignada';
+	
+		END IF;
+		
+	ELSE
+		RAISE NOTICE 'El director especificado no existe para eliminar la preferencia';
+	END IF;
+ELSE
+RAISE NOTICE 'El usuario especificado no existe para eliminar la preferencia';
+END IF;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+
+--Funcion para eliminar un genero de las preferencias del usuario.
+
+CREATE OR REPLACE FUNCTION eliminar_preferencia_usuario_genero(
+    idusuario integer,
+    idgenero integer)
+  RETURNS void AS
+$BODY$
+BEGIN
+IF  EXISTS(SELECT u.idusuario FROM usuario u WHERE (u.idusuario = $1)) THEN
+	IF EXISTS(SELECT g.idgenero FROM genero g WHERE (g.idgenero = $2))THEN
+		IF EXISTS (SELECT p.idusuario FROM preferencia p WHERE p.idusuario = $1) THEN
+			IF EXISTS(SELECT gp.idpreferencia FROM generos_preferencia gp where gp.idpreferencia = (
+			SELECT p.idpreferencia FROM preferencia p WHERE p.idusuario = $1) and (gp.idgenero = $2))  THEN
+
+			delete from generos_preferencia gp where gp.idpreferencia = (select p.idpreferencia from preferencia p where p.idUsuario = $1) and gp.idgenero = $2;  
+			RAISE NOTICE 'El genero especificado  se elimino de preferencias de generos';
+
+			ELSE
+
+			RAISE NOTICE 'No existe la relacion entre el usuario y el genero especificado';
+
+			END IF;
+		ELSE
+		RAISE NOTICE 'El usuario especificado no tiene una preferencia asignada';
+	
+		END IF;
+		
+	ELSE
+		RAISE NOTICE 'El genero especificado no existe para eliminar la preferencia';
+	END IF;
+ELSE
+RAISE NOTICE 'El usuario especificado no existe para eliminar la preferencia';
+END IF;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE

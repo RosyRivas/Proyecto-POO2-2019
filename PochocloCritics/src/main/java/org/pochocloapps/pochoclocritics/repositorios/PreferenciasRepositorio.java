@@ -16,7 +16,6 @@ import org.pochocloapps.pochoclocritics.modelos.Actor;
 import org.pochocloapps.pochoclocritics.modelos.Director;
 import org.pochocloapps.pochoclocritics.modelos.Genero;
 import org.pochocloapps.pochoclocritics.modelos.Preferencia;
-import org.pochocloapps.pochoclocritics.modelos.Usuario;
 
 /**
  *
@@ -30,55 +29,50 @@ public class PreferenciasRepositorio {
         this.conexion = conn;
     }
 
-    public List<Preferencia> listar() throws SQLException { 
+    public List<Preferencia> listar() throws SQLException {
         List<Preferencia> preferencias = new ArrayList<>();
         Statement consulta = conexion.createStatement(); //createStatement utilizado para crear declaraciones (Statement). Statement se utiliza para crear consultas en la BD.
         ResultSet resultado = consulta.executeQuery("SELECT * FROM preferencia"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
         while (resultado.next()) {
             preferencias.add(
-                    new Preferencia(
-                            resultado.getInt("idPreferencia")
-                    )
+                    new Preferencia()
             );
         }
         resultado.close(); //Método de Conection para cerrar la coneccion del objeto y del Resultset.
         consulta.close();
         return preferencias;
     }
+
     public Preferencia obtenerPreferenciaUsuario(int idUsuario) throws SQLException, PreferenciaNoEncontradaExcepcion {
-          List<Actor> actores = new ArrayList<>();
-          List<Director> directores = new ArrayList<>();
-          List<Genero> generos = new ArrayList<>();
-          Preferencia preferencia = new Preferencia();
-          /*PreparedStatement consultita = conexion.prepareStatement("SELECT idpreferencia FROM preferencias where idusuario = ?");
-          consultita.setInt(1, idUsuario);*/  //En caso de ser necesario, lo utilizamos y modificamos la clase Preferencia habilitando un setId para el id obtenido si existe.
-          
-          PreparedStatement consulta = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_actor (?)");
-          consulta.setInt(1, idUsuario);
-          PreparedStatement consulta2 = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_director (?)");
-          consulta2.setInt(1, idUsuario);
-          PreparedStatement consulta3 = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_genero (?)");
-          consulta3.setInt(1, idUsuario);
-          
-          ResultSet resultado = consulta.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
-             while (resultado.next()) {
-                actores.add(
+        List<Actor> actores = new ArrayList<>();
+        List<Director> directores = new ArrayList<>();
+        List<Genero> generos = new ArrayList<>();
+
+        PreparedStatement consulta = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_actor (?)");
+        consulta.setInt(1, idUsuario);
+        PreparedStatement consulta2 = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_director (?)");
+        consulta2.setInt(1, idUsuario);
+        PreparedStatement consulta3 = conexion.prepareStatement("SELECT *FROM listar_preferencia_usuario_genero (?)");
+        consulta3.setInt(1, idUsuario);
+
+        ResultSet resultado = consulta.executeQuery();
+        while (resultado.next()) {
+            actores.add(
                     new Actor(
                             resultado.getInt("idactor"),
-                            resultado.getString("biografia"),
                             resultado.getString("nombre"),
                             resultado.getString("apellido"),
-                            resultado.getString("fechanac")
+                            resultado.getString("fechanac"),
+                            resultado.getString("biografia")
                     )
             );
         }
-             resultado.close();
-             consulta.close();
-             preferencia.setActor(actores);
-             
-          ResultSet resultado2 = consulta2.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
-            while (resultado2.next()) {
-                directores.add(
+        resultado.close();
+        consulta.close();
+
+        ResultSet resultado2 = consulta2.executeQuery();
+        while (resultado2.next()) {
+            directores.add(
                     new Director(
                             resultado2.getInt("iddirector"),
                             resultado2.getString("biografia"),
@@ -88,48 +82,78 @@ public class PreferenciasRepositorio {
                     )
             );
         }
-            resultado2.close();
-            consulta2.close();
-            preferencia.setDirector(directores);
-             
-            ResultSet resultado3 = consulta3.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
-            while (resultado3.next()) {
-                generos.add(
+        resultado2.close();
+        consulta2.close();
+
+        ResultSet resultado3 = consulta3.executeQuery();
+        while (resultado3.next()) {
+            generos.add(
                     new Genero(
                             resultado3.getInt("idgenero"),
                             resultado3.getString("descripcion")
                     )
             );
         }
-            resultado3.close();
-             consulta3.close();
-             preferencia.setGenero(generos);
-     
-        return preferencia;
-    }
+        resultado3.close();
+        consulta3.close();
 
-    public void crear(int idPreferencia) throws SQLException {
-        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO preferencias (idPreferencia) VALUES (?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
-        consulta.setInt(1, idPreferencia);
-        consulta.executeUpdate();  //Metodo de prepareStatement (a la vez de Statement "interface padre") que realiza una consulta. Utilizado para create, drop, insert, update, delete etc.
-        consulta.close();
-    }
-
-    public Preferencia obtener(int idPreferencia) throws SQLException, PreferenciaNoEncontradaExcepcion {                           
-        PreparedStatement consulta = conexion.prepareStatement("SELECT idPreferencia FROM preferencias WHERE idPreferencia = ?"); //PreparedStatement utilizado para realizar consultas parametrizadas. Subinterface de Statement.                                                                                                                                       //Se utiliza prepareStatement (Metodo de Conection) para obtener el objeto PreparedStatement.
-        consulta.setInt(1, idPreferencia);            //Ajusta el valor entero al parametro dado. Este caso el 1 (idPreferencia).                                                                                                  
-        ResultSet resultado = consulta.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
+        PreparedStatement consultaid = conexion.prepareStatement("SELECT p.idPreferencia FROM preferencia p WHERE p.idusuario = ?");                                                                                                                                       //Se utiliza prepareStatement (Metodo de Conection) para obtener el objeto PreparedStatement.
+        consultaid.setInt(1, idUsuario);
+        ResultSet resultadoid = consultaid.executeQuery();
         try {
-            if (resultado.next()) { //.next es un metodo de Resulset que permite avanzar el puntero a la siguiente posicion.
+            if (resultadoid.next()) {
                 return new Preferencia(
-                        resultado.getInt("idPreferencia") //Metodos get de ResulSet para obtener el contenido de la fila donde esta parado.                    
+                        resultadoid.getInt("idpreferencia"),
+                        actores,
+                        directores,
+                        generos
                 );
+
             } else {
                 throw new PreferenciaNoEncontradaExcepcion();
             }
         } finally {
-            consulta.close();
-            resultado.close();
+            consultaid.close();
+            resultadoid.close();
+        }
+
+    }
+
+    public void crear(int idPreferencia, List<Actor> actor, List<Director> director, List<Genero> genero) throws SQLException {
+        List<Actor> actores = new ArrayList(actor);
+        List<Director> directores = director;
+        List<Genero> generos = genero;
+        int idPref = idPreferencia;
+
+        for (int i = 0; i < actores.size(); i++) {
+            if (actores.contains(actores.get(i))) {
+                PreparedStatement consulta = conexion.prepareStatement("select from crear_preferencia_usuario_actor((select p.idusuario from preferencia p where p.idpreferencia = ?),?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+                consulta.setInt(1, idPref);
+                consulta.setInt(2, actores.get(i).getIdActor());
+                consulta.execute();
+                consulta.close();
+            }
+        }
+        for (int i = 0; i < directores.size(); i++) {
+            if (directores.contains(directores.get(i))) {
+                PreparedStatement consulta2 = conexion.prepareStatement("select from crear_preferencia_usuario_director((select p.idusuario from preferencia p where p.idpreferencia = ?),?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+                consulta2.setInt(1, idPref);
+                consulta2.setInt(2, directores.get(i).getIdDirector());
+                consulta2.execute();
+                consulta2.close();
+            }
+
+        }
+
+        for (int i = 0; i < generos.size(); i++) {
+            if (generos.contains(generos.get(i))) {
+                PreparedStatement consulta3 = conexion.prepareStatement("select from crear_preferencia_usuario_genero((select p.idusuario from preferencia p where p.idpreferencia = ?),?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+                consulta3.setInt(1, idPref);
+                consulta3.setInt(2, generos.get(i).getIdGenero());
+                consulta3.execute();
+                consulta3.close();
+            }
+
         }
     }
 
@@ -145,18 +169,32 @@ public class PreferenciasRepositorio {
         }
     }
 
-    public void modificar(Preferencia preferencia) throws SQLException, UsuarioNoEncontradoExcepcion { 
-                                                                                                       
-        PreparedStatement consulta = conexion.prepareStatement("UPDATE preferencias SET .... WHERE idPreferencia = ?"); //Puede que sea innecesario un UPDATE, como alternativa, utilizar a los metodos de crear y borrar preferencia (como alta y baja). 
-        consulta.setInt(1, preferencia.getIdPreferencia());                                                            
-        
+    public void modificar(int idPreferencia, List<Actor> actor, List<Director> director, List<Genero> genero) throws SQLException {
+        List<Actor> actores = new ArrayList(actor);
+        List<Director> directores = director;
+        List<Genero> generos = genero;
 
-        try {
-            if (consulta.executeUpdate() == 0) {
-                throw new UsuarioNoEncontradoExcepcion();
-            }
-        } finally {
+        if (actores.size() == 1) {
+            PreparedStatement consulta = conexion.prepareStatement("select from eliminar_preferencia_usuario_actor((select p.idusuario from preferencia p where p.idpreferencia = ?),?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+            consulta.setInt(1, idPreferencia);
+            consulta.setInt(2, actores.get(0).getIdActor());
+            consulta.execute();
             consulta.close();
         }
+        if (directores.size() == 1) {
+            PreparedStatement consulta2 = conexion.prepareStatement("select from eliminar_preferencia_usuario_director((select p.idusuario from preferencia p where p.idpreferencia = ?),?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+            consulta2.setInt(1, idPreferencia);
+            consulta2.setInt(2, directores.get(0).getIdDirector());
+            consulta2.execute();
+            consulta2.close();
+        }
+        if (generos.size() == 1) {
+            PreparedStatement consulta3 = conexion.prepareStatement("select from eliminar_preferencia_usuario_genero((select p.idusuario from preferencia p where p.idpreferencia = ?),?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+            consulta3.setInt(1, idPreferencia);
+            consulta3.setInt(2, generos.get(0).getIdGenero());
+            consulta3.execute();
+            consulta3.close();
+        }
+
     }
 }

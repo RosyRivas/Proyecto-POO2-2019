@@ -8,6 +8,7 @@ package org.pochocloapps.pochoclocritics.controladores;
 import io.javalin.http.Context;
 import java.sql.SQLException;
 import org.pochocloapps.pochoclocritics.modelos.Director;
+import org.pochocloapps.pochoclocritics.repositorios.ActorNoEncontradoExcepcion;
 import org.pochocloapps.pochoclocritics.repositorios.DirectorNoEncontradoException;
 import org.pochocloapps.pochoclocritics.repositorios.DirectoresRepositorio;
 
@@ -43,5 +44,9 @@ public class DirectoresControlador {
         Director director = ctx.bodyAsClass(Director.class);
         directoresRepositorio.modificar(director);
         ctx.status(204);
+    }
+    
+    public void obtener(Context ctx) throws SQLException, DirectorNoEncontradoException {       
+        ctx.json(directoresRepositorio.obtener(ctx.pathParam("idDirector", Integer.class).get()));
     }
 }

@@ -8,6 +8,7 @@ package org.pochocloapps.pochoclocritics.controladores;
 import io.javalin.http.Context;
 import java.sql.SQLException;
 import org.pochocloapps.pochoclocritics.modelos.Genero;
+import org.pochocloapps.pochoclocritics.repositorios.DirectorNoEncontradoException;
 import org.pochocloapps.pochoclocritics.repositorios.GeneroNoEncontradoException;
 import org.pochocloapps.pochoclocritics.repositorios.GenerosRepositorio;
 
@@ -44,6 +45,9 @@ public class GenerosControlador {
             generosRepositorio.modificar(genero);
             ctx.status(204);
         }
+        public void obtener(Context ctx) throws SQLException, GeneroNoEncontradoException {       
+        ctx.json(generosRepositorio.obtener(ctx.pathParam("idGenero", Integer.class).get()));
+    }
 
     }
 

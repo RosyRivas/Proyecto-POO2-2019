@@ -11,8 +11,11 @@ import java.util.Date;
  *
  * @author Rosi-PC
  */
-public class Actor extends Persona {
+public class Actor {
     private int idActor;
+    private String nombre;
+    private String apellido;
+    private String fechaNac;
     private String biografia;
    // private List<Peliculas> peliculasActuadas;
 
@@ -25,10 +28,40 @@ public class Actor extends Persona {
     * @param biografia, biografía del actor.
     */
     public Actor(int idActor, String nombre, String apellido, String fechaNac,String biografia) {
-        super(nombre, apellido, fechaNac);
         this.idActor = idActor;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNac = fechaNac;
         this.biografia = biografia;
     }
+
+    public Actor() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(String fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+ 
     /** 
     * Método que develve el identificador de un actor
     * @return idActor, identificador del actor.

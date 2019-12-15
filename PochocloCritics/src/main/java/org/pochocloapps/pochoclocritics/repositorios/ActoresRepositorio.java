@@ -28,15 +28,15 @@ public class ActoresRepositorio {
    public List<Actor> listar() throws SQLException {
         List<Actor> actor = new ArrayList<>();
         Statement consulta = conexion.createStatement(); //createStatement utilizado para crear declaraciones (Statement). Statement se utiliza para crear consultas en la BD.
-        ResultSet resultado = consulta.executeQuery("SELECT idActor,biografia, nombre,apellido,fechanac FROM actor"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
+        ResultSet resultado = consulta.executeQuery("SELECT idActor,nombre, apellido,fechanac,biografia FROM actor"); //executeQuery, método de Statement que es utilizado para crear consultas a la BD tipo SELECT. Retorna un Resulset que se puede utilizar para obtener todos los registros de una tabla.
         while (resultado.next()) {
             actor.add(
                 new Actor(
                     resultado.getInt("idActor"),
-                    resultado.getString("biografia"),
-                      resultado.getString("nombre"),
+                    resultado.getString("nombre"),
                     resultado.getString("apellido"),
-                    resultado.getString("fechanac")  
+                    resultado.getString("fechanac"),
+                    resultado.getString("biografia")  
                    
                 )
             );
@@ -56,17 +56,17 @@ public class ActoresRepositorio {
     }
    
    public Actor obtener(int idActor) throws SQLException, ActorNoEncontradoExcepcion {
-        PreparedStatement consulta = conexion.prepareStatement("SELECT idActor, biografia,  nombre,apellido, fechanac FROM actor WHERE idActor = ?,?,?,?,?"); //PreparedStatement utilizado para realizar consultas parametrizadas. Subinterface de Statement.                                                                                                                                       //Se utiliza prepareStatement (Metodo de Conection) para obtener el objeto PreparedStatement.
+        PreparedStatement consulta = conexion.prepareStatement("SELECT idActor, nombre,  apellido, fechanac, biografia FROM actor WHERE idActor = ?"); //PreparedStatement utilizado para realizar consultas parametrizadas. Subinterface de Statement.                                                                                                                                       //Se utiliza prepareStatement (Metodo de Conection) para obtener el objeto PreparedStatement.
         consulta.setInt(1, idActor);            //Ajusta el valor entero al parametro dado. Este caso el 1 (identificador).                                                                                                  
         ResultSet resultado = consulta.executeQuery(); //Puntero que apunta al primer registro de una tabla. Inicialmente esta antes de la primer fila.
         try {
             if (resultado.next()) { //.next es un metodo de Resulset que permite avanzar el puntero a la siguiente posicion.
                 return new Actor(
                         resultado.getInt("idActor"), 
-                        resultado.getString("biografia"),
-                       resultado.getString("nombre"),
-                    resultado.getString("apellido"),
-                    resultado.getString("fechanac")  
+                        resultado.getString("nombre"),
+                       resultado.getString("apellido"),
+                    resultado.getString("fechanac"),
+                    resultado.getString("biografia")  
                         
                 );
             } else {

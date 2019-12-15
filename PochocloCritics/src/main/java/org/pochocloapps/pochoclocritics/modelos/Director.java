@@ -11,10 +11,13 @@ import java.util.Date;
  *
  * @author Rosi-PC
  */
-public class Director extends Persona{
+public class Director {
     
     private int idDirector;
     private String biografia;
+    private String nombre;
+    private String apellido;
+    private String fechaNac;
    // private List<Peliculas> peliculasDirigidas;
    //@param peliculaDirigida lista de las peliculas que dirigidas 
     /**
@@ -25,11 +28,47 @@ public class Director extends Persona{
      * @param fechaNac, fecha de nacimiento del director
      * @param biografia, biografia del director
      */
+    
+    
+    
     public Director(int idDirector, String nombre, String apellido, String fechaNac, String biografia){
-        super(nombre, apellido, fechaNac);
         this.idDirector = idDirector;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNac = fechaNac;
         this.biografia = biografia;
+        
     }
+
+    public Director() {
+        
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(String fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+    
+    
 
     /**
      * Metodo que devuelve el identificador del director

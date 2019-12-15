@@ -117,8 +117,8 @@ public class Servidor {
                             get(preferenciasControlador::listar);
                             post(preferenciasControlador::crear);
                             path(":idUsuario", () -> {
-                                delete(preferenciasControlador::borrar);
-                                // put(preferenciasControlador::modificar); 
+                             //   delete(preferenciasControlador::borrar);
+                                put(preferenciasControlador::modificar); 
                                 get(preferenciasControlador::obtener);
                             });
                         });
@@ -128,6 +128,7 @@ public class Servidor {
                             get(generosControlador::listar);
                             post(generosControlador::crear);
                             path(":idGenero", () -> {
+                                get(generosControlador::obtener);
                                 delete(generosControlador::borrar);
                                 put(generosControlador::modificar); 
                             });
@@ -154,6 +155,7 @@ public class Servidor {
                             get(actorControlador::listar);
                             post(actorControlador::crear);
                             path(":idActor", () -> {
+                                get(actorControlador::obtener);
                                 delete(actorControlador::borrar);
                                 put(actorControlador::modificar);
                             });
@@ -167,6 +169,7 @@ public class Servidor {
                             get(directoresControlador::listar);
                             post(directoresControlador::crear);
                             path(":idDirector", () -> {
+                                get(directoresControlador::obtener);
                                 delete(directoresControlador::borrar);
                                 put(directoresControlador::modificar);
                             });

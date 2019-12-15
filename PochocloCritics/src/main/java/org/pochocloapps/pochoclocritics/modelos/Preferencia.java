@@ -21,14 +21,18 @@ public class Preferencia {
      * Crea una nueva Preferencia del usuario.
      * @param idPreferencia, identificador de la preferencia del usuario.
     */
+    
     public Preferencia() {
         this.actor = new ArrayList();
         this.director = new ArrayList();
         this.genero = new ArrayList();
     }
 
-    public Preferencia(int idPreferencia) {
+    public Preferencia(int idPreferencia, List<Actor> actor, List<Director> director, List<Genero> genero) {
         this.idPreferencia = idPreferencia;
+        this.actor = actor;
+        this.director = director;
+        this.genero = genero;
     }
     /**
      * Método que permite obtener el identificador de la preferencia del usuario.
