@@ -139,6 +139,7 @@ class ComponentesPelicula extends React.Component {
         this.setState({portada: ""});
         this.setState({duracion: ""});
         this.setState({sinopsis: ""});
+        
 
 
     }
@@ -292,7 +293,10 @@ class ComponentesPelicula extends React.Component {
         if ((!this.state.nuevaPelicula && !this.state.agregarActoresCheck && !this.state.agregarDirectoresCheck) && !this.state.agregarGenerosCheck) {
             return (
                     <div>
-                        <button className="boton-nuevo" onClick={this.crearPeliculaFormulario.bind(this)}>Agregar</button>                        
+            <div>
+                        <button className="boton-simple" onClick={this.obtenerPeliculas.bind(this)}>Refrescar</button>                        
+                        <button className="boton-nuevo" onClick={this.crearPeliculaFormulario.bind(this)}>Agregar</button>  
+                        </div>
                         <br/>                        
                         <table>
                             <thead>

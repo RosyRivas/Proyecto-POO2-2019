@@ -160,6 +160,7 @@ class ComponentesPreferencia extends React.Component {
         }
         if (str.includes('director')) {
             this.setState({directorEliminado: valor});
+            this.eliminarDirector();
             this.obtenerSeccionPreferencia(this.state.preferencia_usuario);
         }
     }
@@ -432,6 +433,8 @@ class ComponentesPreferencia extends React.Component {
                         <div>
                             <button className="boton-simple" onClick={this.volverInicio.bind(this)}>Volver</button>
                         </div>
+                        <button className="boton-simple" onClick={this.obtenerSeccionPreferencia.bind(this,this.state.preferencia_usuario)}>Refrescar</button>
+
                     </div>
                     );
         }
@@ -493,7 +496,7 @@ class ComponentesPreferencia extends React.Component {
                         </table>
                     
                         <div>
-                            <button className="boton-verde" onClick={this.modificarPreferenciaActor.bind}>Guardar</button>
+                            <button className="boton-verde" onClick={this.modificarPreferenciaActor.bind(this)}>Guardar</button>
                         </div>
                     </div>
 
