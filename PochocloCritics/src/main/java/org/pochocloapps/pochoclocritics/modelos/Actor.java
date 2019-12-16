@@ -34,29 +34,52 @@ public class Actor {
         this.fechaNac = fechaNac;
         this.biografia = biografia;
     }
-
+    //Constructor para adaptar a solicitudes JSON.
     public Actor() {
     }
-
+    /**
+     * Método que devuelve el nombre del actor.
+     * @return, nombre del actor.
+     */
     public String getNombre() {
         return nombre;
     }
+    /**
+     * Metodo que crea el nombre de un actor.
+     * @param nombre, nombre del actor. 
+     */
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    /**
+     * Metodo que devuelve el apellido del actor.
+     * @return apellido, apellido del actor.
+     */
 
     public String getApellido() {
         return apellido;
     }
-
+    /**
+     * Metodo que crea el apellido del actor.
+     * @param apellido, apellido del actor.
+     */
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+    /**
+     * Método que devuelve la fecha de nacimiento del actor.
+     * @return fechaNac, fecha de nacimiento del actor.
+     */
 
     public String getFechaNac() {
         return fechaNac;
     }
+    /**
+     * Método que crea la fecha de nacimiento del actor.
+     * @param fechaNac, fecha de nacimiento del actor.
+     */
 
     public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;

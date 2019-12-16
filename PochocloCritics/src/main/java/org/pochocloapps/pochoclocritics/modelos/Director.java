@@ -39,37 +39,58 @@ public class Director {
         this.biografia = biografia;
         
     }
-
+    //Constructor para solicitudes JSON.
     public Director() {
         
     }
-
+    /**
+     * Metodo que devuelve el nombre del director.
+     * @return nombre, nombre del director.
+     */
     public String getNombre() {
         return nombre;
     }
+    /**
+     * Metodo que crea el nombre del director.
+     * @param nombre, nombre del director.
+     */
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    /**
+     * Metodo que devuelve el apellido del director.
+     * @return director, apellido del director.
+     */
 
     public String getApellido() {
         return apellido;
     }
+    /**
+     * Metodo que crea el apellido del director.
+     * @param apellido, apellido del director.
+     */
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+    /**
+     * Metodo que devuelve la fecha de nacimiento del director.
+     * @return fechaNac, fecha de nacimiento del director.
+     */
 
     public String getFechaNac() {
         return fechaNac;
     }
+    /**
+     * Metodo que crea una fecha de nacimiento del director
+     * @param fechaNac, fecha de nacimiento del director.
+     */
 
     public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;
     }
     
-    
-
     /**
      * Metodo que devuelve el identificador del director
      * @return idDirector, identificador del director 
