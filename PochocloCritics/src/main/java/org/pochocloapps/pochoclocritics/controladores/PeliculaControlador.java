@@ -29,12 +29,12 @@ public class PeliculaControlador {
     public void crear(Context ctx) throws SQLException{
        //json
        Pelicula p = ctx.bodyAsClass(Pelicula.class);
-       peliculasRepositorio.crear(p.getIdPelicula(), p.getTitulo(), p.getDuracion(), p.getSinopsis());
+       peliculasRepositorio.crear(p.getIdPelicula(), p.getTitulo(),p.getPortada(), p.getDuracion(), p.getSinopsis(), p.getActores(), p.getDirectores(), p.getGeneros());
        ctx.status(201);
     }
     
     public void borrar(Context ctx) throws SQLException, PeliculaNoEncontradaException{
-        peliculasRepositorio.borrar(peliculasRepositorio.obtener(ctx.pathParam("idPelicula", Long.class).get()));
+        peliculasRepositorio.borrar(peliculasRepositorio.obtener(ctx.pathParam("idPelicula", Integer.class).get()));
         ctx.status(204);
     }
     

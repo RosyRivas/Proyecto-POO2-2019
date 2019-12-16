@@ -1,4 +1,4 @@
-select * from pelicula;
+﻿select * from pelicula;
 select * from actor;
 select * from director;
 select * from genero;
@@ -98,74 +98,103 @@ select eliminar_pelicula(7);
 
 --FUNCIÓN ASOCIAR ACTOR A PELICULA
 CREATE OR REPLACE FUNCTION actor_pelicula(
-	_idPelicula integer,
-	_idActor integer
-)
-RETURNS text AS
+    _idpelicula integer,
+    _idactor integer)
+  RETURNS void AS
 $BODY$
-declare mensaje text;
-	begin
-		if(select count(idPelicula) from pelicula where idPelicula = _idPelicula) = 1 then
-			if(select count(idActor) from actor where idActor = _idActor) = 1 then
-				insert into actores_pelicula(idPelicula, idActor) values($1, $2);
-				mensaje = 'OK';
-			else
-				mensaje = '404';
-			end if;
-		else
-			mensaje = '404';
-		end if;
-		return mensaje;
-	end;
+DECLARE myvar integer;
+BEGIN
+myvar:= (select max(idactores_pelicula) from actores_pelicula) + 1; 
+IF  EXISTS(SELECT a.idactor FROM actor a WHERE (a.idactor = $2)) THEN
+		IF EXISTS(SELECT p.idpelicula FROM pelicula p WHERE (p.idpelicula = $1))THEN
+				IF EXISTS(SELECT ap.idpelicula FROM actores_pelicula ap where (ap.idpelicula = $1) and (ap.idactor = $2))  THEN
+							RAISE NOTICE 'El actor especificado ya esta relacionado con la pelicula';
+
+				ELSE
+					IF (myvar IS NOT NULL) THEN
+							insert into actores_pelicula(idactores_pelicula, idactor, idpelicula) values(myvar,$2, $1);  
+							RAISE NOTICE 'Se creo la  relacion satisfactoriamente';
+					ELSE 
+							insert into actores_pelicula(idactores_pelicula, idactor, idpelicula) values(1,$2, $1);
+							RAISE NOTICE 'Se creo la relacion satisfactoriamente';
+					END IF;
+			      END IF;
+		ELSE
+				RAISE NOTICE 'La pelicula especificada no existe para crear la relacion';
+				END IF;
+ELSE
+RAISE NOTICE 'El actor especificado no existe para crear la relacion';
+END IF;
+END;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE
+
+
 
 --FUNCION ASOCIAR DIRECTOR A PELICULA
 CREATE OR REPLACE FUNCTION director_pelicula(
-	_idPelicula integer,
-	_idDirector integer
-)
-RETURNS text AS
+    _idpelicula integer,
+    _iddirector integer)
+  RETURNS void AS
 $BODY$
-declare mensaje text;
-	begin
-		if(select count(idPelicula) from pelicula where idPelicula = _idPelicula) = 1 then
-			if(select count(idDirector) from director where idDirector = _idDirector) = 1 then
-				insert into directores_pelicula(idPelicula, idDirector) values($1, $2);
-				mensaje = 'OK';
-			else
-				mensaje = '404';
-			end if;
-		else
-			mensaje = '404';
-		end if;
-		return mensaje;
-	end;
+DECLARE myvar integer;
+BEGIN
+myvar:= (select max(iddirectores_pelicula) from directores_pelicula) + 1; 
+IF  EXISTS(SELECT d.iddirector FROM director d WHERE (d.iddirector = $2)) THEN
+		IF EXISTS(SELECT p.idpelicula FROM pelicula p WHERE (p.idpelicula = $1))THEN
+				IF EXISTS(SELECT dp.idpelicula FROM directores_pelicula dp where (dp.idpelicula = $1) and (dp.iddirector = $2))  THEN
+							RAISE NOTICE 'El director especificado ya esta relacionado con la pelicula';
+
+				ELSE
+					IF (myvar IS NOT NULL) THEN
+							insert into directores_pelicula(iddirectores_pelicula, iddirector, idpelicula) values(myvar,$2, $1);  
+							RAISE NOTICE 'Se creo la  relacion satisfactoriamente';
+					ELSE 
+							insert into directores_pelicula(iddirectores_pelicula, iddirector, idpelicula) values(1,$2, $1);
+							RAISE NOTICE 'Se creo la relacion satisfactoriamente';
+					END IF;
+			      END IF;
+		ELSE
+				RAISE NOTICE 'La pelicula especificada no existe para crear la relacion';
+				END IF;
+ELSE
+RAISE NOTICE 'El director especificado no existe para crear la relacion';
+END IF;
+END;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE
 
 --FUNCION ASOCIAR GENERO A PELICULA
 CREATE OR REPLACE FUNCTION genero_pelicula(
-	_idGenero integer,
-	_idPelicula integer
-)
-RETURNS text AS
+    _idpelicula integer,
+    _idgenero integer)
+  RETURNS void AS
 $BODY$
-declare mensaje text;
-	begin
-		if(select count(idPelicula) from pelicula where idPelicula = _idPelicula) = 1 then
-			if(select count(idGenero) from genero where idGenero = _idGenero) = 1 then
-				insert into generos_pelicula(idGenero, idPelicula) values($1, $2);
-				mensaje = 'OK';
-			else
-				mensaje = '404';
-			end if;
-		else
-			mensaje = '404';
-		end if;
-		return mensaje;
-	end;
+DECLARE myvar integer;
+BEGIN
+myvar:= (select max(idgeneros_pelicula) from generos_pelicula) + 1; 
+IF  EXISTS(SELECT g.idgenero FROM genero g WHERE (g.idgenero = $2)) THEN
+		IF EXISTS(SELECT p.idpelicula FROM pelicula p WHERE (p.idpelicula = $1))THEN
+				IF EXISTS(SELECT gp.idpelicula FROM generos_pelicula gp where (gp.idpelicula = $1) and (gp.idgenero = $2))  THEN
+							RAISE NOTICE 'El genero especificado ya esta relacionado con la pelicula';
+
+				ELSE
+					IF (myvar IS NOT NULL) THEN
+							insert into generos_pelicula(idgeneros_pelicula, idgenero, idpelicula) values(myvar,$2, $1);  
+							RAISE NOTICE 'Se creo la  relacion satisfactoriamente';
+					ELSE 
+							insert into generos_pelicula(idgeneros_pelicula, idgenero, idpelicula) values(1,$2, $1);
+							RAISE NOTICE 'Se creo la relacion satisfactoriamente';
+					END IF;
+			      END IF;
+		ELSE
+				RAISE NOTICE 'La pelicula especificada no existe para crear la relacion';
+				END IF;
+ELSE
+RAISE NOTICE 'El genero especificado no existe para crear la relacion';
+END IF;
+END;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+  LANGUAGE plpgsql VOLATILE
 ----------------------------------------------------------------------------------------------------------------------------
 

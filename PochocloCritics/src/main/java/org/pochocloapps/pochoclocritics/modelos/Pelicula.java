@@ -5,42 +5,73 @@
  */
 package org.pochocloapps.pochoclocritics.modelos;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Rosi-PC
  */
 public class Pelicula {
-    private Long idPelicula;
+    private int idPelicula;
     private String titulo ;
+    private String portada;
     //private Date duracion;
     private String duracion;
     private String sinopsis;
-    //private Imagen portada;
-    // private List <Actor> actor;
-    //private List <Director> director;
-    //private List <Generos> genero;
+    private List <Actor> actores;
+    private List <Director> directores;
+    private List <Genero> generos;
     //private List <Reseña> reseña;
      
+
+   //Constructor para aceptar solicitudes JSON. 
+    public Pelicula() {
+    }
+    
     /**
      * Crea una nueva Película en el sistema
      * @param idPelicula, identificador de una película
      * @param titulo, titulo de la película
+     * @param portada, portada de la pelicula
      * @param duracion, tiempo de reproducción de la pelicula
      * @param sinopsis, descripción breve de la pelicula
     */
-    public Pelicula(Long idPelicula, String titulo, String duracion, String sinopsis) {
+    public Pelicula(int idPelicula, String titulo,String portada, String duracion, String sinopsis) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.duracion = duracion;
         this.sinopsis = sinopsis;
+        this.portada = portada;
+    }
+    
+    /**
+     * Crea una nueva Película en el sistema
+     * @param idPelicula, identificador de una película
+     * @param titulo, titulo de la película
+     * @param portada, portada de la pelicula
+     * @param duracion, tiempo de reproducción de la pelicula
+     * @param sinopsis, descripción breve de la pelicula
+     * @param actores, lista de actores de la pelicula.
+     * @param directores, lista de directores de la pelicula.
+     * @param generos, lista de generos de la pelicula.
+    */
+    
+    public Pelicula(int idPelicula, String titulo,String portada, String duracion, String sinopsis, List<Actor> actores, List<Director> directores, List<Genero> generos) {
+        this.idPelicula = idPelicula;
+        this.titulo = titulo;
+        this.duracion = duracion;
+        this.sinopsis = sinopsis;
+        this.actores = new ArrayList(actores);
+        this.directores = new ArrayList(directores);
+        this.generos = new ArrayList(generos);
+        
     }
     /**
      * Método que permite obtener el identificador de la película
      * @return idPelicula, identificador de la película
     */
-    public Long getIdPelicula() {
+    public int getIdPelicula() {
         return idPelicula;
     }
     /**
@@ -57,6 +88,21 @@ public class Pelicula {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+    /**
+     * Método que permite obtener la portada de la película
+     * @return portada, portada de la pelicula
+    */
+    public String getPortada() {
+        return portada;
+    }
+     /**
+     * Método que permite crear la portada de la película
+     * @param portada, portada de la película
+    */
+    public void setPortada(String portada) {
+        this.portada = portada;
+    }
+    
     /**
      * Método que permite obtener la duración de la película
      * @return duracion, tiempo de reproducción de la película
@@ -85,6 +131,56 @@ public class Pelicula {
     public void setSinopsis(String sinopsis) {
         this.sinopsis = sinopsis;
     }
+    /**
+     * Método que permite obtener la lista de actores de una película
+     * @return actores, retorna la lista de actores de la pelicula.
+    */
+    public List<Actor> getActores() {
+        return actores;
+    }
+    
+    /**
+     * Método que permite crear la lista de actores de la pelicula.
+     * @param actores, lista de actores para añadir a la pelicula.
+    */
+    
+    public void setActores(List<Actor> actores) {
+        this.actores = actores;
+    }
+    
+    /**
+     * Método que permite obtener la lista de directores de una película.
+     * @return directores, retorna la lista de directores de la pelicula.
+     */
+
+    public List<Director> getDirectores() {
+        return directores;
+    }
+     /**
+     * Método que permite crear la lista de directores de la pelicula.
+     *  @param directores, lista de directores para añadir a la pelicula.
+    */
+
+    public void setDirectores(List<Director> directores) {
+        this.directores = directores;
+    }
+    /**
+     * Método que permite obtener la lista de generos de una pelicula.
+     * @return generos, retorna la lista de generos de una pelicula.
+     */
+    
+    public List<Genero> getGeneros() {
+        return generos;
+    }
+    /**
+     * Método que permite crear la lista de generos de una pelicula.
+     * @param generos, lista de generos para añadir a la pelicula.
+     */
+
+    public void setGeneros(List<Genero> generos) {
+        this.generos = generos;
+    }
+    
 
     /**
      * Método que devuelve la información de una película

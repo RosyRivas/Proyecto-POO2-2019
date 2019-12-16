@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.pochocloapps.pochoclocritics.modelos.Actor;
+import org.pochocloapps.pochoclocritics.modelos.Director;
+import org.pochocloapps.pochoclocritics.modelos.Genero;
 import org.pochocloapps.pochoclocritics.modelos.Pelicula;
 
 /**
@@ -31,12 +34,13 @@ public class PeliculasRepositorio {
     public List<Pelicula> listar() throws SQLException{
        List<Pelicula> peliculas = new ArrayList<>();
        Statement consulta = conexion.createStatement();
-       ResultSet resultado = consulta.executeQuery("SELECT idPelicula, titulo, duracion, sinopsis FROM peliculas");
+       ResultSet resultado = consulta.executeQuery("SELECT idPelicula, titulo, portada, duracion, sinopsis FROM pelicula");
        while(resultado.next()){
            peliculas.add(
                    new Pelicula(
-                           resultado.getLong("idPelicula"),
+                           resultado.getInt("idPelicula"),
                            resultado.getString("titulo"),
+                           resultado.getString("portada"),
                            resultado.getString("duracion"),
                            resultado.getString("sinopsis")   
                    )
@@ -47,25 +51,59 @@ public class PeliculasRepositorio {
        return peliculas;
     }
     
-    public void crear(Long idPelicula, String titulo, String duracion, String sinopsis) throws SQLException{
-        PreparedStatement consulta = conexion.prepareStatement("INSERT INTO peliculas(idPelicula, titulo, duracion, sinopsis) VALUES (?,?,?,?)");
-        consulta.setLong(1, idPelicula);
-        consulta.setString(2, titulo);
+    public void crear(int idPelicula, String titulo,String portada, String duracion, String sinopsis, List<Actor> actores, List<Director> directores, List<Genero> generos) throws SQLException{
+        List<Actor> tomarActores = actores;
+        List<Director> tomarDirectores = directores;
+        List<Genero> tomarGeneros = generos;
+         
+        PreparedStatement consulta = conexion.prepareStatement("insert into pelicula (titulo, portada, duracion, sinopsis) values (?,?,?,?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+        consulta.setString(1, titulo);
+        consulta.setString(2, portada);
         consulta.setString(3, duracion);
-        consulta.setString(4, sinopsis);
-        consulta.executeUpdate();
+        consulta.setString(4, sinopsis);    
+        consulta.execute();
         consulta.close();
+        
+        for (int i = 0; i < tomarActores.size(); i++) {
+            if (actores.contains(tomarActores.get(i))) {
+                PreparedStatement consulta2 = conexion.prepareStatement("select from actor_pelicula((select p.idPelicula from pelicula p  where p.titulo = ?), ?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+                consulta2.setString(1, titulo);
+                consulta2.setInt(2, tomarActores.get(i).getIdActor());
+                consulta2.execute();
+                consulta2.close();
+            }
+        }
+        
+        for (int i = 0; i < tomarDirectores.size(); i++) {
+            if (tomarDirectores.contains(tomarDirectores.get(i))) {
+                PreparedStatement consulta3 = conexion.prepareStatement("select from director_pelicula((select p.idPelicula from pelicula p  where p.titulo = ?), ?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+                consulta3.setString(1, titulo);
+                consulta3.setInt(2, tomarDirectores.get(i).getIdDirector());
+                consulta3.execute();
+                consulta3.close();
+            }   
+    }
+        for (int i = 0; i < tomarGeneros.size(); i++) {
+            if (generos.contains(tomarGeneros.get(i))) {
+                PreparedStatement consulta4 = conexion.prepareStatement("select from genero_pelicula((select p.idPelicula from pelicula p  where p.titulo = ?),?)"); //Ver que parametros utilizar para ingresar una preferencia como ser lista de objetos de actores, directores y generos.
+                consulta4.setString(1, titulo);
+                consulta4.setInt(2, tomarGeneros.get(i).getIdGenero());
+                consulta4.execute();
+                consulta4.close();
+            }
+    }
     }
     
-    public Pelicula obtener(Long idPelicula) throws SQLException, PeliculaNoEncontradaException {
-        PreparedStatement consulta = conexion.prepareStatement("SELECT idPelicula, titulo, duracion, sinopsis FROM Peliculas WHERE idPelicula = ?");
-        consulta.setLong(1, idPelicula);
+    public Pelicula obtener(int idPelicula) throws SQLException, PeliculaNoEncontradaException {
+        PreparedStatement consulta = conexion.prepareStatement("SELECT idPelicula, titulo,portada, duracion, sinopsis FROM Peliculas WHERE idPelicula = ?");
+        consulta.setInt(1, idPelicula);
         ResultSet resultado = consulta.executeQuery();
         try{
             if(resultado.next()){
                 return new Pelicula(
-                    resultado.getLong("idPelicula"),
+                    resultado.getInt("idPelicula"),
                     resultado.getString("titulo"),
+                    resultado.getString("portada"),
                     resultado.getString("duracion"),
                     resultado.getString("sinopsis")
                 );

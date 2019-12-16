@@ -20,7 +20,7 @@ class App extends React.Component {
         }
         if (this.state.pagina === 2) {
             componente = 'No hay nada todavía';
-           // componente = <ComponentesPublicarPelicula/>;
+            componente = <ComponentesPelicula/>;
         }
         if (this.state.pagina === 3) {
             componente = 'No hay catalogo disponible';
