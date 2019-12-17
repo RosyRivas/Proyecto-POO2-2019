@@ -399,7 +399,7 @@ class ComponentesPreferencia extends React.Component {
                                             <td> {director.idDirector} </td>
                                             <td> {director.nombre} </td>
                                             <td> {director.apellido} </td>       
-                                            <td><button className="boton-elimina" id={"buttondirector" + director.idDirector} value= {JSON.stringify(director)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
+                                            <td><button className="boton-elimina" id={"buttondirector" + director.idDirector} value = {JSON.stringify(director)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
                                         </tr>
                         )} 
                                 </tbody>
@@ -424,7 +424,7 @@ class ComponentesPreferencia extends React.Component {
                                         <tr key = {genero.idGenero}>
                                             <td> {genero.idGenero} </td>
                                             <td> {genero.descripcion} </td>       
-                                            <td><button className="boton-elimina" id={"buttongenero" + genero.idGenero} value={JSON.stringify(genero)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
+                                            <td><button className="boton-elimina" id={"buttongenero" + genero.idGenero} value = {JSON.stringify(genero)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
                                         </tr>
                         )}  
                                 </tbody>

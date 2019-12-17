@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.pochocloapps.pochoclocritics.repositorios.GeneroNoEncontradoException;
+import org.pochocloapps.pochoclocritics.controladores.GenerosControlador;
 import org.pochocloapps.pochoclocritics.modelos.Actor;
 import org.pochocloapps.pochoclocritics.modelos.Director;
 import org.pochocloapps.pochoclocritics.modelos.Genero;
@@ -115,7 +117,75 @@ public class PeliculasRepositorio {
             resultado.close();
         } 
     }
-    
+  
+      
+        public List<Pelicula> obtenerPeliculaGenero(int idGenero) throws SQLException, PeliculaNoEncontradaException {
+           List<Pelicula> peliculas = new ArrayList() ;
+        PreparedStatement consulta = conexion.prepareStatement("SELECT listar_peliculas_actor(?)");
+        consulta.setInt(1, idGenero);
+        ResultSet resultado = consulta.executeQuery();
+          
+            while(resultado.next()){
+               peliculas.add(
+                
+                     new Pelicula(
+                    resultado.getInt("idPelicula"),
+                    resultado.getString("titulo"),
+                    resultado.getString("portada"),
+                    resultado.getString("duracion"),
+                    resultado.getString("sinopsis")
+                )
+                             );
+                             
+            
+        }            
+            consulta.close();
+            resultado.close();
+            return peliculas;
+        }
+        
+       /* public Pelicula obtenerPeliculaActor(int idActor) throws SQLException, PeliculaNoEncontradaException {
+         PreparedStatement consulta = conexion.prepareStatement("SELECT listar_pelicula_actor WHERE idActor = ?");
+        consulta.setInt(1, idActor);
+        ResultSet resultado = consulta.executeQuery();
+        try{
+            if(resultado.next()){
+                return new Pelicula(
+                    resultado.getInt("idPelicula"),
+                    resultado.getString("titulo"),
+                    resultado.getString("portada"),
+                    resultado.getString("duracion"),
+                    resultado.getString("sinopsis")
+                );
+            }else{
+                throw new PeliculaNoEncontradaException();
+            }
+        }finally{
+            consulta.close();
+            resultado.close();
+        } 
+        }
+      public Pelicula obtenerPeliculaDirector(int idDirector) throws SQLException, PeliculaNoEncontradaException {
+         PreparedStatement consulta = conexion.prepareStatement("SELECT listar_pelicula_director WHERE idDirector = ?");
+        consulta.setInt(1, idDirector);
+        ResultSet resultado = consulta.executeQuery();
+        try{
+            if(resultado.next()){
+                return new Pelicula(
+                    resultado.getInt("idPelicula"),
+                    resultado.getString("titulo"),
+                    resultado.getString("portada"),
+                    resultado.getString("duracion"),
+                    resultado.getString("sinopsis")
+                );
+            }else{
+                throw new PeliculaNoEncontradaException();
+            }
+        }finally{
+            consulta.close();
+            resultado.close();
+        } 
+        }*/
     public void borrar(Pelicula pelicula) throws SQLException, PeliculaNoEncontradaException{
         PreparedStatement consulta = conexion.prepareStatement("DELETE FROM peliculas WHERE idPelicula=?");
         consulta.setLong(1,pelicula.getIdPelicula());

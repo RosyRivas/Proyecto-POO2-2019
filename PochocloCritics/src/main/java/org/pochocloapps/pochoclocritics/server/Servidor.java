@@ -50,9 +50,9 @@ public class Servidor {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
         String driver = "org.postgresql.Driver";
-        String connectString = "jdbc:postgresql://localhost:5432/PochocloBD";
+        String connectString = "jdbc:postgresql://localhost:5433/PochocloBD";
         String user = "postgres";
-        String password = "postgres";
+        String password = "1234";
         try {
             Class.forName(driver);
             //Hacemos la coneccion.
@@ -142,6 +142,7 @@ public class Servidor {
                             get(peliculaControlador::listar);
                             post(peliculaControlador::crear);
                             path(":idPelicula", () -> {
+                                 get(peliculaControlador::obtenerGenero);
                                 delete(peliculaControlador::borrar);
                                 put(peliculaControlador::modificar);
                             });
@@ -164,6 +165,7 @@ public class Servidor {
                     .exception(ActorNoEncontradoExcepcion.class, (e, ctx) -> {
                         ctx.status(404);
                     })
+                    
                     .routes(() -> {
                         path("director", () -> {
                             get(directoresControlador::listar);
