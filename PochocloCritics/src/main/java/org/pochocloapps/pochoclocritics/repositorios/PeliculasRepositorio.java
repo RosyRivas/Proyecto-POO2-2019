@@ -120,8 +120,8 @@ public class PeliculasRepositorio {
   
       
         public List<Pelicula> obtenerPeliculaGenero(int idGenero) throws SQLException, PeliculaNoEncontradaException {
-           List<Pelicula> peliculas = new ArrayList() ;
-        PreparedStatement consulta = conexion.prepareStatement("SELECT listar_peliculas_actor(?)");
+         List<Pelicula> peliculas = new ArrayList() ;
+        PreparedStatement consulta = conexion.prepareStatement("SELECT *FROM listar_peliculas_genero(?)");
         consulta.setInt(1, idGenero);
         ResultSet resultado = consulta.executeQuery();
           

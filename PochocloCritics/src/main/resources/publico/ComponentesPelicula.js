@@ -111,7 +111,14 @@ class ComponentesPelicula extends React.Component {
     }
 
     crearPelicula() {
-        fetch('/peliculas', {
+        
+        if ((this.state.titulo == "") || (this.state.portada == "") || (this.state.duracion == ""))
+        {
+            console.log("Campos en blanco");
+        }
+        else
+        {
+           fetch('/peliculas', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -139,7 +146,10 @@ class ComponentesPelicula extends React.Component {
         this.setState({portada: ""});
         this.setState({duracion: ""});
         this.setState({sinopsis: ""});
-        
+         
+        }
+        this.setState({nuevaPelicula: false});
+
 
 
     }
@@ -150,14 +160,23 @@ class ComponentesPelicula extends React.Component {
         var Longitud = this.state.actoresChecked.length;
         var tomarPreferencia = this.state.actoresChecked;
         var checkBox = document.getElementById(id);
-
+        var str = checkBox.id;
+        
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({actoresChecked: tomarPreferencia});
-            console.log("Lista actores checked: " + JSON.stringify(this.state.actoresChecked));
+
         } else {
-            let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== JSON.parse(checkBox.value));
-            this.setState({actoresChecked: temporalFiltroActor});
+           var matches = str.match(/\d+/g); 
+           const productos = this.state.actoresChecked.map(p => {
+                    if (p.idActor == matches) {  
+                      let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== p);
+                      this.setState({actoresChecked: temporalFiltroActor}); 
+                      return p;
+                    }
+                    return p;
+                    
+                  });
         }
 
     }
@@ -168,16 +187,25 @@ class ComponentesPelicula extends React.Component {
         var Longitud = this.state.directoresChecked.length;
         var tomarPreferencia = this.state.directoresChecked;
         var checkBox = document.getElementById(id);
-        console.log("DirectorCheckeado: " + checkBox.value);
-
+        var str = checkBox.id;
+        
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({directoresChecked: tomarPreferencia});
-            console.log("Lista directores checked: " + JSON.stringify(this.state.directoresChecked));
+
         } else {
-            let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== JSON.parse(checkBox.value));
-            this.setState({actoresChecked: temporalFiltroActor});
+           var matches = str.match(/\d+/g); 
+           const productos = this.state.directoresChecked.map(p => {
+                    if (p.idDirector == matches) {  
+                      let temporalFiltroDirector = tomarPreferencia.filter(filtrar => filtrar !== p);
+                      this.setState({directoresChecked: temporalFiltroDirector}); 
+                      return p;
+                    }
+                    return p;
+                    
+                  });
         }
+
     }
 
     manejadorCheckGenerosPelicula(evento) {
@@ -186,15 +214,25 @@ class ComponentesPelicula extends React.Component {
         var Longitud = this.state.generosChecked.length;
         var tomarPreferencia = this.state.generosChecked;
         var checkBox = document.getElementById(id);
-
+        var str = checkBox.id;
+        
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({generosChecked: tomarPreferencia});
-            console.log("Lista generos checked: " + JSON.stringify(this.state.generosChecked));
+
         } else {
-            let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== JSON.parse(checkBox.value));
-            this.setState({generosChecked: temporalFiltroActor});
+           var matches = str.match(/\d+/g); 
+           const productos = this.state.generosChecked.map(p => {
+                    if (p.idGenero == matches) {  
+                      let temporalFiltroGenero = tomarPreferencia.filter(filtrar => filtrar !== p);
+                      this.setState({generosChecked: temporalFiltroGenero}); 
+                      return p;
+                    }
+                    return p;
+                    
+                  });
         }
+
     }
 
     guardarActores(evento) {
@@ -225,6 +263,17 @@ class ComponentesPelicula extends React.Component {
         console.log("estado: " + valor);
     }
 
+ manejadorEntradaLink(evento) {
+
+        const target = evento.target;
+        const valor = target.value.toLowerCase();
+        const nombre = target.name;
+        this.setState({
+            [nombre]: valor
+        });
+        console.log("estado: " + valor);
+    }
+
     render() {
         if (this.state.nuevaPelicula) {
             return (
@@ -248,7 +297,7 @@ class ComponentesPelicula extends React.Component {
                                         name="portada"
                                         type="text"
                                         value={this.state.portada}
-                                        onChange={this.manejadorEntrada.bind(this)} />
+                                        onChange={this.manejadorEntradaLink.bind(this)} />
                                 </label>                          
                             </div>
                             <br/>
@@ -274,16 +323,16 @@ class ComponentesPelicula extends React.Component {
                             <hr />
                             <br/>
                             <div>
-                                <button className="boton-simple" onClick={this.agregarActores.bind(this)}>Agregar actores</button>                        
-                                <button className="boton-simple" onClick={this.agregarDirectores.bind(this)}>Agregar Directores</button>
-                                <button className="boton-simple" onClick={this.agregarGeneros.bind(this)}>Agregar Generos</button>
+                                <button className="boton-verde" onClick={this.agregarActores.bind(this)}>Agregar actores</button>                        
+                                <button className="boton-verde" onClick={this.agregarDirectores.bind(this)}>Agregar Directores</button>
+                                <button className="boton-verde" onClick={this.agregarGeneros.bind(this)}>Agregar Generos</button>
                     
                             </div> 
                     
                             <hr />                    
                             <div>
-                                <input className="boton-confirma" type="submit" value="Guardar"/>
-                                <button className="boton-simple" onClick={this.volverListado.bind(this)}>Volver</button>
+                                <input type="submit" value="Guardar"/>
+                                <button id="volverForm" onClick={this.volverListado.bind(this)}>Volver</button>
                             </div>
                         </form>  
                     </div>
@@ -293,31 +342,29 @@ class ComponentesPelicula extends React.Component {
         if ((!this.state.nuevaPelicula && !this.state.agregarActoresCheck && !this.state.agregarDirectoresCheck) && !this.state.agregarGenerosCheck) {
             return (
                     <div>
-            <div>
-                        <button className="boton-simple" onClick={this.obtenerPeliculas.bind(this)}>Refrescar</button>                        
-                        <button className="boton-nuevo" onClick={this.crearPeliculaFormulario.bind(this)}>Agregar</button>  
-                        </div>
-                        <br/>                        
+                         <h2>Peliculas</h2>
                         <table>
                             <thead>
                                 <tr>                    
-                                    <th>Identificador</th>
                                     <th>Titulo</th>
-                                    <th>Duracion</th>
-                                    <th></th>
+                                    <th>Sinopsis</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.peliculas.map(pelicula =>
                                         <tr key = {pelicula.idPelicula}>
-                                            <td> {pelicula.idPelicula} </td>
                                             <td> {pelicula.titulo} </td>
-                                            <td> {pelicula.duracion} </td>
+                                            <td> {pelicula.sinopsis} </td>
                                         </tr>
                         )}
                             </tbody>
+                                               <div>
+                        <button className="boton-simple" onClick={this.obtenerPeliculas.bind(this)}>Refrescar</button>                        
+                        <button className="boton-verde" onClick={this.crearPeliculaFormulario.bind(this)}>Agregar</button>  
+                        </div>            
                         </table>
+ 
                     </div>
                     );
         }
@@ -329,7 +376,6 @@ class ComponentesPelicula extends React.Component {
                         <table key="2">
                             <thead>
                                 <tr>                    
-                                    <th>IdActor</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th></th>
@@ -339,7 +385,6 @@ class ComponentesPelicula extends React.Component {
                             <tbody>
                                 {this.state.actores.map(actor =>
                                                 <tr key = {actor.idActor}>
-                                                    <td> {actor.idActor} </td>
                                                     <td> {actor.nombre} </td>
                                                     <td> {actor.apellido} </td>
                                                     <td> <input type="checkbox" id={"actores" + actor.idActor} value ={JSON.stringify(actor)} onClick={this.manejadorCheckActoresPelicula.bind(this)}/></td>
@@ -361,7 +406,6 @@ class ComponentesPelicula extends React.Component {
                         <table key="5">
                             <thead>
                                 <tr>                    
-                                    <th>IdDirector</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th></th>
@@ -371,7 +415,6 @@ class ComponentesPelicula extends React.Component {
                             <tbody>
                                  {this.state.directores.map(director =>
                                                 <tr key = {director.idDirector}>
-                                                    <td> {director.idDirector} </td>
                                                     <td> {director.nombre} </td>
                                                     <td> {director.apellido} </td>
                                                     <td> <input type="checkbox" id={"directores" + director.idDirector} value ={JSON.stringify(director)} onClick={this.manejadorCheckDirectoresPelicula.bind(this)}/></td>
@@ -393,7 +436,6 @@ class ComponentesPelicula extends React.Component {
                         <table key="6">
                             <thead>
                                 <tr>                    
-                                    <th>IdGenero</th>
                                     <th>Descripcion</th>
                                     <th></th>
                                     <th></th>
@@ -402,7 +444,6 @@ class ComponentesPelicula extends React.Component {
                             <tbody>
                                 {this.state.generos.map(genero =>
                                                 <tr key = {genero.idGenero}>
-                                                    <td> {genero.idGenero} </td>
                                                     <td> {genero.descripcion} </td>
                                                     <td> <input type="checkbox" id={"genero" + genero.idGenero} value ={JSON.stringify(genero)} onClick={this.manejadorCheckGenerosPelicula.bind(this)}/></td>
                                                 </tr>

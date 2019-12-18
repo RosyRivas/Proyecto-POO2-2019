@@ -19,12 +19,10 @@ class App extends React.Component {
             componente = <ComponentesPreferencia/>; 
         }
         if (this.state.pagina === 2) {
-            componente = 'No hay nada todavía';
             componente = <ComponentesPelicula/>;
         }
         if (this.state.pagina === 3) {
-            componente = 'No hay catalogo disponible';
-           // componente = <ComponentesCatalogo/>;
+            componente = <ComponentesCatalogo/>;
         }
         
         
@@ -36,10 +34,10 @@ class App extends React.Component {
         return (
                 <div>
                     <Header/>
-                    <nav>
-                        <span onClick={this.manejador.bind(this, 1)}>Preferencias</span> |
-                        <span onClick={this.manejador.bind(this, 2)}>Publicar Película</span> |
-                        <span onClick={this.manejador.bind(this, 3)}>Ver catalogo</span> |
+                    <nav className="navbar">
+                        <span onClick={this.manejador.bind(this, 1)}>Preferencias</span> 
+                        <span onClick={this.manejador.bind(this, 2)}>Publicar Película</span> 
+                        <span onClick={this.manejador.bind(this, 3)}>Ver catalogo</span> 
                     </nav>
                     {componente}
                 </div>
@@ -49,7 +47,10 @@ class App extends React.Component {
 
 const Header = () => (
             <header>
-                <h1>PochocloCritics</h1>        
+            
+        <h1><img src ="https://raw.githubusercontent.com/RosyRivas/Proyecto-POO2-2019/master/Iteracion%202/Logo/popcorn%202.png" width="50px" height="50px"/>
+            PochocloCritics </h1>    
+                
             </header>
             );
 

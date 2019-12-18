@@ -75,10 +75,10 @@ public class PreferenciasRepositorio {
             directores.add(
                     new Director(
                             resultado2.getInt("iddirector"),
-                            resultado2.getString("biografia"),
                             resultado2.getString("nombre"),
                             resultado2.getString("apellido"),
-                            resultado2.getString("fechanac")
+                            resultado2.getString("fechanac"),
+                            resultado2.getString("biografia")
                     )
             );
         }

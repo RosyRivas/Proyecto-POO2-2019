@@ -151,7 +151,7 @@ class ComponentesPreferencia extends React.Component {
             this.setState({generoEliminado: valor});
             this.eliminarGenero();
             this.obtenerSeccionPreferencia(this.state.preferencia_usuario);
-            
+
         }
         if (str.includes('actor')) {
             this.setState({actorEliminado: valor});
@@ -201,7 +201,7 @@ class ComponentesPreferencia extends React.Component {
                     }
             )
         });
-    } 
+    }
 
 //Eliminar preferencia dada(genero) según lo indicó el usuario.     
     eliminarGenero() {
@@ -225,7 +225,7 @@ class ComponentesPreferencia extends React.Component {
     }
 
     //Obtenemos el director segun el iddirector especificado y el valor de verdad (true para listar nuevas preferencias), (false, para quitar de la lista, deschequeado).   
-    
+
 //Manejador de checks lista de nuevos actores a elegir segun preferencia del usuario. 
     manejadorCheckActores(evento) {
         const target = evento.target;
@@ -233,31 +233,50 @@ class ComponentesPreferencia extends React.Component {
         var Longitud = this.state.nuevaPreferenciaActor.length;
         var tomarPreferencia = this.state.nuevaPreferenciaActor;
         var checkBox = document.getElementById(id);
+        var str = checkBox.id;
         
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({nuevaPreferenciaActor: tomarPreferencia});
+
         } else {
-            let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== JSON.parse(checkBox.value));
-            this.setState({nuevaPreferenciaActor: temporalFiltroActor});
+           var matches = str.match(/\d+/g); 
+           const productos = this.state.nuevaPreferenciaActor.map(p => {
+                    if (p.idActor == matches) {  
+                      let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== p);
+                      this.setState({nuevaPreferenciaActor: temporalFiltroActor}); 
+                      return p;
+                    }
+                    return p;
+                    
+                  });
         }
     }
 
 //Manejador de checks lista de nuevos directores a elegir segun preferencia del usuario. 
     manejadorCheckDirectores(evento) {
-        const target = evento.target;
+       const target = evento.target;
         const id = target.id;
         var Longitud = this.state.nuevaPreferenciaDirector.length;
         var tomarPreferencia = this.state.nuevaPreferenciaDirector;
         var checkBox = document.getElementById(id);
+        var str = checkBox.id;
         
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({nuevaPreferenciaDirector: tomarPreferencia});
-        } else {
-            let temporalFiltroDirector = tomarPreferencia.filter(filtrar => filtrar !== JSON.parse(checkBox.value));
-            this.setState({nuevaPreferenciaDirector: temporalFiltroDirector});
 
+        } else {
+           var matches = str.match(/\d+/g); 
+           const productos = this.state.nuevaPreferenciaDirector.map(p => {
+                    if (p.idDirector == matches) {  
+                      let temporalFiltroDirector = tomarPreferencia.filter(filtrar => filtrar !== p);
+                      this.setState({nuevaPreferenciaDirector: temporalFiltroDirector}); 
+                      return p;
+                    }
+                    return p;
+                    
+                  });
         }
     }
 
@@ -268,14 +287,23 @@ class ComponentesPreferencia extends React.Component {
         var Longitud = this.state.nuevaPreferenciaGenero.length;
         var tomarPreferencia = this.state.nuevaPreferenciaGenero;
         var checkBox = document.getElementById(id);
+        var str = checkBox.id;
         
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({nuevaPreferenciaGenero: tomarPreferencia});
-        } else {
-            let temporalFiltroGenero = tomarPreferencia.filter(filtrar => filtrar !== JSON.parse(checkBox.value));
-            this.setState({nuevaPreferenciaGenero: temporalFiltroGenero});
 
+        } else {
+           var matches = str.match(/\d+/g); 
+           const productos = this.state.nuevaPreferenciaGenero.map(p => {
+                    if (p.idGenero == matches) {  
+                      let temporalFiltroGenero = tomarPreferencia.filter(filtrar => filtrar !== p);
+                      this.setState({nuevaPreferenciaGenero: temporalFiltroGenero}); 
+                      return p;
+                    }
+                    return p;
+                    
+                  });
         }
     }
 
@@ -353,14 +381,13 @@ class ComponentesPreferencia extends React.Component {
         if (this.state.obtenerPreferencia) {
             return (
                     <div>    
-                        <h2>Mis Preferencias </h2>
-                        <button className="boton-verde" onClick={this.obtenerPreferenciaActor.bind(this)} >Agregar</button>
+            <h2>Preferencias </h2>
                         <br/>
+                        <div>
                         <div>
                             <table key="1">
                                 <thead>
                                     <tr>                    
-                                        <th>IdActor</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
                                         <th></th>
@@ -369,24 +396,24 @@ class ComponentesPreferencia extends React.Component {
                                 </thead>
                                 <tbody>
                                     {this.state.actoresPreferencia.map(actor =>
-                                        <tr key = {actor.idActor}>
-                                            <td> {actor.idActor} </td>
-                                            <td> {actor.nombre} </td>
-                                            <td> {actor.apellido} </td>       
-                                            <td><button className="boton-elimina" id={"buttonactor" + actor.idActor} value ={JSON.stringify(actor)
-                                              } onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
-                                        </tr>
-                        )}
+                                                <tr key = {actor.idActor}>
+                                                    <td> {actor.nombre} </td>
+                                                    <td> {actor.apellido} </td>       
+                                                    <td><button className="boton-elimina" id={"buttonactor" + actor.idActor} value ={JSON.stringify(actor)
+                                                                } onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
+                                                </tr>
+                                                )}
                                 </tbody>
+                                <br/>
+                                <button className="boton-verde" onClick={this.obtenerPreferenciaActor.bind(this)} >Agregar</button>
+                    
                             </table>
                         </div>
-                        <button className="boton-verde" onClick={this.obtenerPreferenciaDirector.bind(this)} >Agregar</button>
                     
                         <div>
                             <table key="2">
                                 <thead>
                                     <tr>                    
-                                        <th>IdDirector</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
                                         <th></th>
@@ -396,24 +423,24 @@ class ComponentesPreferencia extends React.Component {
                                 <tbody>
                                     {this.state.directoresPreferencia.map(director =>
                                         <tr key = {director.idDirector}>
-                                            <td> {director.idDirector} </td>
                                             <td> {director.nombre} </td>
                                             <td> {director.apellido} </td>       
                                             <td><button className="boton-elimina" id={"buttondirector" + director.idDirector} value = {JSON.stringify(director)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
                                         </tr>
-                        )} 
+                                        )} 
                                 </tbody>
+                                <br/>
+                                <button className="boton-verde" onClick={this.obtenerPreferenciaDirector.bind(this)} >Agregar</button>
+                    
                             </table>
                     
                         </div>     
                     
-                        <button className="boton-verde" onClick={this.obtenerPreferenciaGenero.bind(this)} >Agregar</button>
                     
                         <div>
                             <table key="3">
                                 <thead>
                                     <tr>                    
-                                        <th>IdGenero</th>
                                         <th>Descripcion</th>
                                         <th></th>
                                         <th></th>
@@ -422,19 +449,27 @@ class ComponentesPreferencia extends React.Component {
                                 <tbody>
                                     {this.state.generosPreferencia.map(genero =>
                                         <tr key = {genero.idGenero}>
-                                            <td> {genero.idGenero} </td>
                                             <td> {genero.descripcion} </td>       
                                             <td><button className="boton-elimina" id={"buttongenero" + genero.idGenero} value = {JSON.stringify(genero)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
                                         </tr>
-                        )}  
+                                        )}  
                                 </tbody>
+                                <br/>
+                    
+                                <button className="boton-verde" onClick={this.obtenerPreferenciaGenero.bind(this)} >Agregar</button>
+                    
                             </table>
+                         
                         </div>
+                        </div>
+                        
                         <div>
-                            <button className="boton-simple" onClick={this.volverInicio.bind(this)}>Volver</button>
+                            <button className="boton-volver" onClick={this.volverInicio.bind(this)}>Volver</button>
+                            <button className="boton-simple" onClick={this.obtenerSeccionPreferencia.bind(this, this.state.preferencia_usuario)}>Refrescar</button>
                         </div>
-                        <button className="boton-simple" onClick={this.obtenerSeccionPreferencia.bind(this,this.state.preferencia_usuario)}>Refrescar</button>
+                      
 
+                       
                     </div>
                     );
         }
@@ -442,11 +477,10 @@ class ComponentesPreferencia extends React.Component {
         if ((!this.state.obtenerPreferencia) && (!this.state.editarPreferenciaActor) && (!this.state.editarPreferenciaDirector) && (!this.state.editarPreferenciaGenero)) {
             return (
                     <div>
-                        <br/>                        
+            <h2>Usuarios</h2>
                         <table>
                             <thead>
                                 <tr>                    
-                                    <th>IdUsuario</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th></th>
@@ -456,12 +490,11 @@ class ComponentesPreferencia extends React.Component {
                             <tbody>
                                 {this.state.usuarios.map(usuario =>
                                                 <tr key = {usuario.idUsuario}>
-                                                    <td> {usuario.idUsuario} </td>
                                                     <td> {usuario.nombre} </td>
                                                     <td> {usuario.apellido} </td>       
                                                     <td><button className="boton-verde" onClick={this.obtenerSeccionPreferencia.bind(this, usuario.idUsuario)}>Preferencia</button></td>     
                                                 </tr>
-                                )}
+                                            )}
                             </tbody>
                         </table>
                     </div>
@@ -471,11 +504,11 @@ class ComponentesPreferencia extends React.Component {
         if (this.state.editarPreferenciaActor) {
             return (
                     <div>
-                        <br/>                        
+                        <br/> 
+                         <h2>Actores</h2>
                         <table key="4">
                             <thead>
                                 <tr>                    
-                                    <th>IdActor</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th></th>
@@ -485,13 +518,12 @@ class ComponentesPreferencia extends React.Component {
                             <tbody>
                                 {this.state.actores.map(actor =>
                                                 <tr key = {actor.idActor}>
-                                                    <td> {actor.idActor} </td>
                                                     <td> {actor.nombre} </td>
                                                     <td> {actor.apellido} </td>
                                                     <td> <input type="checkbox" id={"actor" + actor.idActor} value ={JSON.stringify(actor)} onClick={this.manejadorCheckActores.bind(this)}/></td>
                                     
                                                 </tr>
-                                )}                                                        
+                                            )}                                                        
                             </tbody>
                         </table>
                     
@@ -506,11 +538,11 @@ class ComponentesPreferencia extends React.Component {
         if (this.state.editarPreferenciaDirector) {
             return (
                     <div>
-                        <br/>                        
+                        <br/>
+                        <h2>Directores</h2>                       
                         <table key="5">
                             <thead>
                                 <tr>                    
-                                    <th>IdDirector</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th></th>
@@ -520,13 +552,12 @@ class ComponentesPreferencia extends React.Component {
                             <tbody>
                                 {this.state.directores.map(director =>
                                                 <tr key = {director.idDirector}>
-                                                    <td> {director.idDirector} </td>
                                                     <td> {director.nombre} </td>
                                                     <td> {director.apellido} </td>
                                                     <td> <input type="checkbox" id={"director" + director.idDirector} value ={JSON.stringify(director)} onClick={this.manejadorCheckDirectores.bind(this)}/></td>
                                     
                                                 </tr>
-                                )}                                                        
+                                            )}                                                        
                             </tbody>
                         </table>
                     
@@ -543,11 +574,11 @@ class ComponentesPreferencia extends React.Component {
         if (this.state.editarPreferenciaGenero) {
             return (
                     <div>
-                        <br/>                        
+                        <br/>     
+                        <h2>Genero</h2>
                         <table key="6">
                             <thead>
                                 <tr>                    
-                                    <th>IdGenero</th>
                                     <th>Descripcion</th>
                                     <th></th>
                                     <th></th>
@@ -556,12 +587,11 @@ class ComponentesPreferencia extends React.Component {
                             <tbody>
                                 {this.state.generos.map(genero =>
                                                 <tr key = {genero.idGenero}>
-                                                    <td> {genero.idGenero} </td>
                                                     <td> {genero.descripcion} </td>
                                                     <td> <input type="checkbox" id={"genero" + genero.idGenero} value ={JSON.stringify(genero)} onClick={this.manejadorCheckGeneros.bind(this)}/></td>
                                     
                                                 </tr>
-                                )}                                                        
+                                            )}                                                        
                             </tbody>
                         </table>
                     
