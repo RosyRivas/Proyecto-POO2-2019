@@ -332,7 +332,7 @@ class ComponentesPelicula extends React.Component {
                             <hr />                    
                             <div>
                                 <input type="submit" value="Guardar"/>
-                                <button id="volverForm" onClick={this.volverListado.bind(this)}>Volver</button>
+                                <button className="volver-relleno" onClick={this.volverListado.bind(this)}>Volver</button>
                             </div>
                         </form>  
                     </div>

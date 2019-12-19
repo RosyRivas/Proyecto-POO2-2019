@@ -33,6 +33,19 @@
 
 }
 
+.boton-azul {
+  background-color: #3F61BF;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.boton-azul:hover {
+  background-color: #062D50;
+}
+
 .boton-confirma {
     background: #007bff;
     outline : 0;
@@ -74,7 +87,7 @@ table tr:hover {
 
 h1 { 
     color: green;
-    font-size: 24px;
+    font-size: 33px;
 }
 
 h2 { 
@@ -113,17 +126,17 @@ span {
 .navbar {
   overflow: hidden;
   background-color: #34344c;
-  width: 30%;
+  width: 40%;
   text-align: center;
   border: 1px;
 }
 
 .navbar span {
-  float: center;
-  font-size: 13px;
+  float: left;
+  font-size: 20px;
   color: white;
   text-align: center;
-  padding: 6px 14px;
+  padding: 7px 13px;
   text-decoration: none;
 }
 
@@ -162,7 +175,7 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-#volverForm {
+.volver-relleno {
   background-color : #ffc107;
   color: white;
   padding: 12px 20px;
@@ -172,7 +185,7 @@ input[type=submit]:hover {
   margin: 5px;
 
 }
-#volverForm:hover{
+.volver-relleno:hover{
     background-color:#e6ac00
     }
     

@@ -18,7 +18,7 @@ class ComponentesCatalogo extends React.Component {
             actoresPelicula: [],
             generosPelicula: [],
             //HTML render.
-            obtenerPeliculas: false
+            obtenerPeliculas: false,
         };
 
     }
@@ -39,26 +39,6 @@ class ComponentesCatalogo extends React.Component {
                 );
     }
 
-    //Lista de actores que pertenecen a una pelicula.
-    obtenerActores() {
-        fetch('/actor')
-                .then(respuesta => respuesta.json())
-                .then(
-                        datos => {
-                            this.setState({actores: datos});
-                        }
-                );
-    }
-    //Lista de directores que pertenecen a una pelicula.
-    obtenerDirectores() {
-        fetch('/director')
-                .then(respuesta => respuesta.json())
-                .then(
-                        datos => {
-                            this.setState({directores: datos});
-                        }
-                );
-    }
     //Lista de generos que pertenecen a una pelicula.
     obtenerGeneros() {
         fetch('/generos')
@@ -78,12 +58,19 @@ class ComponentesCatalogo extends React.Component {
         this.setState({obtenerPeliculas: true});
 
     }
-
+    volverListadoGenero(){
+        this.setState({obtenerPeliculas: false});
+    }
+   
     render() {
         if (this.state.obtenerPeliculas) {
 
             return(
                     <div>
+            <div>
+                    <button className="volver-relleno" onClick={this.volverListadoGenero.bind(this)}>Volver</button>
+                    </div>
+
                         {this.state.peliculas.map(pelicula =>
                                                 <div className="movie-card" key={pelicula.idPelicula}>
                                                     <div>
@@ -109,9 +96,16 @@ class ComponentesCatalogo extends React.Component {
                     );
         }
         if (!this.state.obtenerPeliculas) {
-            return (<div >
+            return (<div>
                 <h2> Catálogo por genero </h2>
-            
+                         <h3>Buscar pelicula </h3>
+                         <div className="search-container">
+                    <form action="">
+                      <input type="text" placeholder="Ingrese el titulo de la pelicula.." name="titulo"/>
+                      <button type="submit" className="boton-azul">Buscar</button>
+                    </form>
+                  </div>   
+                  <br/>
                 {this.state.generos.map(genero =>
                                 <div key = {genero.idGenero}>
                                     <button type="button" className="block" value = {genero.idGenero} onClick={this.obtenerPeliculasGenero.bind(this)}>{genero.descripcion}</button>
