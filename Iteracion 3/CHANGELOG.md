@@ -1,6 +1,11 @@
 # Historial de cambios
 
 ## [No lanzado] 
+### [0.0.12] - 2019-12-19
+### Modificado
+- Se modificaron los componentes de pelicula y catalogo.
+- Se modifico el estilo css.
+
 ### [0.0.11] - 2019-12-18
 ### Modificado
 - Se modificaron los componentes de preferencia, pelicula y catalogo.
