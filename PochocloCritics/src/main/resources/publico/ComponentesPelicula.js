@@ -266,7 +266,7 @@ class ComponentesPelicula extends React.Component {
  manejadorEntradaLink(evento) {
 
         const target = evento.target;
-        const valor = target.value.toLowerCase();
+        const valor = target.value;
         const nombre = target.name;
         this.setState({
             [nombre]: valor
