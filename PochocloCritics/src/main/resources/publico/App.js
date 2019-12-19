@@ -3,20 +3,19 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pagina : 1 // 1 preferencias, 2 publicar pelicula
+            pagina: 1 // 1 preferencias, 2 publicar pelicula
         };
     }
-    
+
     // determino la pagina a mostrar
     manejador(valor) {
-        this.setState({pagina : valor});
+        this.setState({pagina: valor});
     }
 
-    
     render() {
         let componente;
         if (this.state.pagina === 1) {
-            componente = <ComponentesPreferencia/>; 
+            componente = <ComponentesPreferencia/>;
         }
         if (this.state.pagina === 2) {
             componente = <ComponentesPelicula/>;
@@ -24,8 +23,8 @@ class App extends React.Component {
         if (this.state.pagina === 3) {
             componente = <ComponentesCatalogo/>;
         }
-        
-        
+
+
 
         // uso <span> y no <a> dado que no son enlaces a otras paginas
         // para que parezca un enlace en estilos.css defino el formato de span
@@ -48,9 +47,9 @@ class App extends React.Component {
 const Header = () => (
             <header>
             
-        <h1><img src ="https://raw.githubusercontent.com/RosyRivas/Proyecto-POO2-2019/master/Iteracion%202/Logo/popcorn%202.png" width="70px" height="70px"/>
-            PochocloCritics </h1>    
-                
+                <h1><img src ="https://raw.githubusercontent.com/RosyRivas/Proyecto-POO2-2019/master/Iteracion%202/Logo/popcorn%202.png" width="70px" height="70px"/>
+                    PochocloCritics </h1>    
+            
             </header>
             );
 

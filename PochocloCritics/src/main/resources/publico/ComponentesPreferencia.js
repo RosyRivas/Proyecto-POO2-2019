@@ -66,8 +66,18 @@ class ComponentesPreferencia extends React.Component {
                 .then(
                         datos => {
                             this.setState({actores: datos});
-                        }
-                );
+
+                            this.state.actores.map((actor) => {
+                                this.state.actoresPreferencia.map((actPref) => {
+                                    if (actor.idActor == actPref.idActor) {
+                                        let temporalFiltroActor = this.state.actores.filter(filtrar => filtrar.idActor !== actPref.idActor);
+                                        this.setState({actores: temporalFiltroActor});
+                                    }
+                                }
+                                );
+                            });
+
+                        });
     }
 
 //Lista de directores para que el usuario seleccione su preferencia.
@@ -77,6 +87,15 @@ class ComponentesPreferencia extends React.Component {
                 .then(
                         datos => {
                             this.setState({directores: datos});
+                            this.state.directores.map((director) => {
+                                this.state.directoresPreferencia.map((dirPref) => {
+                                    if (director.idDirector == dirPref.idDirector) {
+                                        let temporalFiltroDirector = this.state.directores.filter(filtrar => filtrar.idDirector !== dirPref.idDirector);
+                                        this.setState({directores: temporalFiltroDirector});
+                                    }
+                                }
+                                );
+                            });
                         }
                 );
     }
@@ -88,6 +107,15 @@ class ComponentesPreferencia extends React.Component {
                 .then(
                         datos => {
                             this.setState({generos: datos});
+                            this.state.generos.map((genero) => {
+                                this.state.generosPreferencia.map((genPref) => {
+                                    if (genero.idGenero == genPref.idGenero) {
+                                        let temporalFiltroGenero = this.state.generos.filter(filtrar => filtrar.idGenero !== genPref.idGenero);
+                                        this.setState({generos: temporalFiltroGenero});
+                                    }
+                                }
+                                );
+                            });
                         }
                 );
     }
@@ -234,49 +262,49 @@ class ComponentesPreferencia extends React.Component {
         var tomarPreferencia = this.state.nuevaPreferenciaActor;
         var checkBox = document.getElementById(id);
         var str = checkBox.id;
-        
+
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({nuevaPreferenciaActor: tomarPreferencia});
 
         } else {
-           var matches = str.match(/\d+/g); 
-           const productos = this.state.nuevaPreferenciaActor.map(p => {
-                    if (p.idActor == matches) {  
-                      let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== p);
-                      this.setState({nuevaPreferenciaActor: temporalFiltroActor}); 
-                      return p;
-                    }
+            var matches = str.match(/\d+/g);
+            const productos = this.state.nuevaPreferenciaActor.map(p => {
+                if (p.idActor == matches) {
+                    let temporalFiltroActor = tomarPreferencia.filter(filtrar => filtrar !== p);
+                    this.setState({nuevaPreferenciaActor: temporalFiltroActor});
                     return p;
-                    
-                  });
+                }
+                return p;
+
+            });
         }
     }
 
 //Manejador de checks lista de nuevos directores a elegir segun preferencia del usuario. 
     manejadorCheckDirectores(evento) {
-       const target = evento.target;
+        const target = evento.target;
         const id = target.id;
         var Longitud = this.state.nuevaPreferenciaDirector.length;
         var tomarPreferencia = this.state.nuevaPreferenciaDirector;
         var checkBox = document.getElementById(id);
         var str = checkBox.id;
-        
+
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({nuevaPreferenciaDirector: tomarPreferencia});
 
         } else {
-           var matches = str.match(/\d+/g); 
-           const productos = this.state.nuevaPreferenciaDirector.map(p => {
-                    if (p.idDirector == matches) {  
-                      let temporalFiltroDirector = tomarPreferencia.filter(filtrar => filtrar !== p);
-                      this.setState({nuevaPreferenciaDirector: temporalFiltroDirector}); 
-                      return p;
-                    }
+            var matches = str.match(/\d+/g);
+            const productos = this.state.nuevaPreferenciaDirector.map(p => {
+                if (p.idDirector == matches) {
+                    let temporalFiltroDirector = tomarPreferencia.filter(filtrar => filtrar !== p);
+                    this.setState({nuevaPreferenciaDirector: temporalFiltroDirector});
                     return p;
-                    
-                  });
+                }
+                return p;
+
+            });
         }
     }
 
@@ -288,22 +316,22 @@ class ComponentesPreferencia extends React.Component {
         var tomarPreferencia = this.state.nuevaPreferenciaGenero;
         var checkBox = document.getElementById(id);
         var str = checkBox.id;
-        
+
         if (checkBox.checked == true) {
             tomarPreferencia[Longitud] = JSON.parse(checkBox.value);
             this.setState({nuevaPreferenciaGenero: tomarPreferencia});
 
         } else {
-           var matches = str.match(/\d+/g); 
-           const productos = this.state.nuevaPreferenciaGenero.map(p => {
-                    if (p.idGenero == matches) {  
-                      let temporalFiltroGenero = tomarPreferencia.filter(filtrar => filtrar !== p);
-                      this.setState({nuevaPreferenciaGenero: temporalFiltroGenero}); 
-                      return p;
-                    }
+            var matches = str.match(/\d+/g);
+            const productos = this.state.nuevaPreferenciaGenero.map(p => {
+                if (p.idGenero == matches) {
+                    let temporalFiltroGenero = tomarPreferencia.filter(filtrar => filtrar !== p);
+                    this.setState({nuevaPreferenciaGenero: temporalFiltroGenero});
                     return p;
-                    
-                  });
+                }
+                return p;
+
+            });
         }
     }
 
@@ -381,95 +409,95 @@ class ComponentesPreferencia extends React.Component {
         if (this.state.obtenerPreferencia) {
             return (
                     <div>    
-            <h2>Preferencias </h2>
+                        <h2>Preferencias </h2>
                         <br/>
                         <div>
-                        <div>
-                            <table key="1">
-                                <thead>
-                                    <tr>                    
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.actoresPreferencia.map(actor =>
+                            <div>
+                                <table key="1">
+                                    <thead>
+                                        <tr>                    
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.actoresPreferencia.map(actor =>
                                                 <tr key = {actor.idActor}>
                                                     <td> {actor.nombre} </td>
                                                     <td> {actor.apellido} </td>       
                                                     <td><button className="boton-elimina" id={"buttonactor" + actor.idActor} value ={JSON.stringify(actor)
                                                                 } onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
                                                 </tr>
-                                                )}
-                                </tbody>
-                                <br/>
-                                <button className="boton-verde" onClick={this.obtenerPreferenciaActor.bind(this)} >Agregar</button>
+                                                    )}
+                                    </tbody>
+                                    <br/>
+                                    <button className="boton-verde" onClick={this.obtenerPreferenciaActor.bind(this)} >Agregar</button>
                     
-                            </table>
-                        </div>
+                                </table>
+                            </div>
                     
-                        <div>
-                            <table key="2">
-                                <thead>
-                                    <tr>                    
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.directoresPreferencia.map(director =>
+                            <div>
+                                <table key="2">
+                                    <thead>
+                                        <tr>                    
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.directoresPreferencia.map(director =>
                                         <tr key = {director.idDirector}>
                                             <td> {director.nombre} </td>
                                             <td> {director.apellido} </td>       
                                             <td><button className="boton-elimina" id={"buttondirector" + director.idDirector} value = {JSON.stringify(director)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
                                         </tr>
-                                        )} 
-                                </tbody>
-                                <br/>
-                                <button className="boton-verde" onClick={this.obtenerPreferenciaDirector.bind(this)} >Agregar</button>
+                                            )} 
+                                    </tbody>
+                                    <br/>
+                                    <button className="boton-verde" onClick={this.obtenerPreferenciaDirector.bind(this)} >Agregar</button>
                     
-                            </table>
+                                </table>
                     
-                        </div>     
+                            </div>     
                     
                     
-                        <div>
-                            <table key="3">
-                                <thead>
-                                    <tr>                    
-                                        <th>Descripcion</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.generosPreferencia.map(genero =>
+                            <div>
+                                <table key="3">
+                                    <thead>
+                                        <tr>                    
+                                            <th>Descripcion</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.generosPreferencia.map(genero =>
                                         <tr key = {genero.idGenero}>
                                             <td> {genero.descripcion} </td>       
                                             <td><button className="boton-elimina" id={"buttongenero" + genero.idGenero} value = {JSON.stringify(genero)} onClick={this.eliminarPreferencia.bind(this)}>Eliminar</button></td>     
                                         </tr>
-                                        )}  
-                                </tbody>
-                                <br/>
+                                            )}  
+                                    </tbody>
+                                    <br/>
                     
-                                <button className="boton-verde" onClick={this.obtenerPreferenciaGenero.bind(this)} >Agregar</button>
+                                    <button className="boton-verde" onClick={this.obtenerPreferenciaGenero.bind(this)} >Agregar</button>
                     
-                            </table>
-                         
+                                </table>
+                    
+                            </div>
                         </div>
-                        </div>
-                        
+                    
                         <div>
                             <button className="boton-volver" onClick={this.volverInicio.bind(this)}>Volver</button>
                             <button className="boton-simple" onClick={this.obtenerSeccionPreferencia.bind(this, this.state.preferencia_usuario)}>Refrescar</button>
                         </div>
-                      
-
-                       
+                    
+                    
+                    
                     </div>
                     );
         }
@@ -477,7 +505,7 @@ class ComponentesPreferencia extends React.Component {
         if ((!this.state.obtenerPreferencia) && (!this.state.editarPreferenciaActor) && (!this.state.editarPreferenciaDirector) && (!this.state.editarPreferenciaGenero)) {
             return (
                     <div>
-            <h2>Usuarios</h2>
+                        <h2>Usuarios</h2>
                         <table>
                             <thead>
                                 <tr>                    
@@ -505,7 +533,7 @@ class ComponentesPreferencia extends React.Component {
             return (
                     <div>
                         <br/> 
-                         <h2>Actores</h2>
+                        <h2>Actores</h2>
                         <table key="4">
                             <thead>
                                 <tr>                    
