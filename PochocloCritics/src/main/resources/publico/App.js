@@ -48,7 +48,7 @@ class App extends React.Component {
 const Header = () => (
             <header>
             
-        <h1><img src ="https://raw.githubusercontent.com/RosyRivas/Proyecto-POO2-2019/master/Iteracion%202/Logo/popcorn%202.png" width="50px" height="50px"/>
+        <h1><img src ="https://raw.githubusercontent.com/RosyRivas/Proyecto-POO2-2019/master/Iteracion%202/Logo/popcorn%202.png" width="70px" height="70px"/>
             PochocloCritics </h1>    
                 
             </header>

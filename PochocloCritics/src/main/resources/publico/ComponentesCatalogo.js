@@ -94,7 +94,7 @@ class ComponentesCatalogo extends React.Component {
                                                             <a href="#">
                                                                 <h3 className="movie-title"> {pelicula.titulo}</h3>
                                                             </a>
-                                                            <div className="imax-logo"></div>
+                                                            <div className="pochoclo-logo"></div>
                                                         </div>
                                                         <div className="movie-info">
                                                             <div className="info-section">
